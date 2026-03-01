@@ -3,41 +3,81 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Maa Jagdamba Mobile Repair | Best Mobile Repair Shop in Sarath</title>
-<meta name="description" content="Best mobile repair shop in Sarath, Deoghar. Screen replacement, battery replacement, charging repair, water damage repair. Call now 7004470872">
+<title>Maa Jagdamba Mobile Repair</title>
 
 <style>
+*{margin:0;padding:0;box-sizing:border-box}
 body{
-margin:0;
-font-family:Arial, sans-serif;
-background:#f4f6f9;
-}
-
-/* HERO */
-.hero{
-background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+font-family:'Segoe UI',sans-serif;
+background:#0f2027;
+overflow-x:hidden;
 color:white;
+}
+
+/* Animated Background */
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
 text-align:center;
-padding:70px 20px;
+background:linear-gradient(-45deg,#0f2027,#203a43,#2c5364,#1c92d2);
+background-size:400% 400%;
+animation:bgMove 10s ease infinite;
+position:relative;
 }
 
-.hero h1{
+@keyframes bgMove{
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
+}
+
+/* Floating Phone Icons */
+.phone{
+position:absolute;
+font-size:40px;
+opacity:0.2;
+animation:float 6s infinite ease-in-out;
+}
+
+.phone:nth-child(1){top:20%;left:10%;}
+.phone:nth-child(2){top:70%;left:80%;animation-delay:2s;}
+.phone:nth-child(3){top:40%;left:85%;animation-delay:4s;}
+
+@keyframes float{
+0%{transform:translateY(0px)}
+50%{transform:translateY(-20px)}
+100%{transform:translateY(0px)}
+}
+
+/* Main Text */
+h1{
+font-size:32px;
 margin-bottom:10px;
-font-size:28px;
+animation:fadeIn 2s ease;
 }
 
-.hero p{
-margin:5px 0;
+@keyframes fadeIn{
+from{opacity:0;transform:translateY(20px)}
+to{opacity:1;transform:translateY(0)}
 }
 
+.tagline{
+opacity:0.9;
+margin-bottom:25px;
+}
+
+/* Buttons */
 .btn{
 display:inline-block;
 margin:10px;
-padding:12px 25px;
+padding:12px 30px;
 border-radius:30px;
 text-decoration:none;
-color:white;
 font-weight:bold;
+color:white;
 transition:0.3s;
 }
 
@@ -46,64 +86,44 @@ transition:0.3s;
 .pay{background:#ff4757;}
 
 .btn:hover{
-transform:scale(1.08);
+transform:scale(1.1);
+box-shadow:0 0 20px rgba(255,255,255,0.5);
 }
 
-/* SERVICES */
+/* Services Section */
 .section{
-padding:50px 20px;
+background:#f1f3f6;
+color:#333;
+padding:60px 20px;
 text-align:center;
 }
 
 .services{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-gap:15px;
-max-width:800px;
+gap:20px;
+max-width:900px;
 margin:auto;
 }
 
 .card{
 background:white;
 padding:20px;
-border-radius:10px;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
+border-radius:15px;
+box-shadow:0 10px 20px rgba(0,0,0,0.1);
+transition:0.3s;
 }
 
-/* PRICE */
-.price-card{
-background:white;
-margin:10px auto;
-padding:15px;
-max-width:400px;
-border-radius:8px;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0 15px 25px rgba(0,0,0,0.2);
 }
 
-/* REVIEW */
-.review{
-background:white;
-max-width:400px;
-margin:15px auto;
-padding:15px;
-border-radius:8px;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
-}
-
-/* MAP */
-iframe{
-width:100%;
-height:300px;
-border:0;
-border-radius:10px;
-}
-
-/* FOOTER */
 footer{
 background:#111;
 color:white;
-text-align:center;
 padding:15px;
+text-align:center;
 font-size:14px;
 }
 </style>
@@ -112,48 +132,35 @@ font-size:14px;
 <body>
 
 <div class="hero">
-<h1>MAA Jagdamba Mobile Repair</h1>
-<p>Best Mobile Repair Shop in Sarath, Deoghar</p>
-<p>Screen | Battery | Charging | Water Damage Repair</p>
 
-<a href="tel:7004470872" class="btn call">📞 Call</a>
+<div class="phone">📱</div>
+<div class="phone">🔋</div>
+<div class="phone">⚡</div>
+
+<h1>MAA Jagdamba Mobile Repair</h1>
+<p class="tagline">Premium Mobile Repair Service in Sarath</p>
+
+<a href="tel:7004470872" class="btn call">📞 Call Now</a>
 <a href="https://wa.me/917004470872" class="btn whatsapp">💬 WhatsApp</a>
 <a href="payment.html" class="btn pay">💳 Pay Online</a>
+
 </div>
 
 <div class="section">
-<h2>Our Services</h2>
+<h2>Our Expert Services</h2>
+<br>
 <div class="services">
-<div class="card">Screen Replacement</div>
-<div class="card">Battery Replacement</div>
-<div class="card">Charging Repair</div>
-<div class="card">Water Damage Repair</div>
-<div class="card">Software Update</div>
-<div class="card">Speaker / Mic Repair</div>
+<div class="card">📱 Screen Replacement</div>
+<div class="card">🔋 Battery Replacement</div>
+<div class="card">⚡ Charging Repair</div>
+<div class="card">💧 Water Damage Repair</div>
+<div class="card">🔊 Speaker / Mic Repair</div>
+<div class="card">🛠 Software Update</div>
 </div>
-</div>
-
-<div class="section">
-<h2>Price Starting From</h2>
-<div class="price-card">Screen Replacement – ₹999</div>
-<div class="price-card">Battery Replacement – ₹499</div>
-<div class="price-card">Software – ₹299</div>
-<div class="price-card">Charging Repair – ₹399</div>
-</div>
-
-<div class="section">
-<h2>Customer Reviews</h2>
-<div class="review">⭐⭐⭐⭐⭐<br>Very fast service and genuine parts – Ravi Kumar</div>
-<div class="review">⭐⭐⭐⭐⭐<br>Best mobile repair shop in Sarath – Amit Singh</div>
-</div>
-
-<div class="section">
-<h2>Find Us in Sarath</h2>
-<iframe src="https://maps.google.com/maps?q=sarath%20jharkhand&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
 </div>
 
 <footer>
-© 2026 Maa Jagdamba Mobile Repair | Sarath, Jharkhand | Call: 7004470872
+© 2026 Maa Jagdamba Mobile Repair | Sarath | Call 7004470872
 </footer>
 
 </body>
