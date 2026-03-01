@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Pay Online - Maa Jagdamba Mobile Repair</title>
+<title>Pay Online - Maa Jagdamba</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
 body{
+margin:0;
 font-family:Arial;
 background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
 display:flex;
 justify-content:center;
 align-items:center;
 height:100vh;
-margin:0;
 }
+
 .box{
-background:#fff;
+background:white;
 padding:25px;
 border-radius:15px;
 box-shadow:0 10px 25px rgba(0,0,0,0.3);
@@ -22,9 +24,7 @@ text-align:center;
 width:90%;
 max-width:400px;
 }
-h2{
-margin-bottom:10px;
-}
+
 input{
 width:100%;
 padding:12px;
@@ -33,9 +33,10 @@ border-radius:8px;
 border:1px solid #ccc;
 font-size:16px;
 }
+
 button{
 background:#28a745;
-color:#fff;
+color:white;
 padding:12px;
 border:none;
 border-radius:8px;
@@ -43,38 +44,37 @@ font-size:16px;
 cursor:pointer;
 width:100%;
 }
+
 button:hover{
 background:#218838;
 }
-.qr{
-margin-top:20px;
-}
-.qr img{
+
+img{
 width:100%;
+margin-top:15px;
 border-radius:10px;
 }
+
 .back{
-margin-top:15px;
 display:inline-block;
+margin-top:15px;
 text-decoration:none;
 color:#007bff;
 }
 </style>
 </head>
+
 <body>
 
 <div class="box">
-<h2>MAA Jagdamba Mobile Repair</h2>
-<p>Pay via UPI</p>
+<h2>Pay via UPI</h2>
 
 <input type="number" id="amount" placeholder="Enter amount">
 
 <button onclick="pay()">Pay Now</button>
 
-<div class="qr">
 <p>Or Scan QR</p>
-<img src="YOUR_QR_IMAGE_LINK_HERE">
-</div>
+<img src="qr.png">
 
 <a href="index.html" class="back">⬅ Back to Website</a>
 </div>
@@ -83,7 +83,7 @@ color:#007bff;
 function pay(){
 var amt=document.getElementById("amount").value;
 if(amt==""){
-alert("Please enter amount");
+alert("Enter amount");
 return;
 }
 window.location.href="upi://pay?pa=9931135008@okbizaxis&pn=MaaJagdambaMobileRepair&am="+amt+"&cu=INR";
