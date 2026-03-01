@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MAA Jagdamba Pay</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{
+font-family: Arial, sans-serif;
+background:#f2f2f2;
+text-align:center;
+padding:40px;
+}
+.box{
+background:white;
+padding:30px;
+border-radius:15px;
+box-shadow:0 5px 20px rgba(0,0,0,0.2);
+max-width:400px;
+margin:auto;
+}
+h2{
+color:#333;
+}
+input{
+width:90%;
+padding:12px;
+font-size:18px;
+margin:15px 0;
+border-radius:8px;
+border:1px solid #ccc;
+}
+button{
+background:#28a745;
+color:white;
+padding:12px 25px;
+font-size:18px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+}
+button:hover{
+background:#218838;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+<h2>MAA Jagdamba Mobile Repair</h2>
+<p>Enter Amount to Pay</p>
+
+<input type="number" id="amount" placeholder="Enter Amount">
+
+<br>
+
+<button onclick="payNow()">Pay Now</button>
+
+</div>
+
+<script>
+function payNow(){
+var amount = document.getElementById("amount").value;
+
+if(amount == ""){
+alert("Please enter amount");
+return;
+}
+
+var upiLink = "upi://pay?pa=7004470872@upi&pn=MAA%20Jagdamba%20Mobile%20Repair&am="+amount+"&cu=INR";
+
+window.location.href = upiLink;
+}
+</script>
+
+</body>
+</html>
