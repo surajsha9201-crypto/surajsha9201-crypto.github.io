@@ -2,88 +2,37 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Maa Jagdamba Mobile Repair in Sarath</title>
+<title>Maa Jagdamba Mobile Repair | Sarath</title>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{
-font-family:'Segoe UI',sans-serif;
-background:linear-gradient(-45deg,#0f2027,#203a43,#2c5364,#1c92d2);
-background-size:400% 400%;
-animation:bg 12s ease infinite;
-color:white;
-overflow-x:hidden;
-}
-@keyframes bg{
-0%{background-position:0% 50%}
-50%{background-position:100% 50%}
-100%{background-position:0% 50%}
-}
+body{font-family:'Segoe UI',sans-serif;background:#f4f6f9}
 
-/* FLASH DISCOUNT */
+/* FLASH BAR */
 .flash{
-position:fixed;
-top:0;
-width:100%;
 background:#ff0000;
+color:white;
 text-align:center;
 padding:8px;
 font-weight:bold;
 animation:blink 1s infinite;
-z-index:999;
 }
 @keyframes blink{
 0%{opacity:1;}
-50%{opacity:0.4;}
+50%{opacity:0.5;}
 100%{opacity:1;}
 }
 
 /* HERO */
 .hero{
-min-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+color:white;
+padding:60px 20px;
 text-align:center;
-padding:70px 20px 20px;
 }
-
-h1{font-size:28px;margin-bottom:5px;}
-.rating{margin-bottom:10px;color:#ffd700;}
-.address{font-size:14px;margin-bottom:20px;}
-
-.phone-img{
-width:170px;
-margin:20px 0;
-animation:float 4s ease-in-out infinite;
-}
-@keyframes float{
-0%{transform:translateY(0)}
-50%{transform:translateY(-15px)}
-100%{transform:translateY(0)}
-}
-
-/* AUTO OFFER */
-.offer-box{
-overflow:hidden;
-white-space:nowrap;
-width:100%;
-background:#111;
-padding:10px 0;
-margin-bottom:15px;
-}
-.offer-text{
-display:inline-block;
-padding-left:100%;
-animation:slide 12s linear infinite;
-color:#00ffcc;
-font-weight:bold;
-}
-@keyframes slide{
-0%{transform:translateX(0);}
-100%{transform:translateX(-100%);}
-}
+.hero h1{font-size:32px;margin-bottom:5px}
+.rating{color:#ffd700;margin-bottom:8px}
+.address{font-size:14px;margin-bottom:20px}
 
 /* BUTTONS */
 .btn{
@@ -96,70 +45,57 @@ color:white;
 font-weight:bold;
 transition:0.3s;
 }
-.call{background:#2ed573;}
-.whatsapp{background:#1dd1a1;}
-.pay{background:#ff4757;}
-.btn:hover{
-transform:scale(1.1);
-box-shadow:0 0 15px rgba(255,255,255,0.5);
-}
+.call{background:#2ed573}
+.whatsapp{background:#1dd1a1}
+.pay{background:#ff4757}
+.btn:hover{transform:scale(1.05)}
 
-/* SECTION */
-.section{
-background:#f1f3f6;
-color:#333;
-padding:60px 20px;
-text-align:center;
-}
-.section h2{margin-bottom:30px;}
-
+/* SECTIONS */
+.section{padding:60px 20px;text-align:center}
+.container{max-width:1100px;margin:auto}
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
 gap:20px;
-max-width:900px;
-margin:auto;
+margin-top:20px;
 }
-
 .card{
 background:white;
 padding:20px;
 border-radius:15px;
-box-shadow:0 10px 20px rgba(0,0,0,0.1);
+box-shadow:0 8px 20px rgba(0,0,0,0.08);
 transition:0.3s;
 }
-.card:hover{transform:translateY(-8px);}
+.card:hover{transform:translateY(-5px)}
 
-/* PRICE */
 .price-card{
 background:linear-gradient(135deg,#1c92d2,#2c5364);
 color:white;
 padding:20px;
 border-radius:15px;
-box-shadow:0 10px 20px rgba(0,0,0,0.2);
 }
 
-/* REVIEWS */
+/* REVIEW SLIDER */
 .review-slider{
-max-width:600px;
-margin:auto;
+max-width:700px;
+margin:30px auto;
+position:relative;
 }
 .review{
 display:none;
 background:white;
-color:#333;
 padding:25px;
 border-radius:15px;
-box-shadow:0 10px 20px rgba(0,0,0,0.15);
-font-size:15px;
+box-shadow:0 8px 20px rgba(0,0,0,0.1);
 }
-.review.active{display:block;}
+.review.active{display:block}
 
+/* FOOTER */
 footer{
 background:#111;
 color:white;
-padding:20px;
 text-align:center;
+padding:20px;
 font-size:14px;
 line-height:1.6;
 }
@@ -169,42 +105,54 @@ line-height:1.6;
 <body>
 
 <div class="flash">
-🔥 TODAY SPECIAL OFFER – 20% Discount on Screen Replacement 🔥
+🔥 20% Discount on Screen Replacement Today 🔥
 </div>
 
 <div class="hero">
 <h1>Maa Jagdamba Mobile Repair</h1>
-<div class="rating">⭐ 5.0 (4 Reviews)</div>
+<div class="rating">⭐ 5.0 (10 Reviews)</div>
 <p class="address">
-📍 Main Chowk, Near Hanuman Mandir, Sarath, Deoghar, Jharkhand – 814149
+📍 Main Chowk, Near Hanuman Mandir, Sarath, Deoghar – 814149
 </p>
 
-<div class="offer-box">
-<div class="offer-text">
-🔥 Screen ₹999 | Battery ₹499 | Charging ₹399 | Software ₹299 | Best Repair Shop in Sarath 🔥
-</div>
-</div>
-
-<img src="https://cdn-icons-png.flaticon.com/512/15/15874.png" class="phone-img">
-
-<a href="tel:7004470872" class="btn call">📞 Call Now</a>
+<a href="tel:7004470872" class="btn call">📞 Call</a>
 <a href="https://wa.me/917004470872" class="btn whatsapp">💬 WhatsApp</a>
 <a href="payment.html" class="btn pay">💳 Pay Online</a>
 </div>
 
+<!-- SERVICES -->
 <div class="section">
+<div class="container">
 <h2>Our Services</h2>
 <div class="grid">
 <div class="card">📱 Screen Replacement</div>
 <div class="card">🔋 Battery Replacement</div>
 <div class="card">⚡ Charging Repair</div>
 <div class="card">💧 Water Damage Repair</div>
-<div class="card">🔊 Speaker Repair</div>
+<div class="card">🔊 Speaker / Mic Repair</div>
 <div class="card">🛠 Software Update</div>
 </div>
 </div>
+</div>
 
+<!-- PRODUCTS -->
+<div class="section" style="background:#eef2f7;">
+<div class="container">
+<h2>We Also Sell</h2>
+<div class="grid">
+<div class="card">🛡 Tempered Glass</div>
+<div class="card">🎧 Headphones</div>
+<div class="card">🎶 Earbuds</div>
+<div class="card">📱 Second Hand Phones</div>
+<div class="card">🔌 Chargers & Cables</div>
+<div class="card">📦 Mobile Accessories</div>
+</div>
+</div>
+</div>
+
+<!-- PRICE -->
 <div class="section">
+<div class="container">
 <h2>Price Starting From</h2>
 <div class="grid">
 <div class="price-card">Screen – ₹999</div>
@@ -213,16 +161,25 @@ line-height:1.6;
 <div class="price-card">Software – ₹299</div>
 </div>
 </div>
+</div>
 
-<div class="section">
+<!-- GOOGLE REVIEWS -->
+<div class="section" style="background:#eef2f7;">
 <h2>⭐ Google Customer Reviews</h2>
+
 <div class="review-slider">
+
 <div class="review active">★★★★★ <br> Very fast service and genuine parts. <br><strong>– Ravi Kumar</strong></div>
-<div class="review">★★★★★ <br> Best mobile repair shop in Sarath. <br><strong>– Amit Singh</strong></div>
-<div class="review">★★★★★ <br> Quick battery replacement. <br><strong>– Sandeep Yadav</strong></div>
+<div class="review">★★★★★ <br> Best mobile repair shop near Hanuman Mandir. <br><strong>– Amit Singh</strong></div>
+<div class="review">★★★★★ <br> Quick battery replacement service. <br><strong>– Bablu Singh</strong></div>
+<div class="review">★★★★★ <br> Affordable price and fast repair. <br><strong>– Ram Singh</strong></div>
+<div class="review">★★★★★ <br> Professional behaviour and quality work. <br><strong>– Shiva</strong></div>
+<div class="review">★★★★★ <br> Best repair shop in Sarath. <br><strong>– Suraj</strong></div>
+
 </div>
 </div>
 
+<!-- MAP -->
 <div class="section">
 <h2>Find Us on Google Map</h2>
 <iframe 
@@ -233,7 +190,7 @@ width="100%" height="300" style="border:0;border-radius:15px;">
 
 <footer>
 © 2026 Maa Jagdamba Mobile Repair <br>
-📍 Main Chowk, Near Hanuman Mandir, Sarath, Deoghar, Jharkhand – 814149 <br>
+📍 Main Chowk, Near Hanuman Mandir, Sarath, Deoghar – 814149 <br>
 📞 Call: 7004470872
 </footer>
 
@@ -243,10 +200,10 @@ const reviews=document.querySelectorAll(".review");
 setInterval(()=>{
 reviews.forEach(r=>r.classList.remove("active"));
 index++;
-if(index>reviews.length-1){index=0;}
+if(index>=reviews.length){index=0;}
 reviews[index].classList.add("active");
 },4000);
 </script>
 
 </body>
-  </html>
+</html>
