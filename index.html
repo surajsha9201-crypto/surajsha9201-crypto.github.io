@@ -6,98 +6,122 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Segoe UI',sans-serif;background:#f4f6f9}
+body{font-family:Segoe UI, sans-serif;background:#0c0c0c;color:#fff}
+
+/* GOLD THEME */
+.gold{color:#d4af37}
+.section{padding:60px 20px;text-align:center}
+.container{max-width:1200px;margin:auto}
 
 /* FLASH BAR */
 .flash{
-background:#ff0000;
-color:white;
-text-align:center;
-padding:8px;
+background:#d4af37;
+color:#000;
+padding:10px;
 font-weight:bold;
-animation:blink 1s infinite;
-}
-@keyframes blink{
-0%{opacity:1;}
-50%{opacity:0.5;}
-100%{opacity:1;}
+text-align:center;
 }
 
 /* HERO */
 .hero{
-background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
-color:white;
-padding:60px 20px;
+background:linear-gradient(135deg,#000,#1a1a1a,#000);
+padding:80px 20px;
 text-align:center;
 }
-.hero h1{font-size:32px;margin-bottom:5px}
-.rating{color:#ffd700;margin-bottom:8px}
-.address{font-size:14px;margin-bottom:20px}
+.hero h1{font-size:38px;margin-bottom:10px}
+.rating{color:#ffd700;margin-bottom:10px}
+.address{font-size:15px;color:#ccc;margin-bottom:25px}
 
 /* BUTTONS */
 .btn{
 display:inline-block;
-margin:8px;
-padding:12px 25px;
+margin:10px;
+padding:14px 30px;
 border-radius:30px;
 text-decoration:none;
-color:white;
 font-weight:bold;
 transition:0.3s;
 }
-.call{background:#2ed573}
-.whatsapp{background:#1dd1a1}
-.pay{background:#ff4757}
-.btn:hover{transform:scale(1.05)}
+.call{background:#d4af37;color:#000}
+.whatsapp{background:#25D366;color:#000}
+.pay{background:#ff4757;color:#fff}
+.btn:hover{transform:scale(1.08)}
 
-/* SECTIONS */
-.section{padding:60px 20px;text-align:center}
-.container{max-width:1100px;margin:auto}
+/* GRID */
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:20px;
-margin-top:20px;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+margin-top:30px;
 }
 .card{
-background:white;
-padding:20px;
-border-radius:15px;
-box-shadow:0 8px 20px rgba(0,0,0,0.08);
-transition:0.3s;
-}
-.card:hover{transform:translateY(-5px)}
-
-.price-card{
-background:linear-gradient(135deg,#1c92d2,#2c5364);
-color:white;
-padding:20px;
-border-radius:15px;
-}
-
-/* REVIEW SLIDER */
-.review-slider{
-max-width:700px;
-margin:30px auto;
-position:relative;
-}
-.review{
-display:none;
-background:white;
+background:#1a1a1a;
 padding:25px;
 border-radius:15px;
-box-shadow:0 8px 20px rgba(0,0,0,0.1);
+border:1px solid #d4af37;
+transition:0.3s;
+}
+.card:hover{
+transform:translateY(-8px);
+box-shadow:0 0 20px #d4af37;
+}
+
+/* PRICE */
+.price-card{
+background:#d4af37;
+color:#000;
+font-weight:bold;
+padding:20px;
+border-radius:15px;
+}
+
+/* REVIEW */
+.review-slider{max-width:900px;margin:30px auto}
+.review{
+display:none;
+background:#1a1a1a;
+padding:30px;
+border-radius:15px;
+border:1px solid #d4af37;
 }
 .review.active{display:block}
 
-/* FOOTER */
+/* FLOATING WHATSAPP */
+.float{
+position:fixed;
+bottom:80px;
+right:20px;
+background:#25D366;
+color:#000;
+padding:15px;
+border-radius:50%;
+font-size:22px;
+text-decoration:none;
+}
+
+/* STICKY BAR */
+.sticky{
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+background:#d4af37;
+display:flex;
+justify-content:space-around;
+padding:10px 0;
+}
+.sticky a{
+color:#000;
+text-decoration:none;
+font-weight:bold;
+}
+
 footer{
-background:#111;
-color:white;
-text-align:center;
+background:#000;
 padding:20px;
+text-align:center;
 font-size:14px;
-line-height:1.6;
+color:#aaa;
 }
 </style>
 </head>
@@ -105,11 +129,11 @@ line-height:1.6;
 <body>
 
 <div class="flash">
-🔥 20% Discount on Screen Replacement Today 🔥
+🔥 20% Discount on Screen Replacement – Offer Ends In <span id="countdown"></span>
 </div>
 
 <div class="hero">
-<h1>Maa Jagdamba Mobile Repair</h1>
+<h1 class="gold">Maa Jagdamba Mobile Repair</h1>
 <div class="rating">⭐ 5.0 (10 Reviews)</div>
 <p class="address">
 📍 Main Chowk, Near Hanuman Mandir, Sarath, Deoghar – 814149
@@ -123,7 +147,7 @@ line-height:1.6;
 <!-- SERVICES -->
 <div class="section">
 <div class="container">
-<h2>Our Services</h2>
+<h2 class="gold">Our Services</h2>
 <div class="grid">
 <div class="card">📱 Screen Replacement</div>
 <div class="card">🔋 Battery Replacement</div>
@@ -136,9 +160,9 @@ line-height:1.6;
 </div>
 
 <!-- PRODUCTS -->
-<div class="section" style="background:#eef2f7;">
+<div class="section">
 <div class="container">
-<h2>We Also Sell</h2>
+<h2 class="gold">We Also Sell</h2>
 <div class="grid">
 <div class="card">🛡 Tempered Glass</div>
 <div class="card">🎧 Headphones</div>
@@ -153,7 +177,7 @@ line-height:1.6;
 <!-- PRICE -->
 <div class="section">
 <div class="container">
-<h2>Price Starting From</h2>
+<h2 class="gold">Price Starting From</h2>
 <div class="grid">
 <div class="price-card">Screen – ₹999</div>
 <div class="price-card">Battery – ₹499</div>
@@ -163,25 +187,22 @@ line-height:1.6;
 </div>
 </div>
 
-<!-- GOOGLE REVIEWS -->
-<div class="section" style="background:#eef2f7;">
-<h2>⭐ Google Customer Reviews</h2>
+<!-- REVIEWS -->
+<div class="section">
+<h2 class="gold">Google Customer Reviews</h2>
 
 <div class="review-slider">
-
-<div class="review active">★★★★★ <br> Very fast service and genuine parts. <br><strong>– Ravi Kumar</strong></div>
-<div class="review">★★★★★ <br> Best mobile repair shop near Hanuman Mandir. <br><strong>– Amit Singh</strong></div>
-<div class="review">★★★★★ <br> Quick battery replacement service. <br><strong>– Bablu Singh</strong></div>
-<div class="review">★★★★★ <br> Affordable price and fast repair. <br><strong>– Ram Singh</strong></div>
-<div class="review">★★★★★ <br> Professional behaviour and quality work. <br><strong>– Shiva</strong></div>
-<div class="review">★★★★★ <br> Best repair shop in Sarath. <br><strong>– Suraj</strong></div>
-
+<div class="review active">★★★★★ <br> Professional behaviour and quality work. <br><strong>– Shiva</strong></div>
+<div class="review">★★★★★ <br> Fast battery replacement service. <br><strong>– Bablu Singh</strong></div>
+<div class="review">★★★★★ <br> Best shop near Hanuman Mandir. <br><strong>– Ram Singh</strong></div>
+<div class="review">★★★★★ <br> Genuine parts and affordable price. <br><strong>– Suraj</strong></div>
+<div class="review">★★★★★ <br> Highly recommended repair center. <br><strong>– Ravi Kumar</strong></div>
 </div>
 </div>
 
 <!-- MAP -->
 <div class="section">
-<h2>Find Us on Google Map</h2>
+<h2 class="gold">Find Us on Google Map</h2>
 <iframe 
 src="https://maps.google.com/maps?q=Main%20Chowk%20Sarath%20Deoghar&t=&z=15&ie=UTF8&iwloc=&output=embed"
 width="100%" height="300" style="border:0;border-radius:15px;">
@@ -194,7 +215,18 @@ width="100%" height="300" style="border:0;border-radius:15px;">
 📞 Call: 7004470872
 </footer>
 
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/917004470872" class="float">💬</a>
+
+<!-- STICKY BAR -->
+<div class="sticky">
+<a href="tel:7004470872">📞 Call</a>
+<a href="https://wa.me/917004470872">💬 WhatsApp</a>
+<a href="payment.html">💳 Pay</a>
+</div>
+
 <script>
+/* REVIEW SLIDER */
 let index=0;
 const reviews=document.querySelectorAll(".review");
 setInterval(()=>{
@@ -203,6 +235,17 @@ index++;
 if(index>=reviews.length){index=0;}
 reviews[index].classList.add("active");
 },4000);
+
+/* COUNTDOWN */
+var countDownDate = new Date().getTime() + (24*60*60*1000);
+var x = setInterval(function() {
+var now = new Date().getTime();
+var distance = countDownDate - now;
+var hours = Math.floor((distance % (1000*60*60*24))/(1000*60*60));
+var minutes = Math.floor((distance % (1000*60*60))/(1000*60));
+var seconds = Math.floor((distance % (1000*60))/1000);
+document.getElementById("countdown").innerHTML = hours+"h "+minutes+"m "+seconds+"s ";
+},1000);
 </script>
 
 </body>
