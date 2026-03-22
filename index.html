@@ -2,29 +2,21 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Maa Jagdamba Mobile PRO</title>
+<title>Maa Jagdamba Mobile Repair</title>
 
 <style>
-body{
-  font-family:sans-serif;
-  background:#0a0a0a;
-  color:#fff;
-  padding:10px;
-}
-h1{text-align:center;color:#00ffcc;}
+body{font-family:sans-serif;background:#000;color:#fff;padding:10px;}
+h1{text-align:center;color:#00ffc3;}
 
 input,select,button{
   width:100%;
   padding:12px;
-  margin:5px 0;
+  margin:6px 0;
+  border-radius:10px;
   border:none;
-  border-radius:8px;
 }
 
-button{
-  background:#00ffcc;
-  font-weight:bold;
-}
+button{background:#00ffc3;font-weight:bold;}
 
 .card{
   background:#111;
@@ -32,36 +24,20 @@ button{
   margin-top:10px;
   border-radius:10px;
 }
-
-.top{
-  display:flex;
-  gap:5px;
-}
-.top input{flex:1;}
 </style>
 </head>
 
 <body>
 
-<h1>🔐 Mobile Repair PRO MAX</h1>
+<h1>🔧 Maa Jagdamba Mobile Repair</h1>
 
-<!-- LOGIN -->
-<div id="loginBox">
-<input id="pass" placeholder="Enter Password">
-<button onclick="login()">Login</button>
-</div>
+<input id="search" placeholder="🔍 Search Customer" onkeyup="show()">
 
-<!-- APP -->
-<div id="app" style="display:none">
-
-<div class="top">
-<input id="search" placeholder="Search Customer" onkeyup="showData()">
-<select id="filter" onchange="showData()">
-<option value="All">All</option>
-<option value="Pending">Pending</option>
-<option value="Done">Done</option>
+<select id="filter">
+  <option value="all">All</option>
+  <option value="Pending">Pending</option>
+  <option value="Done">Done</option>
 </select>
-</div>
 
 <input id="name" placeholder="Customer Name">
 <input id="phone" placeholder="Mobile Number">
@@ -69,8 +45,8 @@ button{
 <input id="price" placeholder="Amount">
 
 <select id="status">
-<option>Pending</option>
-<option>Done</option>
+  <option value="Pending">Pending</option>
+  <option value="Done">Done</option>
 </select>
 
 <button onclick="add()">➕ Add Repair</button>
@@ -81,110 +57,97 @@ button{
 
 <div id="list"></div>
 
-</div>
-
 <script>
-
-let password="1234"
-
-function login(){
-  if(pass.value==password){
-    loginBox.style.display="none"
-    app.style.display="block"
-  }else{
-    alert("Wrong Password")
-  }
-}
-
-let data=JSON.parse(localStorage.getItem("data"))||[]
+let data = JSON.parse(localStorage.getItem("data")) || [];
 
 function add(){
-  let obj={
-    name:name.value,
-    phone:phone.value,
-    problem:problem.value,
-    price:Number(price.value),
-    status:status.value
+  let name=nameEl.value;
+  let phone=phoneEl.value;
+  let problem=problemEl.value;
+  let price=priceEl.value;
+  let status=statusEl.value;
+
+  if(!name||!phone||!problem||!price){
+    alert("सब भर भाई 😅");
+    return;
   }
 
-  data.push(obj)
-  save()
+  data.push({name,phone,problem,price,status});
+  localStorage.setItem("data", JSON.stringify(data));
 
-  name.value=""
-  phone.value=""
-  problem.value=""
-  price.value=""
+  whatsapp(phone,name,problem,price);
+  show();
 }
 
-function save(){
-  localStorage.setItem("data",JSON.stringify(data))
-  showData()
-}
+const nameEl=document.getElementById("name");
+const phoneEl=document.getElementById("phone");
+const problemEl=document.getElementById("problem");
+const priceEl=document.getElementById("price");
+const statusEl=document.getElementById("status");
 
-function showData(){
-  list.innerHTML=""
-  let total=0
-  let searchVal=search.value.toLowerCase()
-  let filterVal=filter.value
+function show(){
+  let list=document.getElementById("list");
+  let filter=document.getElementById("filter").value;
+  let search=document.getElementById("search").value.toLowerCase();
+
+  list.innerHTML="";
+  let total=0;
 
   data.forEach((d,i)=>{
-
-    if(!d.name.toLowerCase().includes(searchVal)) return
-    if(filterVal!="All" && d.status!=filterVal) return
+    if(filter!="all" && d.status!=filter) return;
+    if(!d.name.toLowerCase().includes(search)) return;
 
     if(d.status=="Done"){
-      total+=d.price
+      total+=Number(d.price);
     }
 
     list.innerHTML+=`
     <div class="card">
-    <b>${d.name}</b><br>
-    📞 ${d.phone}<br>
-    🔧 ${d.problem}<br>
-    💰 ₹${d.price}<br>
-    📌 ${d.status}<br><br>
+      <b>${d.name}</b><br>
+      📱 ${d.phone}<br>
+      🔧 ${d.problem}<br>
+      💰 ₹${d.price}<br>
+      📌 ${d.status}
+      <br><br>
+      <button onclick="wa('${d.phone}','${d.name}','${d.problem}','${d.price}')">WhatsApp</button>
+      <button onclick="pay()">Pay</button>
+      <button onclick="del(${i})">Delete</button>
+    </div>`;
+  });
 
-    <button onclick="markDone(${i})">✔ Done</button>
-    <button onclick="whatsapp('${d.phone}','${d.problem}',${d.price})">WhatsApp</button>
-    <button onclick="pay(${d.price})">UPI Pay</button>
-    <button onclick="del(${i})">Delete</button>
-    </div>
-    `
-  })
-
-  totalDisplay.innerText=total
-}
-
-function markDone(i){
-  data[i].status="Done"
-  save()
+  document.getElementById("total").innerText=total;
 }
 
 function del(i){
-  data.splice(i,1)
-  save()
-}
-
-function whatsapp(phone,problem,price){
-  let msg=`Hello, your mobile repair (${problem}) is done. Amount ₹${price}`
-  window.open(`https://wa.me/91${phone}?text=${encodeURIComponent(msg)}`)
-}
-
-function pay(amount){
-  window.open(`upi://pay?pa=9931135008@okbizaxis&pn=MaaJagdamba&am=${amount}`)
+  data.splice(i,1);
+  localStorage.setItem("data", JSON.stringify(data));
+  show();
 }
 
 function backup(){
-  let blob=new Blob([JSON.stringify(data)],{type:"application/json"})
-  let a=document.createElement("a")
-  a.href=URL.createObjectURL(blob)
-  a.download="backup.json"
-  a.click()
+  let blob=new Blob([JSON.stringify(data)],{type:"application/json"});
+  let a=document.createElement("a");
+  a.href=URL.createObjectURL(blob);
+  a.download="backup.json";
+  a.click();
 }
 
-showData()
+function wa(phone,name,problem,price){
+  let msg=`Hello ${name}%0ARepair: ${problem}%0AAmount: ₹${price}`;
+  window.open(`https://wa.me/91${phone}?text=${msg}`);
+}
 
+function whatsapp(phone,name,problem,price){
+  let msg=`Hello ${name}%0ARepair: ${problem}%0AAmount: ₹${price}`;
+  window.open(`https://wa.me/91${phone}?text=${msg}`);
+}
+
+function pay(){
+  window.open("upi://pay?pa=9931135008@okbizaxis&pn=MaaJagdamba");
+}
+
+show();
 </script>
 
 </body>
-  </html>
+</html>
