@@ -4,88 +4,38 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Maa Jagdamba Mobile Repair</title>
 
-<!-- PDF Library -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 <style>
-body{
-  font-family: Arial;
-  background:#000;
-  color:#fff;
-}
-
-h1{
-  text-align:center;
-  color:#00ffc8;
-}
-
-.shop{
-  text-align:center;
-  font-size:14px;
-  color:#ccc;
-}
-
-.container{
-  padding:15px;
-}
-
-input, select{
-  width:100%;
-  padding:12px;
-  margin:8px 0;
-  border-radius:10px;
-  border:none;
-}
-
-button{
-  width:100%;
-  padding:12px;
-  margin:8px 0;
-  border-radius:10px;
-  border:none;
-  background:#00ffc8;
-  font-weight:bold;
-}
-
-.service-btn{
-  width:auto;
-  padding:8px;
-  margin:5px;
-  background:#333;
-  color:#fff;
-}
-
-.card{
-  background:#111;
-  padding:10px;
-  margin-top:10px;
-  border-radius:10px;
-}
-
-.done{
-  border-left:5px solid lime;
-}
-
-.pending{
-  border-left:5px solid red;
-}
-
-.qr{
-  text-align:center;
-  margin-top:10px;
-}
-.qr img{
-  width:150px;
-  border-radius:10px;
-}
+body{font-family:Arial;background:#000;color:#fff;}
+h1{text-align:center;color:#00ffc8;}
+.container{padding:15px;}
+input,select{width:100%;padding:12px;margin:8px 0;border-radius:10px;border:none;}
+button{width:100%;padding:12px;margin:8px 0;border-radius:10px;border:none;background:#00ffc8;font-weight:bold;}
+button:hover{transform:scale(1.05);}
+.service-btn{width:auto;padding:8px;margin:5px;background:#333;color:#fff;}
+.card{background:#111;padding:10px;margin-top:10px;border-radius:10px;}
+.done{border-left:5px solid lime;}
+.pending{border-left:5px solid red;}
+.center{text-align:center;}
 </style>
 </head>
 
 <body>
 
+<!-- 🔐 LOGIN -->
+<div id="loginBox" class="container center">
+<h2>Enter PIN</h2>
+<input type="password" id="pin" placeholder="Enter PIN">
+<button onclick="login()">Login</button>
+</div>
+
+<!-- 🔥 MAIN APP -->
+<div id="app" style="display:none;">
+
 <h1>🔧 Maa Jagdamba Mobile Repair</h1>
 
-<div class="shop">
+<div class="center">
 📍 सारठ मेन चौक, हनुमान मंदिर के पास<br>
 देवघर, झारखंड - 814149<br>
 📞 7004470872
@@ -94,16 +44,16 @@ button{
 <div class="container">
 
 <input id="name" placeholder="Customer Name">
-<input id="phone" placeholder="Mobile Number">
+<input id="phone" placeholder="Mobile Number" onblur="searchCustomer()">
 <input id="problem" placeholder="Problem">
 <input id="price" placeholder="Amount">
 
 <select id="status">
-  <option value="pending">Pending</option>
-  <option value="done">Done</option>
+<option value="pending">Pending</option>
+<option value="done">Done</option>
 </select>
 
-<!-- Service Buttons -->
+<!-- Quick Buttons -->
 <div>
 <button class="service-btn" onclick="setProblem('Display Change')">Display</button>
 <button class="service-btn" onclick="setProblem('Battery Change')">Battery</button>
@@ -113,16 +63,18 @@ button{
 </div>
 
 <button onclick="add()">Add Repair</button>
+<button onclick="todayReport()">Today's Report</button>
 
 <h3>Total Earned: ₹<span id="total">0</span></h3>
 
 <div id="list"></div>
 
-<!-- 🔥 QR Payment -->
-<div class="qr">
+</div>
+
+<!-- 💰 QR -->
+<div class="center">
 <h3>Scan & Pay</h3>
-<img src="qr.png">
-<br>
+<img src="qr.png" width="200"><br>
 <a href="payment.html" style="color:#00ffc8;">Open Payment Page</a>
 </div>
 
@@ -132,101 +84,150 @@ button{
 
 let data = JSON.parse(localStorage.getItem("data")) || [];
 
-function setProblem(text){
-  document.getElementById("problem").value = text;
+// 🔐 LOGIN
+function login(){
+let pin = document.getElementById("pin").value;
+if(pin=="1234"){
+document.getElementById("loginBox").style.display="none";
+document.getElementById("app").style.display="block";
+}else{
+alert("Wrong PIN ❌");
+}
 }
 
+// set problem
+function setProblem(t){
+document.getElementById("problem").value=t;
+}
+
+// add
 function add(){
-  let name = document.getElementById("name").value;
-  let phone = document.getElementById("phone").value;
-  let problem = document.getElementById("problem").value;
-  let price = document.getElementById("price").value;
-  let status = document.getElementById("status").value;
+let name=nameEl().value;
+let phone=phoneEl().value;
+let problem=problemEl().value;
+let price=priceEl().value;
+let status=statusEl().value;
 
-  if(name=="" || phone=="" || problem=="" || price==""){
-    alert("Fill all fields");
-    return;
-  }
+if(!name||!phone||!problem||!price){alert("Fill all fields");return;}
 
-  data.push({name,phone,problem,price,status});
-  localStorage.setItem("data", JSON.stringify(data));
-
-  clearForm();
-  show();
+data.push({name,phone,problem,price,status});
+save();
+clear();
+show();
 }
 
-function clearForm(){
-  document.getElementById("name").value="";
-  document.getElementById("phone").value="";
-  document.getElementById("problem").value="";
-  document.getElementById("price").value="";
+// elements shortcut
+function nameEl(){return document.getElementById("name");}
+function phoneEl(){return document.getElementById("phone");}
+function problemEl(){return document.getElementById("problem");}
+function priceEl(){return document.getElementById("price");}
+function statusEl(){return document.getElementById("status");}
+
+// save
+function save(){
+localStorage.setItem("data",JSON.stringify(data));
 }
 
+// clear
+function clear(){
+nameEl().value="";
+phoneEl().value="";
+problemEl().value="";
+priceEl().value="";
+}
+
+// show
 function show(){
-  let list = document.getElementById("list");
-  list.innerHTML="";
+let list=document.getElementById("list");
+list.innerHTML="";
+let total=0;
 
-  let total = 0;
+data.forEach((d,i)=>{
 
-  data.forEach((d,i)=>{
-    if(d.status=="done"){
-      total += Number(d.price);
-    }
+if(d.status=="done") total+=Number(d.price);
 
-    list.innerHTML += `
-    <div class="card ${d.status}">
-      <b>${d.name}</b><br>
-      📞 ${d.phone}<br>
-      🔧 ${d.problem}<br>
-      💰 ₹${d.price}<br>
-      Status: ${d.status}<br>
+list.innerHTML+=`
+<div class="card ${d.status}">
+<b>${d.name}</b><br>
+📞 ${d.phone}<br>
+🔧 ${d.problem}<br>
+💰 ₹${d.price}<br>
+Status: ${d.status}<br>
 
-      <button onclick="toggle(${i})">Mark Done</button>
-      <button onclick="del(${i})">Delete</button>
-      <button onclick="pdf(${i})">PDF Bill</button>
-    </div>
-    `;
-  });
+<button onclick="toggle(${i})">Mark Done</button>
+<button onclick="edit(${i})">Edit</button>
+<button onclick="del(${i})">Delete</button>
+<button onclick="sendWhatsApp(${i})">WhatsApp</button>
+<button onclick="pdf(${i})">PDF Bill</button>
+</div>
+`;
+});
 
-  document.getElementById("total").innerText = total;
+document.getElementById("total").innerText=total;
 }
 
+// toggle
 function toggle(i){
-  data[i].status = "done";
-  localStorage.setItem("data", JSON.stringify(data));
-  show();
+data[i].status="done";
+save();show();
 }
 
+// delete
 function del(i){
-  data.splice(i,1);
-  localStorage.setItem("data", JSON.stringify(data));
-  show();
+data.splice(i,1);
+save();show();
 }
 
+// edit
+function edit(i){
+let d=data[i];
+nameEl().value=d.name;
+phoneEl().value=d.phone;
+problemEl().value=d.problem;
+priceEl().value=d.price;
+data.splice(i,1);
+save();show();
+}
+
+// WhatsApp
+function sendWhatsApp(i){
+let d=data[i];
+let msg=`Hello ${d.name}, आपका फोन ready है 😊
+Problem: ${d.problem}
+Amount: ₹${d.price}`;
+window.open("https://wa.me/91"+d.phone+"?text="+encodeURIComponent(msg));
+}
+
+// PDF
 function pdf(i){
-  const { jsPDF } = window.jspdf;
-  let doc = new jsPDF();
+const { jsPDF } = window.jspdf;
+let doc=new jsPDF();
+let d=data[i];
 
-  let d = data[i];
+doc.text("Maa Jagdamba Mobile Repair",20,20);
+doc.text("Customer: "+d.name,20,40);
+doc.text("Mobile: "+d.phone,20,50);
+doc.text("Problem: "+d.problem,20,60);
+doc.text("Amount: ₹"+d.price,20,70);
+doc.text("Thank you 😊",20,90);
 
-  doc.setFontSize(16);
-  doc.text("Maa Jagdamba Mobile Repair", 20, 20);
+doc.save(d.name+"_bill.pdf");
+}
 
-  doc.setFontSize(10);
-  doc.text("Saarath Main Chowk, Hanuman Mandir", 20, 30);
-  doc.text("Deoghar, Jharkhand - 814149", 20, 36);
-  doc.text("Phone: 7004470872", 20, 42);
+// search history
+function searchCustomer(){
+let num=phoneEl().value;
+let res=data.filter(d=>d.phone==num);
+if(res.length>0){
+alert("Old: "+res[0].problem);
+}
+}
 
-  doc.setFontSize(12);
-  doc.text("Customer: " + d.name, 20, 60);
-  doc.text("Mobile: " + d.phone, 20, 70);
-  doc.text("Problem: " + d.problem, 20, 80);
-  doc.text("Amount: ₹" + d.price, 20, 90);
-  doc.text("Status: " + d.status, 20, 100);
-
-  doc.text("Thank you 😊 Visit Again!", 20, 120);
-
-  doc.save(d.name + "_bill.pdf");
+// report
+function todayReport(){
+let total=0;
+data.forEach(d=>{if(d.status=="done") total+=Number(d.price);});
+alert("आज की कमाई ₹"+total);
 }
 
 show();
@@ -234,4 +235,4 @@ show();
 </script>
 
 </body>
-</html>
+  </html>
