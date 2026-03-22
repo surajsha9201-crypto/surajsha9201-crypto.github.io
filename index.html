@@ -2,64 +2,76 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MJ Mobile Repair AI Cloud</title>
+<title>Maa Jagdamba Mobile Repair</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
-<!-- Firebase -->
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
-
 <style>
-body{margin:0;font-family:Arial;background:#000;color:#fff;}
-h1{text-align:center;color:#00ffc8;text-shadow:0 0 10px #00ffc8;}
-.container{padding:15px;}
-input,select{width:100%;padding:12px;margin:8px 0;border-radius:10px;border:none;}
-button{width:100%;padding:12px;margin:8px 0;border-radius:10px;border:none;background:#00ffc8;font-weight:bold;}
-.card{background:#111;padding:10px;margin-top:10px;border-radius:10px;border-left:5px solid #00ffc8;}
-.top{background:#111;padding:10px;text-align:center;border-radius:15px;margin:10px;box-shadow:0 0 10px #00ffc8;}
-.hidden{display:none;}
+body{
+  font-family: Arial;
+  background:#000;
+  color:#fff;
+}
+h1{
+  text-align:center;
+  color:#00ffc8;
+}
+.container{
+  padding:15px;
+}
+input, select{
+  width:100%;
+  padding:12px;
+  margin:8px 0;
+  border-radius:10px;
+  border:none;
+}
+button{
+  width:100%;
+  padding:12px;
+  margin:8px 0;
+  border-radius:10px;
+  border:none;
+  background:#00ffc8;
+  font-weight:bold;
+}
+.card{
+  background:#111;
+  padding:10px;
+  margin-top:10px;
+  border-radius:10px;
+}
+.done{
+  border-left:5px solid lime;
+}
+.pending{
+  border-left:5px solid red;
+}
+.top{
+  text-align:center;
+  margin:10px;
+}
+a{
+  color:#00ffc8;
+}
 </style>
 </head>
 
 <body>
 
-<!-- 🔐 LOGIN -->
-<div id="login">
-<h1>🔐 Enter Password</h1>
-<div class="container">
-<input type="password" id="pass" placeholder="Password">
-<button onclick="login()">Login</button>
-</div>
-</div>
-
-<!-- 🔥 APP -->
-<div id="app" class="hidden">
-
 <h1>🔧 Maa Jagdamba Mobile Repair</h1>
 
-<!-- 📍 ADDRESS SECTION -->
 <div class="top">
 📍 सारठ मेन चौक, हनुमान मंदिर के पास<br>
 देवघर, झारखंड - 814149<br>
 📞 7004470872<br><br>
 
-<a href="tel:7004470872" style="color:#00ffc8;">📞 Call Now</a><br>
-<a href="https://wa.me/917004470872" target="_blank" style="color:#00ffc8;">💬 WhatsApp</a><br>
-<a href="https://maps.google.com/?q=24.236194,86.838390" target="_blank" style="color:#00ffc8;">📍 Open Location</a>
+<a href="tel:7004470872">📞 Call</a><br>
+<a href="https://wa.me/917004470872" target="_blank">💬 WhatsApp</a><br>
+<a href="https://maps.google.com/?q=24.236194,86.838390" target="_blank">📍 Location</a>
 </div>
 
 <div class="container">
-
-<!-- 🤖 AI -->
-<h3>🤖 AI Assistant</h3>
-<input id="aiInput" placeholder="Problem लिखो">
-<button onclick="runAI()">Ask AI</button>
-<div id="aiOutput" style="color:#00ffc8;"></div>
-
-<hr>
-
-<input id="search" placeholder="Search..." onkeyup="show()">
 
 <input id="name" placeholder="Customer Name">
 <input id="phone" placeholder="Mobile Number">
@@ -67,13 +79,13 @@ button{width:100%;padding:12px;margin:8px 0;border-radius:10px;border:none;backg
 <input id="price" placeholder="Amount">
 
 <select id="status">
-<option value="pending">Pending</option>
-<option value="done">Done</option>
+  <option value="pending">Pending</option>
+  <option value="done">Done</option>
 </select>
 
 <button onclick="add()">Add Repair</button>
 
-<h3>Total ₹<span id="total">0</span></h3>
+<h3>Total Earned: ₹<span id="total">0</span></h3>
 
 <div id="list"></div>
 
@@ -81,117 +93,107 @@ button{width:100%;padding:12px;margin:8px 0;border-radius:10px;border:none;backg
 <img src="qr.png" width="200" style="display:block;margin:auto">
 
 </div>
-</div>
 
 <script>
 
-// 🔐 PASSWORD
-let PASSWORD="814149";
+let data = JSON.parse(localStorage.getItem("data")) || [];
 
-function login(){
-if(document.getElementById("pass").value===PASSWORD){
-login.style.display="none";
-app.style.display="block";
-}else alert("Wrong Password");
-}
-
-// 🔥 FIREBASE CONFIG (अपना डालना)
-const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT.firebaseapp.com",
-  databaseURL: "https://YOUR_PROJECT-default-rtdb.firebaseio.com/",
-  projectId: "YOUR_PROJECT",
-};
-
-firebase.initializeApp(firebaseConfig);
-let db = firebase.database();
-
-// DATA
-let data=[];
-
-// ADD
 function add(){
-let name=v("name"),phone=v("phone"),problem=v("problem"),price=v("price"),status=v("status");
+  let name = v("name");
+  let phone = v("phone");
+  let problem = v("problem");
+  let price = v("price");
+  let status = v("status");
 
-if(!name||!phone||!problem||!price){alert("Fill all");return;}
+  if(!name || !phone || !problem || !price){
+    alert("Fill all fields");
+    return;
+  }
 
-data.push({name,phone,problem,price,status});
-db.ref("data").set(data);
-clear();
+  data.push({name,phone,problem,price,status});
+  localStorage.setItem("data", JSON.stringify(data));
+
+  clear();
+  show();
 }
 
-// LOAD CLOUD
-db.ref("data").on("value", snap=>{
-data = snap.val() || [];
-show();
-});
-
-// SHOW
 function show(){
-let list=document.getElementById("list");
-list.innerHTML="";
-let total=0;
-let search=v("search").toLowerCase();
+  let list = document.getElementById("list");
+  list.innerHTML="";
+  let total = 0;
 
-data.forEach((d,i)=>{
-if(d.name.toLowerCase().includes(search)||d.phone.includes(search)){
+  data.forEach((d,i)=>{
 
-if(d.status==="done") total+=Number(d.price);
+    if(d.status=="done"){
+      total += Number(d.price);
+    }
 
-list.innerHTML+=`
-<div class="card">
-<b>${d.name}</b><br>
-📞 ${d.phone}<br>
-🔧 ${d.problem}<br>
-💰 ₹${d.price}<br>
+    list.innerHTML += `
+    <div class="card ${d.status}">
+      <b>${d.name}</b><br>
+      📞 ${d.phone}<br>
+      🔧 ${d.problem}<br>
+      💰 ₹${d.price}<br>
+      Status: ${d.status}<br>
 
-<button onclick="call('${d.phone}')">Call</button>
-<button onclick="wa('${d.phone}','${d.problem}')">WhatsApp</button>
-<button onclick="del(${i})">Delete</button>
-</div>`;
+      <button onclick="toggle(${i})">Done</button>
+      <button onclick="del(${i})">Delete</button>
+      <button onclick="call('${d.phone}')">Call</button>
+      <button onclick="wa('${d.phone}','${d.problem}')">WhatsApp</button>
+      <button onclick="pdf(${i})">PDF</button>
+    </div>
+    `;
+  });
+
+  document.getElementById("total").innerText = total;
 }
-});
 
-document.getElementById("total").innerText=total;
+function toggle(i){
+  data[i].status="done";
+  localStorage.setItem("data", JSON.stringify(data));
+  show();
 }
 
-// DELETE
 function del(i){
-data.splice(i,1);
-db.ref("data").set(data);
+  data.splice(i,1);
+  localStorage.setItem("data", JSON.stringify(data));
+  show();
 }
 
-// HELPERS
-function v(id){return document.getElementById(id).value;}
-function clear(){["name","phone","problem","price"].forEach(id=>document.getElementById(id).value="");}
-
-// CALL
 function call(num){
-window.location.href="tel:"+num;
+  window.location.href="tel:"+num;
 }
 
-// WHATSAPP
 function wa(num,p){
-window.open(`https://wa.me/91${num}?text=Phone ready (${p})`);
+  window.open(`https://wa.me/91${num}?text=Phone ready (${p})`);
 }
 
-// 🤖 AI
-function AIreply(input){
-input=input.toLowerCase();
+function pdf(i){
+  const { jsPDF } = window.jspdf;
+  let doc = new jsPDF();
 
-if(input.includes("battery")) return "🔋 Battery बदलना पड़ेगा";
-if(input.includes("display")) return "📱 Display replace करना पड़ेगा";
-if(input.includes("slow")) return "⚙️ Phone reset/clean करो";
-if(input.includes("heat")) return "🔥 Heating issue, check battery";
-if(input.includes("charge")) return "🔌 Charging pin issue";
+  let d = data[i];
 
-return "🤖 Problem clear नहीं, दुकान पर आओ";
+  doc.text("Maa Jagdamba Mobile Repair", 20, 20);
+  doc.text("Customer: "+d.name, 20, 40);
+  doc.text("Mobile: "+d.phone, 20, 50);
+  doc.text("Problem: "+d.problem, 20, 60);
+  doc.text("Amount: ₹"+d.price, 20, 70);
+
+  doc.save(d.name+"_bill.pdf");
 }
 
-function runAI(){
-let input=document.getElementById("aiInput").value;
-document.getElementById("aiOutput").innerText=AIreply(input);
+function v(id){
+  return document.getElementById(id).value;
 }
+
+function clear(){
+  ["name","phone","problem","price"].forEach(id=>{
+    document.getElementById(id).value="";
+  });
+}
+
+show();
 
 </script>
 
