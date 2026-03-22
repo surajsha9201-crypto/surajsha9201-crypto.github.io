@@ -1,52 +1,67 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Maa Jagdamba Mobile Repair</title>
+
+<!-- ✅ PDF Library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 <style>
 body{
   font-family: Arial;
   background:#000;
   color:#fff;
-  margin:0;
 }
+
 h1{
   text-align:center;
-  color:#00ffcc;
+  color:#00ffc8;
 }
+
 .container{
   padding:15px;
 }
-input,select{
+
+input, select{
   width:100%;
   padding:12px;
-  margin:6px 0;
-  border-radius:8px;
+  margin:8px 0;
+  border-radius:10px;
   border:none;
 }
+
 button{
   width:100%;
   padding:12px;
+  margin:8px 0;
+  border-radius:10px;
   border:none;
-  border-radius:8px;
-  margin-top:8px;
+  background:#00ffc8;
   font-weight:bold;
 }
-.add{
-  background:#00ffcc;
+
+.service-btn{
+  width:auto;
+  padding:8px;
+  margin:5px;
+  background:#333;
+  color:#fff;
 }
+
 .card{
   background:#111;
   padding:10px;
   margin-top:10px;
   border-radius:10px;
 }
-.pending{border-left:5px solid red;}
-.done{border-left:5px solid lime;}
-.total{
-  color:gold;
-  margin-top:10px;
+
+.done{
+  border-left:5px solid lime;
+}
+
+.pending{
+  border-left:5px solid red;
 }
 </style>
 </head>
@@ -63,13 +78,22 @@ button{
 <input id="price" placeholder="Amount">
 
 <select id="status">
-<option value="Pending">Pending</option>
-<option value="Done">Done</option>
+  <option value="pending">Pending</option>
+  <option value="done">Done</option>
 </select>
 
-<button class="add" onclick="add()">Add Repair</button>
+<!-- 🔥 Quick Buttons -->
+<div>
+<button class="service-btn" onclick="setProblem('Display Change')">Display</button>
+<button class="service-btn" onclick="setProblem('Battery Change')">Battery</button>
+<button class="service-btn" onclick="setProblem('Tempered Glass')">Tempered</button>
+<button class="service-btn" onclick="setProblem('Data Cable')">Cable</button>
+<button class="service-btn" onclick="setProblem('Charging Issue')">Charging</button>
+</div>
 
-<div class="total">Total Earned: ₹<span id="total">0</span></div>
+<button onclick="add()">Add Repair</button>
+
+<h3>Total Earned: ₹<span id="total">0</span></h3>
 
 <div id="list"></div>
 
@@ -79,75 +103,97 @@ button{
 
 let data = JSON.parse(localStorage.getItem("data")) || [];
 
+function setProblem(text){
+  document.getElementById("problem").value = text;
+}
+
 function add(){
+  let name = document.getElementById("name").value;
+  let phone = document.getElementById("phone").value;
+  let problem = document.getElementById("problem").value;
+  let price = document.getElementById("price").value;
+  let status = document.getElementById("status").value;
 
- let name = document.getElementById("name").value.trim();
- let phone = document.getElementById("phone").value.trim();
- let problem = document.getElementById("problem").value.trim();
- let price = document.getElementById("price").value.trim();
- let status = document.getElementById("status").value;
+  if(name=="" || phone=="" || problem=="" || price==""){
+    alert("Fill all fields");
+    return;
+  }
 
- if(!name || !phone || !problem || !price){
-   alert("Fill all fields");
-   return;
- }
+  data.push({name,phone,problem,price,status});
+  localStorage.setItem("data", JSON.stringify(data));
 
- data.push({name,phone,problem,price,status});
- localStorage.setItem("data", JSON.stringify(data));
-
- clearForm();
- show();
+  clearForm();
+  show();
 }
 
 function clearForm(){
- document.getElementById("name").value="";
- document.getElementById("phone").value="";
- document.getElementById("problem").value="";
- document.getElementById("price").value="";
+  document.getElementById("name").value="";
+  document.getElementById("phone").value="";
+  document.getElementById("problem").value="";
+  document.getElementById("price").value="";
 }
 
 function show(){
+  let list = document.getElementById("list");
+  list.innerHTML="";
 
- let list = document.getElementById("list");
- list.innerHTML="";
+  let total = 0;
 
- let total=0;
+  data.forEach((d,i)=>{
+    if(d.status=="done"){
+      total += Number(d.price);
+    }
 
- data.forEach((d,i)=>{
+    list.innerHTML += `
+    <div class="card ${d.status}">
+      <b>${d.name}</b><br>
+      📞 ${d.phone}<br>
+      🔧 ${d.problem}<br>
+      💰 ₹${d.price}<br>
+      Status: ${d.status}<br>
 
- if(d.status==="Done"){
-   total += Number(d.price);
- }
+      <button onclick="toggle(${i})">Mark Done</button>
+      <button onclick="del(${i})">Delete</button>
+      <button onclick="pdf(${i})">PDF Bill</button>
+    </div>
+    `;
+  });
 
- let cls = d.status==="Done" ? "done" : "pending";
+  document.getElementById("total").innerText = total;
+}
 
- list.innerHTML += `
- <div class="card ${cls}">
-   <b>${d.name}</b><br>
-   Phone: ${d.phone}<br>
-   Problem: ${d.problem}<br>
-   Amount: ₹${d.price}<br>
-   Status: ${d.status}<br><br>
-
-   <button onclick="send(${i})">WhatsApp</button>
-   <button onclick="del(${i})">Delete</button>
- </div>
- `;
- });
-
- document.getElementById("total").innerText = total;
+function toggle(i){
+  data[i].status = "done";
+  localStorage.setItem("data", JSON.stringify(data));
+  show();
 }
 
 function del(i){
- data.splice(i,1);
- localStorage.setItem("data", JSON.stringify(data));
- show();
+  data.splice(i,1);
+  localStorage.setItem("data", JSON.stringify(data));
+  show();
 }
 
-function send(i){
- let d = data[i];
- let msg = `Hello ${d.name}, your repair (${d.problem}) is ready. Amount Rs ${d.price}`;
- window.open(`https://wa.me/91${d.phone}?text=${encodeURIComponent(msg)}`);
+<!-- 🔥 PDF FUNCTION -->
+function pdf(i){
+  const { jsPDF } = window.jspdf;
+  let doc = new jsPDF();
+
+  let d = data[i];
+
+  doc.setFontSize(16);
+  doc.text("Maa Jagdamba Mobile Repair", 20, 20);
+
+  doc.setFontSize(12);
+  doc.text("Customer: " + d.name, 20, 40);
+  doc.text("Mobile: " + d.phone, 20, 50);
+  doc.text("Problem: " + d.problem, 20, 60);
+  doc.text("Amount: ₹" + d.price, 20, 70);
+  doc.text("Status: " + d.status, 20, 80);
+
+  doc.text("Thank you 😊", 20, 100);
+
+  doc.save(d.name + "_bill.pdf");
 }
 
 show();
