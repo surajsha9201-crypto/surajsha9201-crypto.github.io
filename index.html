@@ -2,18 +2,18 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mobile Repair Next Level</title>
+<title>Maa Jagdamba Mobile PRO</title>
 
 <style>
 body{
   font-family:sans-serif;
-  background:#000;
+  background:#0a0a0a;
   color:#fff;
   padding:10px;
 }
 h1{text-align:center;color:#00ffcc;}
 
-input,button{
+input,select,button{
   width:100%;
   padding:12px;
   margin:5px 0;
@@ -32,30 +32,52 @@ button{
   margin-top:10px;
   border-radius:10px;
 }
+
+.top{
+  display:flex;
+  gap:5px;
+}
+.top input{flex:1;}
 </style>
 </head>
 
 <body>
 
-<h1>🔐 Mobile Repair System</h1>
+<h1>🔐 Mobile Repair PRO MAX</h1>
 
+<!-- LOGIN -->
 <div id="loginBox">
 <input id="pass" placeholder="Enter Password">
 <button onclick="login()">Login</button>
 </div>
 
+<!-- APP -->
 <div id="app" style="display:none">
+
+<div class="top">
+<input id="search" placeholder="Search Customer" onkeyup="showData()">
+<select id="filter" onchange="showData()">
+<option value="All">All</option>
+<option value="Pending">Pending</option>
+<option value="Done">Done</option>
+</select>
+</div>
 
 <input id="name" placeholder="Customer Name">
 <input id="phone" placeholder="Mobile Number">
 <input id="problem" placeholder="Problem">
 <input id="price" placeholder="Amount">
 
-<button onclick="add()">Add</button>
+<select id="status">
+<option>Pending</option>
+<option>Done</option>
+</select>
 
-<h3>💰 Total: ₹<span id="total">0</span></h3>
+<button onclick="add()">➕ Add Repair</button>
 
-<button onclick="backup()">Download Backup</button>
+<h3>💰 Total Earned: ₹<span id="total">0</span></h3>
+
+<button onclick="backup()">⬇ Download Backup</button>
 
 <div id="list"></div>
 
@@ -81,34 +103,50 @@ function add(){
     name:name.value,
     phone:phone.value,
     problem:problem.value,
-    price:Number(price.value)
+    price:Number(price.value),
+    status:status.value
   }
 
   data.push(obj)
   save()
+
+  name.value=""
+  phone.value=""
+  problem.value=""
+  price.value=""
 }
 
 function save(){
   localStorage.setItem("data",JSON.stringify(data))
-  show()
+  showData()
 }
 
-function show(){
+function showData(){
   list.innerHTML=""
   let total=0
+  let searchVal=search.value.toLowerCase()
+  let filterVal=filter.value
 
   data.forEach((d,i)=>{
-    total+=d.price
+
+    if(!d.name.toLowerCase().includes(searchVal)) return
+    if(filterVal!="All" && d.status!=filterVal) return
+
+    if(d.status=="Done"){
+      total+=d.price
+    }
 
     list.innerHTML+=`
     <div class="card">
-    ${d.name}<br>
+    <b>${d.name}</b><br>
     📞 ${d.phone}<br>
     🔧 ${d.problem}<br>
-    💰 ₹${d.price}<br><br>
+    💰 ₹${d.price}<br>
+    📌 ${d.status}<br><br>
 
-    <button onclick="pay('${d.phone}',${d.price})">UPI Pay</button>
-    <button onclick="whatsapp('${d.phone}',${d.problem}',${d.price})">WhatsApp</button>
+    <button onclick="markDone(${i})">✔ Done</button>
+    <button onclick="whatsapp('${d.phone}','${d.problem}',${d.price})">WhatsApp</button>
+    <button onclick="pay(${d.price})">UPI Pay</button>
     <button onclick="del(${i})">Delete</button>
     </div>
     `
@@ -117,18 +155,24 @@ function show(){
   totalDisplay.innerText=total
 }
 
+function markDone(i){
+  data[i].status="Done"
+  save()
+}
+
 function del(i){
   data.splice(i,1)
   save()
 }
 
 function whatsapp(phone,problem,price){
-  let msg=`Repair Done: ${problem} Amount ₹${price}`
+  let msg=`Hello, your mobile repair (${problem}) is done. Amount ₹${price}`
   window.open(`https://wa.me/91${phone}?text=${encodeURIComponent(msg)}`)
 }
 
-function pay(phone,amount){
-window.open(`upi://pay?pa=9931135008@okbizaxis&pn=MaaJagdamba&am=${amount}`)
+function pay(amount){
+  window.open(`upi://pay?pa=9931135008@okbizaxis&pn=MaaJagdamba&am=${amount}`)
+}
 
 function backup(){
   let blob=new Blob([JSON.stringify(data)],{type:"application/json"})
@@ -138,9 +182,9 @@ function backup(){
   a.click()
 }
 
-show()
+showData()
 
 </script>
 
 </body>
-</html>
+  </html>
