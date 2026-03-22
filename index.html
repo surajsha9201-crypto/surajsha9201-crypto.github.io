@@ -1,254 +1,145 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-<meta name="google-site-verification" content="BuUgwQJ-hVHGGzjVjQumt54MmfzZgWg8aezXh5_Dv1Q" />
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Maa Jagdamba Mobile Repair | Sarath</title>
+<title>Mobile Repair Next Level</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Segoe UI, sans-serif;background:#0c0c0c;color:#fff}
+body{
+  font-family:sans-serif;
+  background:#000;
+  color:#fff;
+  padding:10px;
+}
+h1{text-align:center;color:#00ffcc;}
 
-/* GOLD THEME */
-.gold{color:#d4af37}
-.section{padding:60px 20px;text-align:center}
-.container{max-width:1200px;margin:auto}
-
-/* FLASH BAR */
-.flash{
-background:#d4af37;
-color:#000;
-padding:10px;
-font-weight:bold;
-text-align:center;
+input,button{
+  width:100%;
+  padding:12px;
+  margin:5px 0;
+  border:none;
+  border-radius:8px;
 }
 
-/* HERO */
-.hero{
-background:linear-gradient(135deg,#000,#1a1a1a,#000);
-padding:80px 20px;
-text-align:center;
+button{
+  background:#00ffcc;
+  font-weight:bold;
 }
-.hero h1{font-size:38px;margin-bottom:10px}
-.rating{color:#ffd700;margin-bottom:10px}
-.address{font-size:15px;color:#ccc;margin-bottom:25px}
 
-/* BUTTONS */
-.btn{
-display:inline-block;
-margin:10px;
-padding:14px 30px;
-border-radius:30px;
-text-decoration:none;
-font-weight:bold;
-transition:0.3s;
-}
-.call{background:#d4af37;color:#000}
-.whatsapp{background:#25D366;color:#000}
-.pay{background:#ff4757;color:#fff}
-.btn:hover{transform:scale(1.08)}
-
-/* GRID */
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
-margin-top:30px;
-}
 .card{
-background:#1a1a1a;
-padding:25px;
-border-radius:15px;
-border:1px solid #d4af37;
-transition:0.3s;
-}
-.card:hover{
-transform:translateY(-8px);
-box-shadow:0 0 20px #d4af37;
-}
-
-/* PRICE */
-.price-card{
-background:#d4af37;
-color:#000;
-font-weight:bold;
-padding:20px;
-border-radius:15px;
-}
-
-/* REVIEW */
-.review-slider{max-width:900px;margin:30px auto}
-.review{
-display:none;
-background:#1a1a1a;
-padding:30px;
-border-radius:15px;
-border:1px solid #d4af37;
-}
-.review.active{display:block}
-
-/* FLOATING WHATSAPP */
-.float{
-position:fixed;
-bottom:80px;
-right:20px;
-background:#25D366;
-color:#000;
-padding:15px;
-border-radius:50%;
-font-size:22px;
-text-decoration:none;
-}
-
-/* STICKY BAR */
-.sticky{
-position:fixed;
-bottom:0;
-left:0;
-width:100%;
-background:#d4af37;
-display:flex;
-justify-content:space-around;
-padding:10px 0;
-}
-.sticky a{
-color:#000;
-text-decoration:none;
-font-weight:bold;
-}
-
-footer{
-background:#000;
-padding:20px;
-text-align:center;
-font-size:14px;
-color:#aaa;
+  background:#111;
+  padding:10px;
+  margin-top:10px;
+  border-radius:10px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="flash">
-🔥 20% Discount on Screen Replacement – Offer Ends In <span id="countdown"></span>
+<h1>🔐 Mobile Repair System</h1>
+
+<div id="loginBox">
+<input id="pass" placeholder="Enter Password">
+<button onclick="login()">Login</button>
 </div>
 
-<div class="hero">
-<h1 class="gold">Maa Jagdamba Mobile Repair</h1>
-<div class="rating">⭐ 5.0 (10 Reviews)</div>
-<p class="address">
-📍 Main Chowk, Near Hanuman Mandir, Sarath, Deoghar – 814149
-</p>
+<div id="app" style="display:none">
 
-<a href="tel:7004470872" class="btn call">📞 Call</a>
-<a href="https://wa.me/917004470872" class="btn whatsapp">💬 WhatsApp</a>
-<a href="payment.html" class="btn pay">💳 Pay Online</a>
-</div>
+<input id="name" placeholder="Customer Name">
+<input id="phone" placeholder="Mobile Number">
+<input id="problem" placeholder="Problem">
+<input id="price" placeholder="Amount">
 
-<!-- SERVICES -->
-<div class="section">
-<div class="container">
-<h2 class="gold">Our Services</h2>
-<div class="grid">
-<div class="card">📱 Screen Replacement</div>
-<div class="card">🔋 Battery Replacement</div>
-<div class="card">⚡ Charging Repair</div>
-<div class="card">💧 Water Damage Repair</div>
-<div class="card">🔊 Speaker / Mic Repair</div>
-<div class="card">🛠 Software Update</div>
-</div>
-</div>
-</div>
+<button onclick="add()">Add</button>
 
-<!-- PRODUCTS -->
-<div class="section">
-<div class="container">
-<h2 class="gold">We Also Sell</h2>
-<div class="grid">
-<div class="card">🛡 Tempered Glass</div>
-<div class="card">🎧 Headphones</div>
-<div class="card">🎶 Earbuds</div>
-<div class="card">📱 Second Hand Phones</div>
-<div class="card">🔌 Chargers & Cables</div>
-<div class="card">📦 Mobile Accessories</div>
-</div>
-</div>
-</div>
+<h3>💰 Total: ₹<span id="total">0</span></h3>
 
-<!-- PRICE -->
-<div class="section">
-<div class="container">
-<h2 class="gold">Price Starting From</h2>
-<div class="grid">
-<div class="price-card">Screen – ₹999</div>
-<div class="price-card">Battery – ₹499</div>
-<div class="price-card">Charging – ₹399</div>
-<div class="price-card">Software – ₹299</div>
-</div>
-</div>
-</div>
+<button onclick="backup()">Download Backup</button>
 
-<!-- REVIEWS -->
-<div class="section">
-<h2 class="gold">Google Customer Reviews</h2>
+<div id="list"></div>
 
-<div class="review-slider">
-<div class="review active">★★★★★ <br> Professional behaviour and quality work. <br><strong>– Shiva</strong></div>
-<div class="review">★★★★★ <br> Fast battery replacement service. <br><strong>– Bablu Singh</strong></div>
-<div class="review">★★★★★ <br> Best shop near Hanuman Mandir. <br><strong>– Ram Singh</strong></div>
-<div class="review">★★★★★ <br> Genuine parts and affordable price. <br><strong>– Suraj</strong></div>
-<div class="review">★★★★★ <br> Highly recommended repair center. <br><strong>– Ravi Kumar</strong></div>
-</div>
-</div>
-
-<!-- MAP -->
-<div class="section">
-<h2 class="gold">Find Us on Google Map</h2>
-<iframe 
-src="https://maps.google.com/maps?q=Main%20Chowk%20Sarath%20Deoghar&t=&z=15&ie=UTF8&iwloc=&output=embed"
-width="100%" height="300" style="border:0;border-radius:15px;">
-</iframe>
-</div>
-
-<footer>
-© 2026 Maa Jagdamba Mobile Repair <br>
-📍 Main Chowk, Near Hanuman Mandir, Sarath, Deoghar – 814149 <br>
-📞 Call: 7004470872
-</footer>
-
-<!-- FLOATING WHATSAPP -->
-<a href="https://wa.me/917004470872" class="float">💬</a>
-
-<!-- STICKY BAR -->
-<div class="sticky">
-<a href="tel:7004470872">📞 Call</a>
-<a href="https://wa.me/917004470872">💬 WhatsApp</a>
-<a href="payment.html">💳 Pay</a>
 </div>
 
 <script>
-/* REVIEW SLIDER */
-let index=0;
-const reviews=document.querySelectorAll(".review");
-setInterval(()=>{
-reviews.forEach(r=>r.classList.remove("active"));
-index++;
-if(index>=reviews.length){index=0;}
-reviews[index].classList.add("active");
-},4000);
 
-/* COUNTDOWN */
-var countDownDate = new Date().getTime() + (24*60*60*1000);
-var x = setInterval(function() {
-var now = new Date().getTime();
-var distance = countDownDate - now;
-var hours = Math.floor((distance % (1000*60*60*24))/(1000*60*60));
-var minutes = Math.floor((distance % (1000*60*60))/(1000*60));
-var seconds = Math.floor((distance % (1000*60))/1000);
-document.getElementById("countdown").innerHTML = hours+"h "+minutes+"m "+seconds+"s ";
-},1000);
+let password="1234"
+
+function login(){
+  if(pass.value==password){
+    loginBox.style.display="none"
+    app.style.display="block"
+  }else{
+    alert("Wrong Password")
+  }
+}
+
+let data=JSON.parse(localStorage.getItem("data"))||[]
+
+function add(){
+  let obj={
+    name:name.value,
+    phone:phone.value,
+    problem:problem.value,
+    price:Number(price.value)
+  }
+
+  data.push(obj)
+  save()
+}
+
+function save(){
+  localStorage.setItem("data",JSON.stringify(data))
+  show()
+}
+
+function show(){
+  list.innerHTML=""
+  let total=0
+
+  data.forEach((d,i)=>{
+    total+=d.price
+
+    list.innerHTML+=`
+    <div class="card">
+    ${d.name}<br>
+    📞 ${d.phone}<br>
+    🔧 ${d.problem}<br>
+    💰 ₹${d.price}<br><br>
+
+    <button onclick="pay('${d.phone}',${d.price})">UPI Pay</button>
+    <button onclick="whatsapp('${d.phone}',${d.problem}',${d.price})">WhatsApp</button>
+    <button onclick="del(${i})">Delete</button>
+    </div>
+    `
+  })
+
+  totalDisplay.innerText=total
+}
+
+function del(i){
+  data.splice(i,1)
+  save()
+}
+
+function whatsapp(phone,problem,price){
+  let msg=`Repair Done: ${problem} Amount ₹${price}`
+  window.open(`https://wa.me/91${phone}?text=${encodeURIComponent(msg)}`)
+}
+
+function pay(phone,amount){
+window.open(`upi://pay?pa=9931135008@okbizaxis&pn=MaaJagdamba&am=${amount}`)
+
+function backup(){
+  let blob=new Blob([JSON.stringify(data)],{type:"application/json"})
+  let a=document.createElement("a")
+  a.href=URL.createObjectURL(blob)
+  a.download="backup.json"
+  a.click()
+}
+
+show()
+
 </script>
 
 </body>
