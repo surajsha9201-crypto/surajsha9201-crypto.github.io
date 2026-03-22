@@ -7,103 +7,99 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 <style>
-body{
-  font-family: Arial;
-  background: radial-gradient(circle,#000,#111);
-  color:#fff;
-}
-
-/* LOGO */
-.logo-box{
-  text-align:center;
-  margin-top:10px;
-}
-.logo{
-  display:inline-block;
-  padding:10px 20px;
-  border-radius:12px;
-  background:linear-gradient(45deg,#00ffc8,#0088ff);
-  color:#000;
-  font-weight:bold;
-  box-shadow:0 0 15px #00ffc8;
-}
-.title{
-  color:#00ffc8;
-  font-size:26px;
-  text-shadow:0 0 10px #00ffc8;
-}
-.subtitle{
-  font-size:14px;
-  letter-spacing:2px;
-}
-
-.container{
-  padding:15px;
-}
+body{margin:0;font-family:Arial;background:#000;color:#fff;}
+h1{text-align:center;color:#00ffc8;text-shadow:0 0 15px #00ffc8;}
+.container{padding:15px;}
 
 input,select{
-  width:100%;
-  padding:12px;
-  margin:8px 0;
-  border-radius:10px;
-  border:none;
+width:100%;
+padding:12px;
+margin:8px 0;
+border-radius:10px;
+border:none;
 }
 
 button{
-  width:100%;
-  padding:12px;
-  margin:6px 0;
-  border-radius:10px;
-  border:none;
-  background:#00ffc8;
-  font-weight:bold;
-  box-shadow:0 0 10px #00ffc8;
-}
-
-.service-btn{
-  width:auto;
-  padding:8px;
-  margin:5px;
-  background:#333;
-  color:#fff;
+width:100%;
+padding:12px;
+margin:8px 0;
+border-radius:10px;
+border:none;
+background:#00ffc8;
+font-weight:bold;
 }
 
 .card{
-  background:#111;
-  padding:10px;
-  margin-top:10px;
-  border-radius:10px;
+background:#111;
+padding:10px;
+margin-top:10px;
+border-radius:10px;
+border-left:5px solid #00ffc8;
+box-shadow:0 0 10px #00ffc8;
 }
 
-.done{border-left:5px solid lime;}
-.pending{border-left:5px solid red;}
+.top-box{
+text-align:center;
+background:#111;
+padding:15px;
+border-radius:15px;
+margin:10px;
+box-shadow:0 0 20px #00ffc8;
+}
 
-.center{text-align:center;}
+.link-btn{
+display:block;
+margin:5px;
+color:#00ffc8;
+text-decoration:none;
+font-weight:bold;
+}
+
+.hidden{display:none;}
 </style>
 </head>
 
 <body>
 
-<!-- LOGO -->
-<div class="logo-box">
-<div class="logo">🔧 MJ</div>
-<div class="title">Maa Jagdamba</div>
-<div class="subtitle">Mobile Repair Center</div>
+<!-- 🔐 LOGIN -->
+<div id="login">
+<h1>🔐 Enter Password</h1>
+<div class="container">
+<input type="password" id="pass" placeholder="Enter Password">
+<button onclick="login()">Login</button>
+</div>
 </div>
 
-<div class="center">
-📍 सारठ मेन चौक, हनुमान मंदिर के पास<br>
-देवघर, झारखंड - 814149<br>
-📞 7004470872<br>
-<a href="https://maps.google.com/?q=Sarath Main Chowk Hanuman Mandir Deoghar" target="_blank" style="color:#00ffc8;">
-📍 Open Location
-</a>
+<!-- 🔥 MAIN APP -->
+<div id="app" class="hidden">
+
+<h1>🔧 Maa Jagdamba Mobile Repair</h1>
+
+<div class="top-box">
+
+<p>📍 सारठ मेन चौक, हनुमान मंदिर के पास<br>
+देवघर, झारखंड - 814149</p>
+
+<p>📞 7004470872</p>
+
+<a class="link-btn" href="tel:7004470872">📞 Call Now</a>
+
+<a class="link-btn" 
+href="https://wa.me/917004470872?text=Hello%20Maa%20Jagdamba%20Mobile%20Repair" 
+target="_blank">💬 WhatsApp</a>
+
+<a class="link-btn" 
+href="https://maps.google.com/?q=24.236194,86.838390" 
+target="_blank">📍 Open Location</a>
+
 </div>
 
 <div class="container">
 
+<input id="search" placeholder="Search customer..." onkeyup="show()">
+
 <input id="name" placeholder="Customer Name">
-<input id="phone" placeholder="Mobile Number" onblur="searchCustomer()">
+<input id="phone" placeholder="Mobile Number">
 <input id="problem" placeholder="Problem">
 <input id="price" placeholder="Amount">
 
@@ -112,114 +108,115 @@ button{
 <option value="done">Done</option>
 </select>
 
-<div>
-<button class="service-btn" onclick="setProblem('Display Change')">Display</button>
-<button class="service-btn" onclick="setProblem('Battery Change')">Battery</button>
-<button class="service-btn" onclick="setProblem('Tempered Glass')">Tempered</button>
-<button class="service-btn" onclick="setProblem('Data Cable')">Cable</button>
-</div>
-
 <button onclick="add()">Add Repair</button>
-<button onclick="todayReport()">Today's Report</button>
+<button onclick="report()">Today's Report</button>
+<button onclick="backup()">Backup</button>
+<input type="file" onchange="restore(event)">
 
 <h3>Total Earned: ₹<span id="total">0</span></h3>
 
 <div id="list"></div>
 
-</div>
+<h2 style="text-align:center;">Scan & Pay</h2>
+<img src="qr.png" width="200" style="display:block;margin:auto">
 
-<!-- QR -->
-<div class="center">
-<h3>Scan & Pay</h3>
-<img src="qr.png" width="180">
+</div>
 </div>
 
 <script>
 
-let data = JSON.parse(localStorage.getItem("data")) || [];
+let PASSWORD = "814149";
 
-function setProblem(t){document.getElementById("problem").value=t;}
-
-function add(){
-let name=nameEl().value;
-let phone=phoneEl().value;
-let problem=problemEl().value;
-let price=priceEl().value;
-let status=statusEl().value;
-
-if(!name||!phone||!problem||!price){alert("Fill all");return;}
-
-data.push({name,phone,problem,price,status});
-save();clear();show();
+// LOGIN
+function login(){
+let p = document.getElementById("pass").value;
+if(p === PASSWORD){
+document.getElementById("login").style.display="none";
+document.getElementById("app").style.display="block";
+show();
+}else{
+alert("Wrong Password");
+}
 }
 
-function nameEl(){return document.getElementById("name");}
-function phoneEl(){return document.getElementById("phone");}
-function problemEl(){return document.getElementById("problem");}
-function priceEl(){return document.getElementById("price");}
-function statusEl(){return document.getElementById("status");}
+let data = JSON.parse(localStorage.getItem("data")) || [];
+
+// ADD
+function add(){
+let name = val("name");
+let phone = val("phone");
+let problem = val("problem");
+let price = val("price");
+let status = val("status");
+
+if(!name||!phone||!problem||!price){
+alert("Fill all fields");
+return;
+}
+
+data.push({name,phone,problem,price,status,date:new Date().toLocaleDateString()});
+save();
+show();
+clear();
+}
+
+function val(id){return document.getElementById(id).value;}
 
 function save(){localStorage.setItem("data",JSON.stringify(data));}
 
 function clear(){
-nameEl().value="";
-phoneEl().value="";
-problemEl().value="";
-priceEl().value="";
+["name","phone","problem","price"].forEach(id=>document.getElementById(id).value="");
 }
 
+// SHOW
 function show(){
 let list=document.getElementById("list");
 list.innerHTML="";
 let total=0;
+let search=document.getElementById("search").value.toLowerCase();
 
 data.forEach((d,i)=>{
 
-if(d.status=="done") total+=Number(d.price);
+if(d.name.toLowerCase().includes(search) || d.phone.includes(search)){
+
+if(d.status==="done") total+=Number(d.price);
 
 list.innerHTML+=`
-<div class="card ${d.status}">
+<div class="card">
 <b>${d.name}</b><br>
 📞 ${d.phone}<br>
 🔧 ${d.problem}<br>
 💰 ₹${d.price}<br>
 
-<button onclick="toggle(${i})">Done</button>
-<button onclick="edit(${i})">Edit</button>
-<button onclick="del(${i})">Delete</button>
-<button onclick="callCustomer(${i})">Call</button>
-<button onclick="sendWhatsApp(${i})">WhatsApp</button>
+<button onclick="call('${d.phone}')">Call</button>
+<button onclick="wa('${d.phone}','${d.problem}')">WhatsApp</button>
 <button onclick="pdf(${i})">PDF</button>
+<button onclick="del(${i})">Delete</button>
 </div>`;
+}
 });
 
 document.getElementById("total").innerText=total;
 }
 
-function toggle(i){data[i].status="done";save();show();}
-function del(i){data.splice(i,1);save();show();}
-
-function edit(i){
-let d=data[i];
-nameEl().value=d.name;
-phoneEl().value=d.phone;
-problemEl().value=d.problem;
-priceEl().value=d.price;
-data.splice(i,1);save();show();
+// DELETE
+function del(i){
+data.splice(i,1);
+save();
+show();
 }
 
-function callCustomer(i){
-let d=data[i];
-window.location.href="tel:"+d.phone;
+// CALL
+function call(num){
+window.location.href="tel:"+num;
 }
 
-function sendWhatsApp(i){
-let d=data[i];
-let msg=`Hello ${d.name}, आपका फोन ready है 😊
-Amount: ₹${d.price}`;
-window.open("https://api.whatsapp.com/send?phone=91"+d.phone+"&text="+encodeURIComponent(msg));
+// WHATSAPP
+function wa(num,problem){
+window.open(`https://wa.me/91${num}?text=Your%20phone%20is%20ready%20(${problem})`,"_blank");
 }
 
+// PDF
 function pdf(i){
 const { jsPDF } = window.jspdf;
 let doc=new jsPDF();
@@ -228,24 +225,49 @@ let d=data[i];
 doc.text("Maa Jagdamba Mobile Repair",20,20);
 doc.text("Customer: "+d.name,20,40);
 doc.text("Mobile: "+d.phone,20,50);
-doc.text("Amount: ₹"+d.price,20,60);
+doc.text("Problem: "+d.problem,20,60);
+doc.text("Amount: ₹"+d.price,20,70);
 
 doc.save("bill.pdf");
 }
 
-function searchCustomer(){
-let num=phoneEl().value;
-let res=data.filter(d=>d.phone==num);
-if(res.length>0){alert("Old: "+res[0].problem);}
+// REPORT
+function report(){
+const { jsPDF } = window.jspdf;
+let doc=new jsPDF();
+let y=20;
+doc.text("Today's Report",20,y);
+
+data.forEach(d=>{
+y+=10;
+doc.text(`${d.name} ₹${d.price}`,20,y);
+});
+
+doc.save("report.pdf");
 }
 
-function todayReport(){
-let total=0;
-data.forEach(d=>{if(d.status=="done") total+=Number(d.price);});
-alert("आज की कमाई ₹"+total);
+// BACKUP
+function backup(){
+let blob=new Blob([JSON.stringify(data)],{type:"application/json"});
+let a=document.createElement("a");
+a.href=URL.createObjectURL(blob);
+a.download="backup.json";
+a.click();
 }
 
+// RESTORE
+function restore(e){
+let file=e.target.files[0];
+let reader=new FileReader();
+
+reader.onload=function(){
+data=JSON.parse(reader.result);
+save();
 show();
+};
+
+reader.readAsText(file);
+}
 
 </script>
 
