@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Maa Jagdamba Mobile Repair</title>
 
-<!-- ✅ PDF Library -->
+<!-- PDF Library -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 <style>
@@ -17,6 +17,12 @@ body{
 h1{
   text-align:center;
   color:#00ffc8;
+}
+
+.shop{
+  text-align:center;
+  font-size:14px;
+  color:#ccc;
 }
 
 .container{
@@ -63,12 +69,27 @@ button{
 .pending{
   border-left:5px solid red;
 }
+
+.qr{
+  text-align:center;
+  margin-top:10px;
+}
+.qr img{
+  width:150px;
+  border-radius:10px;
+}
 </style>
 </head>
 
 <body>
 
 <h1>🔧 Maa Jagdamba Mobile Repair</h1>
+
+<div class="shop">
+📍 सारठ मेन चौक, हनुमान मंदिर के पास<br>
+देवघर, झारखंड - 814149<br>
+📞 7004470872
+</div>
 
 <div class="container">
 
@@ -82,7 +103,7 @@ button{
   <option value="done">Done</option>
 </select>
 
-<!-- 🔥 Quick Buttons -->
+<!-- Service Buttons -->
 <div>
 <button class="service-btn" onclick="setProblem('Display Change')">Display</button>
 <button class="service-btn" onclick="setProblem('Battery Change')">Battery</button>
@@ -96,6 +117,14 @@ button{
 <h3>Total Earned: ₹<span id="total">0</span></h3>
 
 <div id="list"></div>
+
+<!-- 🔥 QR Payment -->
+<div class="qr">
+<h3>Scan & Pay</h3>
+<img src="qr.png">
+<br>
+<a href="payment.html" style="color:#00ffc8;">Open Payment Page</a>
+</div>
 
 </div>
 
@@ -174,7 +203,6 @@ function del(i){
   show();
 }
 
-<!-- 🔥 PDF FUNCTION -->
 function pdf(i){
   const { jsPDF } = window.jspdf;
   let doc = new jsPDF();
@@ -184,14 +212,19 @@ function pdf(i){
   doc.setFontSize(16);
   doc.text("Maa Jagdamba Mobile Repair", 20, 20);
 
-  doc.setFontSize(12);
-  doc.text("Customer: " + d.name, 20, 40);
-  doc.text("Mobile: " + d.phone, 20, 50);
-  doc.text("Problem: " + d.problem, 20, 60);
-  doc.text("Amount: ₹" + d.price, 20, 70);
-  doc.text("Status: " + d.status, 20, 80);
+  doc.setFontSize(10);
+  doc.text("Saarath Main Chowk, Hanuman Mandir", 20, 30);
+  doc.text("Deoghar, Jharkhand - 814149", 20, 36);
+  doc.text("Phone: 7004470872", 20, 42);
 
-  doc.text("Thank you 😊", 20, 100);
+  doc.setFontSize(12);
+  doc.text("Customer: " + d.name, 20, 60);
+  doc.text("Mobile: " + d.phone, 20, 70);
+  doc.text("Problem: " + d.problem, 20, 80);
+  doc.text("Amount: ₹" + d.price, 20, 90);
+  doc.text("Status: " + d.status, 20, 100);
+
+  doc.text("Thank you 😊 Visit Again!", 20, 120);
 
   doc.save(d.name + "_bill.pdf");
 }
