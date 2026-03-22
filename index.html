@@ -7,69 +7,47 @@
 <style>
 body{
   font-family: Arial;
-  background:#0c0c0c;
-  color:white;
+  background:#000;
+  color:#fff;
   margin:0;
 }
-
 h1{
   text-align:center;
   color:#00ffcc;
 }
-
 .container{
   padding:15px;
 }
-
 input,select{
   width:100%;
   padding:12px;
   margin:6px 0;
-  border-radius:10px;
+  border-radius:8px;
   border:none;
 }
-
 button{
   width:100%;
   padding:12px;
-  margin-top:10px;
   border:none;
-  border-radius:10px;
+  border-radius:8px;
+  margin-top:8px;
   font-weight:bold;
 }
-
 .add{
   background:#00ffcc;
 }
-
 .card{
-  background:#1a1a1a;
+  background:#111;
+  padding:10px;
   margin-top:10px;
-  padding:12px;
-  border-radius:12px;
-  box-shadow:0 0 10px #00ffcc33;
+  border-radius:10px;
 }
-
-.pending{
-  border-left:5px solid red;
-}
-
-.done{
-  border-left:5px solid lime;
-}
-
-.actions button{
-  width:auto;
-  padding:6px 10px;
-  margin:5px;
-}
-
+.pending{border-left:5px solid red;}
+.done{border-left:5px solid lime;}
 .total{
-  margin-top:15px;
-  font-size:18px;
   color:gold;
+  margin-top:10px;
 }
-
 </style>
 </head>
 
@@ -85,68 +63,74 @@ button{
 <input id="price" placeholder="Amount">
 
 <select id="status">
-<option>Pending</option>
-<option>Done</option>
+<option value="Pending">Pending</option>
+<option value="Done">Done</option>
 </select>
 
-<button class="add" onclick="add()">➕ Add Repair</button>
+<button class="add" onclick="add()">Add Repair</button>
 
-<div class="total">💰 Total Earned: ₹<span id="total">0</span></div>
-
-<input id="search" placeholder="🔍 Search Customer" onkeyup="show()">
+<div class="total">Total Earned: ₹<span id="total">0</span></div>
 
 <div id="list"></div>
 
 </div>
 
 <script>
+
 let data = JSON.parse(localStorage.getItem("data")) || [];
 
 function add(){
- let name = name.value;
- let phone = phone.value;
- let problem = problem.value;
- let price = price.value;
- let status = status.value;
+
+ let name = document.getElementById("name").value.trim();
+ let phone = document.getElementById("phone").value.trim();
+ let problem = document.getElementById("problem").value.trim();
+ let price = document.getElementById("price").value.trim();
+ let status = document.getElementById("status").value;
 
  if(!name || !phone || !problem || !price){
-   alert("सब भर भाई 😅");
+   alert("Fill all fields");
    return;
  }
 
  data.push({name,phone,problem,price,status});
  localStorage.setItem("data", JSON.stringify(data));
 
+ clearForm();
  show();
 }
 
-function show(){
- let list = document.getElementById("list");
- let search = document.getElementById("search").value.toLowerCase();
- list.innerHTML = "";
+function clearForm(){
+ document.getElementById("name").value="";
+ document.getElementById("phone").value="";
+ document.getElementById("problem").value="";
+ document.getElementById("price").value="";
+}
 
- let total = 0;
+function show(){
+
+ let list = document.getElementById("list");
+ list.innerHTML="";
+
+ let total=0;
 
  data.forEach((d,i)=>{
 
- if(!d.name.toLowerCase().includes(search)) return;
+ if(d.status==="Done"){
+   total += Number(d.price);
+ }
 
- if(d.status=="Done") total += Number(d.price);
-
- let cls = d.status=="Done" ? "done" : "pending";
+ let cls = d.status==="Done" ? "done" : "pending";
 
  list.innerHTML += `
  <div class="card ${cls}">
    <b>${d.name}</b><br>
-   📱 ${d.phone}<br>
-   🔧 ${d.problem}<br>
-   💵 ₹${d.price}<br>
-   📌 ${d.status}
-   
-   <div class="actions">
-     <button onclick="send(${i})">WhatsApp</button>
-     <button onclick="del(${i})">Delete</button>
-   </div>
+   Phone: ${d.phone}<br>
+   Problem: ${d.problem}<br>
+   Amount: ₹${d.price}<br>
+   Status: ${d.status}<br><br>
+
+   <button onclick="send(${i})">WhatsApp</button>
+   <button onclick="del(${i})">Delete</button>
  </div>
  `;
  });
@@ -162,11 +146,12 @@ function del(i){
 
 function send(i){
  let d = data[i];
- let msg = `Hello ${d.name}, your repair (${d.problem}) amount ₹${d.price}`;
+ let msg = `Hello ${d.name}, your repair (${d.problem}) is ready. Amount Rs ${d.price}`;
  window.open(`https://wa.me/91${d.phone}?text=${encodeURIComponent(msg)}`);
 }
 
 show();
+
 </script>
 
 </body>
