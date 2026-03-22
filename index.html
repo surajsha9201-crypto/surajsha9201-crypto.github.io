@@ -1,14 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Maa Jagdamba Mobile Repair</title>
 
 <style>
-body{font-family:sans-serif;background:#000;color:#fff;padding:10px;}
-h1{text-align:center;color:#00ffc3;}
+body{
+  font-family: Arial;
+  background:#0c0c0c;
+  color:white;
+  margin:0;
+}
 
-input,select,button{
+h1{
+  text-align:center;
+  color:#00ffcc;
+}
+
+.container{
+  padding:15px;
+}
+
+input,select{
   width:100%;
   padding:12px;
   margin:6px 0;
@@ -16,14 +29,47 @@ input,select,button{
   border:none;
 }
 
-button{background:#00ffc3;font-weight:bold;}
+button{
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  border:none;
+  border-radius:10px;
+  font-weight:bold;
+}
+
+.add{
+  background:#00ffcc;
+}
 
 .card{
-  background:#111;
-  padding:10px;
+  background:#1a1a1a;
   margin-top:10px;
-  border-radius:10px;
+  padding:12px;
+  border-radius:12px;
+  box-shadow:0 0 10px #00ffcc33;
 }
+
+.pending{
+  border-left:5px solid red;
+}
+
+.done{
+  border-left:5px solid lime;
+}
+
+.actions button{
+  width:auto;
+  padding:6px 10px;
+  margin:5px;
+}
+
+.total{
+  margin-top:15px;
+  font-size:18px;
+  color:gold;
+}
+
 </style>
 </head>
 
@@ -31,13 +77,7 @@ button{background:#00ffc3;font-weight:bold;}
 
 <h1>🔧 Maa Jagdamba Mobile Repair</h1>
 
-<input id="search" placeholder="🔍 Search Customer" onkeyup="show()">
-
-<select id="filter">
-  <option value="all">All</option>
-  <option value="Pending">Pending</option>
-  <option value="Done">Done</option>
-</select>
+<div class="container">
 
 <input id="name" placeholder="Customer Name">
 <input id="phone" placeholder="Mobile Number">
@@ -45,105 +85,85 @@ button{background:#00ffc3;font-weight:bold;}
 <input id="price" placeholder="Amount">
 
 <select id="status">
-  <option value="Pending">Pending</option>
-  <option value="Done">Done</option>
+<option>Pending</option>
+<option>Done</option>
 </select>
 
-<button onclick="add()">➕ Add Repair</button>
+<button class="add" onclick="add()">➕ Add Repair</button>
 
-<h3>💰 Total Earned: ₹<span id="total">0</span></h3>
+<div class="total">💰 Total Earned: ₹<span id="total">0</span></div>
 
-<button onclick="backup()">⬇ Download Backup</button>
+<input id="search" placeholder="🔍 Search Customer" onkeyup="show()">
 
 <div id="list"></div>
+
+</div>
 
 <script>
 let data = JSON.parse(localStorage.getItem("data")) || [];
 
 function add(){
-  let name=nameEl.value;
-  let phone=phoneEl.value;
-  let problem=problemEl.value;
-  let price=priceEl.value;
-  let status=statusEl.value;
+ let name = name.value;
+ let phone = phone.value;
+ let problem = problem.value;
+ let price = price.value;
+ let status = status.value;
 
-  if(!name||!phone||!problem||!price){
-    alert("सब भर भाई 😅");
-    return;
-  }
+ if(!name || !phone || !problem || !price){
+   alert("सब भर भाई 😅");
+   return;
+ }
 
-  data.push({name,phone,problem,price,status});
-  localStorage.setItem("data", JSON.stringify(data));
+ data.push({name,phone,problem,price,status});
+ localStorage.setItem("data", JSON.stringify(data));
 
-  whatsapp(phone,name,problem,price);
-  show();
+ show();
 }
 
-const nameEl=document.getElementById("name");
-const phoneEl=document.getElementById("phone");
-const problemEl=document.getElementById("problem");
-const priceEl=document.getElementById("price");
-const statusEl=document.getElementById("status");
-
 function show(){
-  let list=document.getElementById("list");
-  let filter=document.getElementById("filter").value;
-  let search=document.getElementById("search").value.toLowerCase();
+ let list = document.getElementById("list");
+ let search = document.getElementById("search").value.toLowerCase();
+ list.innerHTML = "";
 
-  list.innerHTML="";
-  let total=0;
+ let total = 0;
 
-  data.forEach((d,i)=>{
-    if(filter!="all" && d.status!=filter) return;
-    if(!d.name.toLowerCase().includes(search)) return;
+ data.forEach((d,i)=>{
 
-    if(d.status=="Done"){
-      total+=Number(d.price);
-    }
+ if(!d.name.toLowerCase().includes(search)) return;
 
-    list.innerHTML+=`
-    <div class="card">
-      <b>${d.name}</b><br>
-      📱 ${d.phone}<br>
-      🔧 ${d.problem}<br>
-      💰 ₹${d.price}<br>
-      📌 ${d.status}
-      <br><br>
-      <button onclick="wa('${d.phone}','${d.name}','${d.problem}','${d.price}')">WhatsApp</button>
-      <button onclick="pay()">Pay</button>
-      <button onclick="del(${i})">Delete</button>
-    </div>`;
-  });
+ if(d.status=="Done") total += Number(d.price);
 
-  document.getElementById("total").innerText=total;
+ let cls = d.status=="Done" ? "done" : "pending";
+
+ list.innerHTML += `
+ <div class="card ${cls}">
+   <b>${d.name}</b><br>
+   📱 ${d.phone}<br>
+   🔧 ${d.problem}<br>
+   💵 ₹${d.price}<br>
+   📌 ${d.status}
+   
+   <div class="actions">
+     <button onclick="send(${i})">WhatsApp</button>
+     <button onclick="del(${i})">Delete</button>
+   </div>
+ </div>
+ `;
+ });
+
+ document.getElementById("total").innerText = total;
 }
 
 function del(i){
-  data.splice(i,1);
-  localStorage.setItem("data", JSON.stringify(data));
-  show();
+ data.splice(i,1);
+ localStorage.setItem("data", JSON.stringify(data));
+ show();
 }
 
-function backup(){
-  let blob=new Blob([JSON.stringify(data)],{type:"application/json"});
-  let a=document.createElement("a");
-  a.href=URL.createObjectURL(blob);
-  a.download="backup.json";
-  a.click();
-}
-
-function wa(phone,name,problem,price){
-  let msg=`Hello ${name}%0ARepair: ${problem}%0AAmount: ₹${price}`;
-  window.open(`https://wa.me/91${phone}?text=${msg}`);
-}
-
-function whatsapp(phone,name,problem,price){
-  let msg=`Hello ${name}%0ARepair: ${problem}%0AAmount: ₹${price}`;
-  window.open(`https://wa.me/91${phone}?text=${msg}`);
-}
-
-function pay(){
-  window.open("upi://pay?pa=9931135008@okbizaxis&pn=MaaJagdamba");
+function send(i){
+ let d = data[i];
+ let msg = `Hello ${d.name}, your repair (${d.problem}) amount ₹${d.price}`;
+ window.open(`https://wa.me/91${d.phone}?text=${encodeURIComponent(msg)}`);
 }
 
 show();
