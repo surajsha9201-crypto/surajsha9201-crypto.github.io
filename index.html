@@ -2,59 +2,22 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MJ Mobile Repair</title>
+<title>MJ Mobile Repair AI Cloud</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
 <style>
 body{margin:0;font-family:Arial;background:#000;color:#fff;}
-h1{text-align:center;color:#00ffc8;text-shadow:0 0 15px #00ffc8;}
+h1{text-align:center;color:#00ffc8;text-shadow:0 0 10px #00ffc8;}
 .container{padding:15px;}
-
-input,select{
-width:100%;
-padding:12px;
-margin:8px 0;
-border-radius:10px;
-border:none;
-}
-
-button{
-width:100%;
-padding:12px;
-margin:8px 0;
-border-radius:10px;
-border:none;
-background:#00ffc8;
-font-weight:bold;
-}
-
-.card{
-background:#111;
-padding:10px;
-margin-top:10px;
-border-radius:10px;
-border-left:5px solid #00ffc8;
-box-shadow:0 0 10px #00ffc8;
-}
-
-.top-box{
-text-align:center;
-background:#111;
-padding:15px;
-border-radius:15px;
-margin:10px;
-box-shadow:0 0 20px #00ffc8;
-}
-
-.link-btn{
-display:block;
-margin:5px;
-color:#00ffc8;
-text-decoration:none;
-font-weight:bold;
-}
-
+input,select{width:100%;padding:12px;margin:8px 0;border-radius:10px;border:none;}
+button{width:100%;padding:12px;margin:8px 0;border-radius:10px;border:none;background:#00ffc8;font-weight:bold;}
+.card{background:#111;padding:10px;margin-top:10px;border-radius:10px;border-left:5px solid #00ffc8;}
+.top{background:#111;padding:10px;text-align:center;border-radius:15px;margin:10px;box-shadow:0 0 10px #00ffc8;}
 .hidden{display:none;}
 </style>
 </head>
@@ -65,38 +28,38 @@ font-weight:bold;
 <div id="login">
 <h1>🔐 Enter Password</h1>
 <div class="container">
-<input type="password" id="pass" placeholder="Enter Password">
+<input type="password" id="pass" placeholder="Password">
 <button onclick="login()">Login</button>
 </div>
 </div>
 
-<!-- 🔥 MAIN APP -->
+<!-- 🔥 APP -->
 <div id="app" class="hidden">
 
 <h1>🔧 Maa Jagdamba Mobile Repair</h1>
 
-<div class="top-box">
+<!-- 📍 ADDRESS SECTION -->
+<div class="top">
+📍 सारठ मेन चौक, हनुमान मंदिर के पास<br>
+देवघर, झारखंड - 814149<br>
+📞 7004470872<br><br>
 
-<p>📍 सारठ मेन चौक, हनुमान मंदिर के पास<br>
-देवघर, झारखंड - 814149</p>
-
-<p>📞 7004470872</p>
-
-<a class="link-btn" href="tel:7004470872">📞 Call Now</a>
-
-<a class="link-btn" 
-href="https://wa.me/917004470872?text=Hello%20Maa%20Jagdamba%20Mobile%20Repair" 
-target="_blank">💬 WhatsApp</a>
-
-<a class="link-btn" 
-href="https://maps.google.com/?q=24.236194,86.838390" 
-target="_blank">📍 Open Location</a>
-
+<a href="tel:7004470872" style="color:#00ffc8;">📞 Call Now</a><br>
+<a href="https://wa.me/917004470872" target="_blank" style="color:#00ffc8;">💬 WhatsApp</a><br>
+<a href="https://maps.google.com/?q=24.236194,86.838390" target="_blank" style="color:#00ffc8;">📍 Open Location</a>
 </div>
 
 <div class="container">
 
-<input id="search" placeholder="Search customer..." onkeyup="show()">
+<!-- 🤖 AI -->
+<h3>🤖 AI Assistant</h3>
+<input id="aiInput" placeholder="Problem लिखो">
+<button onclick="runAI()">Ask AI</button>
+<div id="aiOutput" style="color:#00ffc8;"></div>
+
+<hr>
+
+<input id="search" placeholder="Search..." onkeyup="show()">
 
 <input id="name" placeholder="Customer Name">
 <input id="phone" placeholder="Mobile Number">
@@ -109,15 +72,12 @@ target="_blank">📍 Open Location</a>
 </select>
 
 <button onclick="add()">Add Repair</button>
-<button onclick="report()">Today's Report</button>
-<button onclick="backup()">Backup</button>
-<input type="file" onchange="restore(event)">
 
-<h3>Total Earned: ₹<span id="total">0</span></h3>
+<h3>Total ₹<span id="total">0</span></h3>
 
 <div id="list"></div>
 
-<h2 style="text-align:center;">Scan & Pay</h2>
+<h3 style="text-align:center;">Scan & Pay</h3>
 <img src="qr.png" width="200" style="display:block;margin:auto">
 
 </div>
@@ -125,59 +85,56 @@ target="_blank">📍 Open Location</a>
 
 <script>
 
-let PASSWORD = "814149";
+// 🔐 PASSWORD
+let PASSWORD="814149";
 
-// LOGIN
 function login(){
-let p = document.getElementById("pass").value;
-if(p === PASSWORD){
-document.getElementById("login").style.display="none";
-document.getElementById("app").style.display="block";
-show();
-}else{
-alert("Wrong Password");
-}
+if(document.getElementById("pass").value===PASSWORD){
+login.style.display="none";
+app.style.display="block";
+}else alert("Wrong Password");
 }
 
-let data = JSON.parse(localStorage.getItem("data")) || [];
+// 🔥 FIREBASE CONFIG (अपना डालना)
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_PROJECT.firebaseapp.com",
+  databaseURL: "https://YOUR_PROJECT-default-rtdb.firebaseio.com/",
+  projectId: "YOUR_PROJECT",
+};
+
+firebase.initializeApp(firebaseConfig);
+let db = firebase.database();
+
+// DATA
+let data=[];
 
 // ADD
 function add(){
-let name = val("name");
-let phone = val("phone");
-let problem = val("problem");
-let price = val("price");
-let status = val("status");
+let name=v("name"),phone=v("phone"),problem=v("problem"),price=v("price"),status=v("status");
 
-if(!name||!phone||!problem||!price){
-alert("Fill all fields");
-return;
-}
+if(!name||!phone||!problem||!price){alert("Fill all");return;}
 
-data.push({name,phone,problem,price,status,date:new Date().toLocaleDateString()});
-save();
-show();
+data.push({name,phone,problem,price,status});
+db.ref("data").set(data);
 clear();
 }
 
-function val(id){return document.getElementById(id).value;}
-
-function save(){localStorage.setItem("data",JSON.stringify(data));}
-
-function clear(){
-["name","phone","problem","price"].forEach(id=>document.getElementById(id).value="");
-}
+// LOAD CLOUD
+db.ref("data").on("value", snap=>{
+data = snap.val() || [];
+show();
+});
 
 // SHOW
 function show(){
 let list=document.getElementById("list");
 list.innerHTML="";
 let total=0;
-let search=document.getElementById("search").value.toLowerCase();
+let search=v("search").toLowerCase();
 
 data.forEach((d,i)=>{
-
-if(d.name.toLowerCase().includes(search) || d.phone.includes(search)){
+if(d.name.toLowerCase().includes(search)||d.phone.includes(search)){
 
 if(d.status==="done") total+=Number(d.price);
 
@@ -190,7 +147,6 @@ list.innerHTML+=`
 
 <button onclick="call('${d.phone}')">Call</button>
 <button onclick="wa('${d.phone}','${d.problem}')">WhatsApp</button>
-<button onclick="pdf(${i})">PDF</button>
 <button onclick="del(${i})">Delete</button>
 </div>`;
 }
@@ -202,9 +158,12 @@ document.getElementById("total").innerText=total;
 // DELETE
 function del(i){
 data.splice(i,1);
-save();
-show();
+db.ref("data").set(data);
 }
+
+// HELPERS
+function v(id){return document.getElementById(id).value;}
+function clear(){["name","phone","problem","price"].forEach(id=>document.getElementById(id).value="");}
 
 // CALL
 function call(num){
@@ -212,61 +171,26 @@ window.location.href="tel:"+num;
 }
 
 // WHATSAPP
-function wa(num,problem){
-window.open(`https://wa.me/91${num}?text=Your%20phone%20is%20ready%20(${problem})`,"_blank");
+function wa(num,p){
+window.open(`https://wa.me/91${num}?text=Phone ready (${p})`);
 }
 
-// PDF
-function pdf(i){
-const { jsPDF } = window.jspdf;
-let doc=new jsPDF();
-let d=data[i];
+// 🤖 AI
+function AIreply(input){
+input=input.toLowerCase();
 
-doc.text("Maa Jagdamba Mobile Repair",20,20);
-doc.text("Customer: "+d.name,20,40);
-doc.text("Mobile: "+d.phone,20,50);
-doc.text("Problem: "+d.problem,20,60);
-doc.text("Amount: ₹"+d.price,20,70);
+if(input.includes("battery")) return "🔋 Battery बदलना पड़ेगा";
+if(input.includes("display")) return "📱 Display replace करना पड़ेगा";
+if(input.includes("slow")) return "⚙️ Phone reset/clean करो";
+if(input.includes("heat")) return "🔥 Heating issue, check battery";
+if(input.includes("charge")) return "🔌 Charging pin issue";
 
-doc.save("bill.pdf");
+return "🤖 Problem clear नहीं, दुकान पर आओ";
 }
 
-// REPORT
-function report(){
-const { jsPDF } = window.jspdf;
-let doc=new jsPDF();
-let y=20;
-doc.text("Today's Report",20,y);
-
-data.forEach(d=>{
-y+=10;
-doc.text(`${d.name} ₹${d.price}`,20,y);
-});
-
-doc.save("report.pdf");
-}
-
-// BACKUP
-function backup(){
-let blob=new Blob([JSON.stringify(data)],{type:"application/json"});
-let a=document.createElement("a");
-a.href=URL.createObjectURL(blob);
-a.download="backup.json";
-a.click();
-}
-
-// RESTORE
-function restore(e){
-let file=e.target.files[0];
-let reader=new FileReader();
-
-reader.onload=function(){
-data=JSON.parse(reader.result);
-save();
-show();
-};
-
-reader.readAsText(file);
+function runAI(){
+let input=document.getElementById("aiInput").value;
+document.getElementById("aiOutput").innerText=AIreply(input);
 }
 
 </script>
