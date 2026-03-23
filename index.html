@@ -1,232 +1,151 @@
 <!DOCTYPE html>
-<html>
+<html lang="hi">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Maa Jagdamba Mobile Repair</title>
-
-<style>
-body{
-margin:0;
-font-family:Arial;
-background:linear-gradient(135deg,#000,#001a1a);
-color:white;
-}
-
-.container{
-padding:15px;
-max-width:500px;
-margin:auto;
-}
-
-h1{
-color:#00ffd5;
-text-align:center;
-text-shadow:0 0 10px #00ffd5,0 0 20px #00ffd5;
-}
-
-p{
-text-align:center;
-color:#ccc;
-}
-
-a{
-color:#00ffd5;
-text-decoration:none;
-font-weight:bold;
-}
-
-input, select{
-width:100%;
-padding:12px;
-margin:6px 0;
-border-radius:10px;
-border:none;
-background:#111;
-color:#fff;
-box-shadow:0 0 5px #00ffd5;
-}
-
-button{
-width:100%;
-padding:12px;
-margin:6px 0;
-background:#00ffd5;
-border:none;
-border-radius:12px;
-font-weight:bold;
-font-size:15px;
-color:black;
-box-shadow:0 0 10px #00ffd5,0 0 20px #00ffd5;
-transition:0.3s;
-}
-
-button:hover{
-transform:scale(1.05);
-background:#00ffcc;
-box-shadow:0 0 15px #00ffcc,0 0 30px #00ffcc;
-}
-
-.card{
-background:rgba(0,255,213,0.08);
-padding:12px;
-margin:12px 0;
-border-radius:12px;
-border-left:4px solid #00ffd5;
-box-shadow:0 0 10px rgba(0,255,213,0.3);
-}
-
-h3{
-color:#00ffd5;
-text-shadow:0 0 5px #00ffd5;
-}
-
-img{
-box-shadow:0 0 15px #00ffd5;
-}
-
-hr{
-border:1px solid #00ffd5;
-opacity:0.3;
-}
-
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maa Jagdamba Repair Pro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body { background: #020617; font-family: 'Poppins', sans-serif; color: white; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .receipt-bg { background: white; color: black; font-family: 'Courier New', monospace; }
+        .recent-list::-webkit-scrollbar { display: none; }
+    </style>
 </head>
+<body class="p-4 pb-24">
 
-<body>
+    <header class="text-center mb-6 pt-2">
+        <h1 class="text-2xl font-bold text-cyan-400">🛠️ Maa Jagdamba Mobile</h1>
+        <p class="text-[10px] text-gray-400 uppercase tracking-widest mt-1">Sarath Main Chowk, Near Hanuman Temple, Deoghar</p>
+        <p class="text-[10px] text-gray-500">Contact: 7004470872</p>
+    </header>
 
-<div class="container">
+    <main class="max-w-md mx-auto space-y-4">
+        
+        <div class="glass p-4 rounded-2xl flex justify-between items-center border-l-4 border-green-500">
+            <div>
+                <p class="text-[10px] text-gray-400">TOTAL EARNINGS</p>
+                <p id="totalDisplay" class="text-2xl font-bold text-green-400">₹0</p>
+            </div>
+            <button onclick="toggleQR()" class="bg-cyan-500/20 p-3 rounded-xl border border-cyan-500/30">💳 QR</button>
+        </div>
 
-<h1>🔧 Maa Jagdamba Mobile Repair</h1>
+        <section class="glass p-5 rounded-3xl space-y-4">
+            <div class="flex gap-2">
+                <input id="aiInput" type="text" placeholder="9876... Display 1200" class="flex-1 bg-black/40 border border-white/10 rounded-lg p-2 text-xs outline-none">
+                <button onclick="autoFill()" class="bg-cyan-600 px-3 rounded-lg text-xs font-bold">Fill</button>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-3">
+                <input id="custName" type="text" placeholder="Customer Name" class="bg-transparent border-b border-gray-700 p-2 text-xs outline-none focus:border-cyan-400">
+                <input id="custPhone" type="tel" placeholder="Mobile Number" class="bg-transparent border-b border-gray-700 p-2 text-xs outline-none focus:border-cyan-400">
+                <input id="workType" type="text" placeholder="Work Done" class="bg-transparent border-b border-gray-700 p-2 text-xs outline-none focus:border-cyan-400">
+                <input id="workPrice" type="number" placeholder="Price (₹)" class="bg-transparent border-b border-gray-700 p-2 text-xs outline-none focus:border-cyan-400 font-bold text-green-400">
+            </div>
 
-<p>
-📍 Sarath Main Chowk, Near Hanuman Temple<br>
-Deoghar, Jharkhand - 814149<br>
-📞 7004470872
-</p>
+            <button onclick="saveData()" class="w-full bg-gradient-to-r from-cyan-500 to-blue-600 text-black font-bold py-3 rounded-xl shadow-lg text-xs uppercase tracking-widest">
+                Save & Generate Receipt 📄
+            </button>
+        </section>
 
-<p>
-<a href="tel:7004470872">📞 Call</a> |
-<a href="https://wa.me/917004470872">💬 WhatsApp</a> |
-<a href="https://maps.google.com/?q=24.236194,86.838390">📍 Location</a>
-</p>
+        <section>
+            <h3 class="text-xs font-semibold text-gray-500 mb-3 px-2">RECENT REPAIRS</h3>
+            <div id="historyList" class="space-y-2 max-h-60 overflow-y-auto recent-list">
+                </div>
+        </section>
+    </main>
 
-<hr>
+    <div id="receiptModal" class="hidden fixed inset-0 bg-black/95 flex items-center justify-center p-6 z-50">
+        <div class="receipt-bg w-full max-w-xs p-6 rounded-sm shadow-2xl">
+            <div class="text-center border-b border-black pb-2 mb-4">
+                <p class="font-bold text-lg">MAA JAGDAMBA REPAIR</p>
+                <p class="text-[9px]">Sarath, Deoghar | 7004470872</p>
+            </div>
+            <div class="text-sm space-y-1">
+                <p>Date: <span id="rDate"></span></p>
+                <p>Name: <span id="rName" class="font-bold"></span></p>
+                <p>Work: <span id="rWork"></span></p>
+                <div class="flex justify-between border-t border-black mt-2 pt-2 font-bold">
+                    <span>TOTAL:</span>
+                    <span>₹<span id="rPrice"></span></span>
+                </div>
+            </div>
+            <button onclick="document.getElementById('receiptModal').classList.add('hidden')" class="w-full mt-6 bg-black text-white py-2 text-xs">CLOSE</button>
+        </div>
+    </div>
 
-<h3>🤖 AI Auto Entry</h3>
-<input id="ai" placeholder="राम 9876543210 display 1200">
-<button onclick="autoFill()">⚡ Auto Fill</button>
+    <div id="qrModal" class="hidden fixed inset-0 bg-black/80 flex items-center justify-center p-6 z-50">
+        <div class="bg-white p-6 rounded-3xl text-center">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=upi://pay?pa=7004470872@upi" class="mx-auto">
+            <p class="text-black font-bold mt-4 text-sm">Scan to Pay Maa Jagdamba</p>
+            <button onclick="toggleQR()" class="mt-4 text-red-500 font-bold text-xs uppercase">Close</button>
+        </div>
+    </div>
 
-<hr>
+    <script>
+        let repairs = JSON.parse(localStorage.getItem('repairs')) || [];
 
-<input id="name" placeholder="Customer Name">
-<input id="mobile" placeholder="Mobile Number">
-<input id="problem" placeholder="Problem">
-<input id="amount" placeholder="Amount">
+        function renderHistory() {
+            const list = document.getElementById('historyList');
+            const totalDisplay = document.getElementById('totalDisplay');
+            list.innerHTML = '';
+            let total = 0;
 
-<select id="status">
-<option>Pending</option>
-<option>Done</option>
-</select>
+            repairs.forEach((item, index) => {
+                total += parseInt(item.price);
+                list.innerHTML += `
+                    <div class="glass p-3 rounded-xl flex justify-between items-center text-xs">
+                        <div>
+                            <p class="font-bold text-cyan-300">${item.name}</p>
+                            <p class="text-gray-500">${item.work} - ₹${item.price}</p>
+                        </div>
+                        <button onclick="deleteEntry(${index})" class="text-red-400 px-2">✕</button>
+                    </div>
+                `;
+            });
+            totalDisplay.innerText = `₹${total}`;
+        }
 
-<h3>⚡ Quick Rate</h3>
-<button onclick="setRate('Display',1500)">📱 Display</button>
-<button onclick="setRate('Battery',800)">🔋 Battery</button>
-<button onclick="setRate('Tempered',100)">🛡️ Tempered</button>
-<button onclick="setRate('Charging',300)">🔌 Charging</button>
-<button onclick="setRate('Type-C Cable',100)">🔌 Type-C</button>
-<button onclick="setRate('V8 Cable',100)">🔌 V8</button>
-<button onclick="setRate('Charger',300)">⚡ Charger</button>
+        function saveData() {
+            const name = document.getElementById('custName').value || 'Customer';
+            const price = document.getElementById('workPrice').value || 0;
+            const work = document.getElementById('workType').value || 'General';
+            
+            const newRepair = { name, price, work, date: new Date().toLocaleDateString() };
+            repairs.unshift(newRepair);
+            localStorage.setItem('repairs', JSON.stringify(repairs));
+            
+            // Show Receipt
+            document.getElementById('rName').innerText = name;
+            document.getElementById('rPrice').innerText = price;
+            document.getElementById('rWork').innerText = work;
+            document.getElementById('rDate').innerText = newRepair.date;
+            document.getElementById('receiptModal').classList.remove('hidden');
+            
+            renderHistory();
+        }
 
-<h3>➕ Add Extra</h3>
-<button onclick="addExtra('Tempered',100)">+Tempered</button>
-<button onclick="addExtra('Cover',150)">+Cover</button>
-<button onclick="addExtra('Cable',100)">+Cable</button>
+        function deleteEntry(index) {
+            repairs.splice(index, 1);
+            localStorage.setItem('repairs', JSON.stringify(repairs));
+            renderHistory();
+        }
 
-<button onclick="add()">➕ Add Repair</button>
+        function autoFill() {
+            const val = document.getElementById('aiInput').value.split(' ');
+            if(val.length >= 3) {
+                document.getElementById('custPhone').value = val[0];
+                document.getElementById('workType').value = val[1];
+                document.getElementById('workPrice').value = val[2];
+            }
+        }
 
-<h3>Total Earned: ₹<span id="total">0</span></h3>
-
-<div id="list"></div>
-
-<hr>
-
-<h3>💰 Scan & Pay</h3>
-
-<img src="qr.png" style="width:100%;max-width:280px;display:block;margin:auto;border-radius:12px">
-
-<input id="payAmount" placeholder="Enter Amount">
-
-<button onclick="pay()">💸 Pay via UPI</button>
-
-</div>
-
-<script>
-
-let total = 0;
-
-function autoFill(){
-let t = document.getElementById("ai").value.split(" ");
-document.getElementById("name").value = t[0];
-document.getElementById("mobile").value = t[1];
-document.getElementById("problem").value = t[2];
-document.getElementById("amount").value = t[3];
-}
-
-function setRate(item,price){
-document.getElementById("problem").value = item;
-document.getElementById("amount").value = price;
-}
-
-function addExtra(item,price){
-let p = document.getElementById("problem").value;
-let a = document.getElementById("amount").value;
-
-document.getElementById("problem").value = p + ", " + item;
-document.getElementById("amount").value = Number(a) + price;
-}
-
-function add(){
-let name = document.getElementById("name").value;
-let mobile = document.getElementById("mobile").value;
-let problem = document.getElementById("problem").value;
-let amount = document.getElementById("amount").value;
-let status = document.getElementById("status").value;
-
-if(name=="" || amount==""){
-alert("Fill details");
-return;
-}
-
-total += Number(amount);
-document.getElementById("total").innerText = total;
-
-let div = document.createElement("div");
-div.className="card";
-
-div.innerHTML = `
-<b>${name}</b><br>
-📞 ${mobile}<br>
-🔧 ${problem}<br>
-💰 ₹${amount}<br>
-Status: ${status}
-`;
-
-document.getElementById("list").appendChild(div);
-}
-
-function pay(){
-let amt = document.getElementById("payAmount").value;
-
-if(amt==""){
-alert("Enter amount");
-return;
-}
-
-window.location.href = 
-`upi://pay?pa=aanandsingh7755-3@okicici&pn=Maa%20Jagdamba%20Mobile%20Repair&am=${amt}&cu=INR`;
-}
-
-</script>
-
+        function toggleQR() { document.getElementById('qrModal').classList.toggle('hidden'); }
+        
+        // Initial Load
+        renderHistory();
+    </script>
 </body>
-</html>
+                                                   </html>
+                                                   
