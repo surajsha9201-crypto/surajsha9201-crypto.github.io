@@ -2,35 +2,35 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MJ Mobile Repair</title>
+<title>Maa Jagdamba Mobile Repair</title>
 
 <style>
-body{background:#000;color:#fff;font-family:Arial;margin:0;padding:10px}
+body{background:#000;color:#fff;font-family:Arial;padding:10px}
 h1{text-align:center;color:#00ffc3}
-input,select,button,textarea{
+input,select,textarea,button{
 width:100%;padding:10px;margin:5px 0;border:none;border-radius:8px
 }
-button{background:#00ffc3;font-size:16px}
+button{background:#00ffc3;font-size:15px}
 .card{
 background:#111;padding:10px;margin-top:10px;
 border-left:5px solid #00ffc3;border-radius:10px
 }
-.ai-box{background:#111;padding:10px;border-radius:10px}
+.box{background:#111;padding:10px;border-radius:10px;margin:10px 0}
 </style>
 </head>
 
 <body>
 
-<h1>🤖 Maa Jagdamba Mobile Repair</h1>
+<h1>🔧 Maa Jagdamba Mobile Repair</h1>
 
 📍 Sarath Main Chowk, Near Hanuman Temple,<br>
 Deoghar, Jharkhand - 814149<br>
-📞 7004470872<br><br>
+📞 7004470872<br>
 
-<!-- 🤖 AI INPUT -->
-<div class="ai-box">
+<!-- 🤖 AI -->
+<div class="box">
 <b>🤖 AI Auto Entry</b>
-<textarea id="ai" placeholder="Example: राम 9876543210 display change 1200"></textarea>
+<textarea id="aiText" placeholder="राम 9876543210 display change 1200"></textarea>
 <button onclick="aiFill()">⚡ Auto Fill</button>
 </div>
 
@@ -44,51 +44,105 @@ Deoghar, Jharkhand - 814149<br>
 <option>Done</option>
 </select>
 
+<!-- ⚡ RATE CHART -->
+<div class="box">
+<b>⚡ Quick Rate</b>
+
+<button onclick="setService('Display Change',1500)">📱 Display</button>
+<button onclick="setService('Battery Change',800)">🔋 Battery</button>
+<button onclick="setService('Tempered Glass',50)">🛡 Tempered</button>
+<button onclick="setService('Charging Repair',200)">🔌 Charging</button>
+
+<button onclick="setService('Type-C Cable',100)">🔌 Type-C</button>
+<button onclick="setService('V8 Cable',100)">🔌 V8</button>
+<button onclick="setService('Mobile Charger',300)">⚡ Charger</button>
+
+<br><br>
+
+<b>➕ Add Extra</b>
+
+<button onclick="addService('Tempered',50)">+ Tempered</button>
+<button onclick="addService('Cover',100)">+ Cover</button>
+<button onclick="addService('Cable',100)">+ Cable</button>
+
+</div>
+
 <button onclick="add()">➕ Add Repair</button>
 
 <h3>Total Earned: ₹<span id="total">0</span></h3>
 
 <div id="list"></div>
 
-<h3>💰 Direct Payment</h3>
+<!-- 💰 PAYMENT -->
+<h3>💰 Scan & Pay</h3>
+
+<img src="upi.png" style="width:100%;max-width:300px;border-radius:10px">
+
 <input id="payAmount" placeholder="Enter Amount">
-<button onclick="pay()">💸 Pay Now</button>
+
+<button onclick="payNow()">💸 Pay via UPI</button>
 
 <script>
 
+// DATA
 let data = JSON.parse(localStorage.getItem("mj")) || [];
 
 function save(){
 localStorage.setItem("mj", JSON.stringify(data));
 }
 
-// 🤖 AI Parsing Logic
+// 🤖 AI
 function aiFill(){
 
-let text = document.getElementById("ai").value;
+let text = document.getElementById("aiText").value.trim();
 
-// mobile detect
-let mobileMatch = text.match(/\d{10}/);
-if(mobileMatch){
-document.getElementById("mobile").value = mobileMatch[0];
-}
+if(!text){ alert("कुछ लिखो"); return; }
 
-// amount detect
-let amountMatch = text.match(/\d{3,5}/);
-if(amountMatch){
-document.getElementById("amount").value = amountMatch[0];
-}
+let mobile = text.match(/\b\d{10}\b/);
+if(mobile) mobile1.value = mobile[0];
 
-// name (first word)
+let nums = text.match(/\d+/g);
+if(nums) amount.value = nums[nums.length-1];
+
 let words = text.split(" ");
-document.getElementById("name").value = words[0];
+name.value = words[0];
 
-// problem (बाकी text)
-document.getElementById("problem").value = text;
-
+let prob = text.replace(/\d+/g,"").replace(words[0],"").trim();
+problem.value = prob;
 }
 
-// render
+// ⚡ RATE
+function setService(p,a){
+problem.value=p;
+amount.value=a;
+}
+
+function addService(p,a){
+problem.value += ", "+p;
+amount.value = Number(amount.value||0)+a;
+}
+
+// ADD
+function add(){
+
+let d={
+name:name.value,
+mobile:mobile.value,
+problem:problem.value,
+amount:amount.value,
+status:status.value
+};
+
+if(!d.name || !d.mobile){ alert("Fill required"); return; }
+
+data.push(d);
+save();
+render();
+
+name.value="";mobile.value="";problem.value="";amount.value="";
+}
+
+// RENDER
 function render(){
 
 let html="";
@@ -115,103 +169,56 @@ Status: ${d.status}<br><br>
 `;
 });
 
-document.getElementById("list").innerHTML=html;
-document.getElementById("total").innerText=total;
+list.innerHTML=html;
+total.innerText=total;
 }
 
-// add
-function add(){
+// ACTIONS
+function del(i){ data.splice(i,1); save(); render(); }
+function done(i){ data[i].status="Done"; save(); render(); }
 
-let d={
-name:name.value,
-mobile:mobile.value,
-problem:problem.value,
-amount:amount.value,
-status:status.value
-};
+function call(n){ window.location.href="tel:"+n; }
 
-if(!d.name||!d.mobile){
-alert("Name & Mobile जरूरी");
-return;
-}
-
-data.push(d);
-save();
-render();
-
-name.value="";mobile.value="";problem.value="";amount.value="";
-}
-
-// delete
-function del(i){
-data.splice(i,1);
-save();render();
-}
-
-// done
-function done(i){
-data[i].status="Done";
-save();render();
-}
-
-// call
-function call(n){
-window.location.href="tel:"+n;
-}
-
-// whatsapp
-function wa(num,name,amt,prob){
-
-let msg = `Hello ${name}
+function wa(n,name,amt,prob){
+let msg=`Hello ${name}
 Repair: ${prob}
-Amount: ₹${amt}
-- Maa Jagdamba Mobile Repair`;
-
-window.open("https://wa.me/91"+num+"?text="+encodeURIComponent(msg));
+Amount: ₹${amt}`;
+window.open("https://wa.me/91"+n+"?text="+encodeURIComponent(msg));
 }
 
-// payment
-function pay(){
+// 💸 PAYMENT
+function payNow(){
 
-let amt=document.getElementById("payAmount").value;
+let amt=payAmount.value;
+if(!amt){ alert("Enter amount"); return; }
 
-if(!amt){
-alert("Amount डालो");
-return;
-}
-
-let upi="aanandsingh7755-3@okicici";
+let upi="9931135008@okbizaxis";
 
 let url="upi://pay?pa="+upi+
 "&pn=Maa%20Jagdamba%20Mobile%20Repair"+
 "&am="+amt+
 "&cu=INR";
 
-window.open(url);
+window.location.href=url;
 }
 
-// customer payment
+// customer pay
 function payCustomer(i){
 
 let d=data[i];
 
-let upi="aanandsingh7755-3@okicici";
-
-let url="upi://pay?pa="+upi+
+let url="upi://pay?pa=9931135008@okbizaxis"+
 "&pn=Maa%20Jagdamba%20Mobile%20Repair"+
 "&am="+d.amount+
 "&cu=INR";
 
-window.open(url);
+window.location.href=url;
 
-// auto done + whatsapp
 setTimeout(()=>{
 data[i].status="Done";
 save();
 render();
-wa(d.mobile,d.name,d.amount,d.problem);
 },3000);
-
 }
 
 render();
