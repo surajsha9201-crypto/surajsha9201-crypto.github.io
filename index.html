@@ -7,8 +7,8 @@
 <style>
 body{
   font-family: Arial;
-  background:black;
-  color:white;
+  background:#000;
+  color:#fff;
   margin:0;
   padding:10px;
 }
@@ -16,16 +16,28 @@ body{
 h1{
   text-align:center;
   color:#00ffc3;
+  font-size:22px;
+}
+
+.top{
+  text-align:center;
+  margin-bottom:10px;
+}
+
+.top a{
+  color:#00ffc3;
+  display:block;
+  margin:3px 0;
+  text-decoration:none;
 }
 
 .box{
   background:#111;
   padding:10px;
   border-radius:10px;
-  margin-top:10px;
 }
 
-input, select{
+input,select{
   width:100%;
   padding:10px;
   margin:5px 0;
@@ -35,8 +47,8 @@ input, select{
 
 button{
   width:100%;
-  padding:10px;
-  margin-top:5px;
+  padding:12px;
+  margin-top:6px;
   border:none;
   border-radius:8px;
   background:#00ffc3;
@@ -57,12 +69,15 @@ button{
 
 <h1>🔧 Maa Jagdamba Mobile Repair</h1>
 
-<p style="text-align:center;">
+<div class="top">
 📍 Sarath Main Chowk, Near Hanuman Temple,<br>
 Deoghar, Jharkhand - 814149<br>
-📞 7004470872<br>
-<a href="https://maps.google.com/?q=24.236194,86.838390" style="color:#00ffc3;">📍 Open Location</a>
-</p>
+📞 7004470872
+
+<a href="tel:7004470872">📞 Call</a>
+<a href="https://wa.me/917004470872">💬 WhatsApp</a>
+<a href="https://maps.google.com/?q=24.236194,86.838390">📍 Location</a>
+</div>
 
 <div class="box">
 <input id="name" placeholder="Customer Name">
@@ -75,7 +90,7 @@ Deoghar, Jharkhand - 814149<br>
 <option>Done</option>
 </select>
 
-<button onclick="addRepair()">Add Repair</button>
+<button onclick="addRepair()">➕ Add Repair</button>
 </div>
 
 <h3>Total Earned: ₹<span id="total">0</span></h3>
@@ -85,16 +100,15 @@ Deoghar, Jharkhand - 814149<br>
 <div class="box">
 <h3>💰 Direct Payment</h3>
 <input id="payAmount" placeholder="Enter Amount">
-
-<button onclick="payNow()">Pay Now</button>
+<button onclick="payNow()">💸 Pay Now</button>
 </div>
 
 <script>
 
-let data = JSON.parse(localStorage.getItem("repairData")) || [];
+let data = JSON.parse(localStorage.getItem("mjData")) || [];
 
 function save(){
-  localStorage.setItem("repairData", JSON.stringify(data));
+  localStorage.setItem("mjData", JSON.stringify(data));
 }
 
 function render(){
@@ -104,7 +118,7 @@ function render(){
 
   let total = 0;
 
-  data.forEach((item,index)=>{
+  data.forEach((item,i)=>{
 
     if(item.status=="Done"){
       total += Number(item.amount);
@@ -118,10 +132,10 @@ function render(){
     💰 ₹${item.amount}<br>
     Status: ${item.status}<br><br>
 
-    <button onclick="markDone(${index})">Done</button>
-    <button onclick="del(${index})">Delete</button>
-    <button onclick="call('${item.mobile}')">Call</button>
-    <button onclick="whatsapp('${item.mobile}')">WhatsApp</button>
+    <button onclick="done(${i})">✔ Done</button>
+    <button onclick="del(${i})">❌ Delete</button>
+    <button onclick="call('${item.mobile}')">📞 Call</button>
+    <button onclick="wa('${item.mobile}')">💬 WhatsApp</button>
     </div>
     `;
   });
@@ -139,10 +153,19 @@ function addRepair(){
     status: document.getElementById("status").value
   };
 
+  if(!item.name || !item.mobile){
+    alert("Name & Mobile जरूरी है!");
+    return;
+  }
+
   data.push(item);
   save();
   render();
 
+  document.getElementById("name").value="";
+  document.getElementById("mobile").value="";
+  document.getElementById("problem").value="";
+  document.getElementById("amount").value="";
 }
 
 function del(i){
@@ -151,7 +174,7 @@ function del(i){
   render();
 }
 
-function markDone(i){
+function done(i){
   data[i].status="Done";
   save();
   render();
@@ -161,16 +184,21 @@ function call(num){
   window.location.href = "tel:"+num;
 }
 
-function whatsapp(num){
+function wa(num){
   window.location.href = "https://wa.me/91"+num;
 }
 
-// 🔥 UPI PAYMENT
+// 💰 FINAL WORKING UPI PAYMENT
 function payNow(){
 
 let amount = document.getElementById("payAmount").value;
 
-let url = `upi://pay?pa=9931135008@okbizaxis&pn=Maa Jagdamba Mobile Repair&am=${amount}&cu=INR`;
+if(!amount){
+  alert("Amount डालो पहले!");
+  return;
+}
+
+let url = `upi://pay?pa=aanandsingh7755-3@okicici&pn=Maa Jagdamba Mobile Repair&am=${amount}&cu=INR`;
 
 window.location.href = url;
 
