@@ -1,38 +1,122 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Maa Jagdamba Mobile Repair</title>
 
 <style>
-body{background:#000;color:#fff;font-family:Arial;padding:10px}
-h1{text-align:center;color:#00ffc3}
-input,select,textarea,button{
-width:100%;padding:10px;margin:5px 0;border:none;border-radius:8px
+body{
+margin:0;
+font-family:Arial;
+background:linear-gradient(135deg,#000,#001a1a);
+color:white;
 }
-button{background:#00ffc3;font-size:15px}
+
+.container{
+padding:15px;
+max-width:500px;
+margin:auto;
+}
+
+h1{
+color:#00ffd5;
+text-align:center;
+text-shadow:0 0 10px #00ffd5,0 0 20px #00ffd5;
+}
+
+p{
+text-align:center;
+color:#ccc;
+}
+
+a{
+color:#00ffd5;
+text-decoration:none;
+font-weight:bold;
+}
+
+input, select{
+width:100%;
+padding:12px;
+margin:6px 0;
+border-radius:10px;
+border:none;
+background:#111;
+color:#fff;
+box-shadow:0 0 5px #00ffd5;
+}
+
+button{
+width:100%;
+padding:12px;
+margin:6px 0;
+background:#00ffd5;
+border:none;
+border-radius:12px;
+font-weight:bold;
+font-size:15px;
+color:black;
+box-shadow:0 0 10px #00ffd5,0 0 20px #00ffd5;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.05);
+background:#00ffcc;
+box-shadow:0 0 15px #00ffcc,0 0 30px #00ffcc;
+}
+
 .card{
-background:#111;padding:10px;margin-top:10px;
-border-left:5px solid #00ffc3;border-radius:10px
+background:rgba(0,255,213,0.08);
+padding:12px;
+margin:12px 0;
+border-radius:12px;
+border-left:4px solid #00ffd5;
+box-shadow:0 0 10px rgba(0,255,213,0.3);
 }
-.box{background:#111;padding:10px;border-radius:10px;margin:10px 0}
+
+h3{
+color:#00ffd5;
+text-shadow:0 0 5px #00ffd5;
+}
+
+img{
+box-shadow:0 0 15px #00ffd5;
+}
+
+hr{
+border:1px solid #00ffd5;
+opacity:0.3;
+}
+
 </style>
 </head>
 
 <body>
 
+<div class="container">
+
 <h1>🔧 Maa Jagdamba Mobile Repair</h1>
 
-📍 Sarath Main Chowk, Near Hanuman Temple,<br>
+<p>
+📍 Sarath Main Chowk, Near Hanuman Temple<br>
 Deoghar, Jharkhand - 814149<br>
-📞 7004470872<br>
+📞 7004470872
+</p>
 
-<!-- 🤖 AI -->
-<div class="box">
-<b>🤖 AI Auto Entry</b>
-<textarea id="aiText" placeholder="राम 9876543210 display change 1200"></textarea>
-<button onclick="aiFill()">⚡ Auto Fill</button>
-</div>
+<p>
+<a href="tel:7004470872">📞 Call</a> |
+<a href="https://wa.me/917004470872">💬 WhatsApp</a> |
+<a href="https://maps.google.com/?q=24.236194,86.838390">📍 Location</a>
+</p>
+
+<hr>
+
+<h3>🤖 AI Auto Entry</h3>
+<input id="ai" placeholder="राम 9876543210 display 1200">
+<button onclick="autoFill()">⚡ Auto Fill</button>
+
+<hr>
 
 <input id="name" placeholder="Customer Name">
 <input id="mobile" placeholder="Mobile Number">
@@ -44,28 +128,19 @@ Deoghar, Jharkhand - 814149<br>
 <option>Done</option>
 </select>
 
-<!-- ⚡ RATE CHART -->
-<div class="box">
-<b>⚡ Quick Rate</b>
+<h3>⚡ Quick Rate</h3>
+<button onclick="setRate('Display',1500)">📱 Display</button>
+<button onclick="setRate('Battery',800)">🔋 Battery</button>
+<button onclick="setRate('Tempered',100)">🛡️ Tempered</button>
+<button onclick="setRate('Charging',300)">🔌 Charging</button>
+<button onclick="setRate('Type-C Cable',100)">🔌 Type-C</button>
+<button onclick="setRate('V8 Cable',100)">🔌 V8</button>
+<button onclick="setRate('Charger',300)">⚡ Charger</button>
 
-<button onclick="setService('Display Change',1500)">📱 Display</button>
-<button onclick="setService('Battery Change',800)">🔋 Battery</button>
-<button onclick="setService('Tempered Glass',50)">🛡 Tempered</button>
-<button onclick="setService('Charging Repair',200)">🔌 Charging</button>
-
-<button onclick="setService('Type-C Cable',100)">🔌 Type-C</button>
-<button onclick="setService('V8 Cable',100)">🔌 V8</button>
-<button onclick="setService('Mobile Charger',300)">⚡ Charger</button>
-
-<br><br>
-
-<b>➕ Add Extra</b>
-
-<button onclick="addService('Tempered',50)">+ Tempered</button>
-<button onclick="addService('Cover',100)">+ Cover</button>
-<button onclick="addService('Cable',100)">+ Cable</button>
-
-</div>
+<h3>➕ Add Extra</h3>
+<button onclick="addExtra('Tempered',100)">+Tempered</button>
+<button onclick="addExtra('Cover',150)">+Cover</button>
+<button onclick="addExtra('Cable',100)">+Cable</button>
 
 <button onclick="add()">➕ Add Repair</button>
 
@@ -73,155 +148,83 @@ Deoghar, Jharkhand - 814149<br>
 
 <div id="list"></div>
 
-<!-- 💰 PAYMENT -->
+<hr>
+
 <h3>💰 Scan & Pay</h3>
 
-<img src="upi.png" style="width:100%;max-width:300px;border-radius:10px">
+<img src="qr.png" style="width:100%;max-width:280px;display:block;margin:auto;border-radius:12px">
 
 <input id="payAmount" placeholder="Enter Amount">
 
-<button onclick="payNow()">💸 Pay via UPI</button>
+<button onclick="pay()">💸 Pay via UPI</button>
+
+</div>
 
 <script>
 
-// DATA
-let data = JSON.parse(localStorage.getItem("mj")) || [];
+let total = 0;
 
-function save(){
-localStorage.setItem("mj", JSON.stringify(data));
+function autoFill(){
+let t = document.getElementById("ai").value.split(" ");
+document.getElementById("name").value = t[0];
+document.getElementById("mobile").value = t[1];
+document.getElementById("problem").value = t[2];
+document.getElementById("amount").value = t[3];
 }
 
-// 🤖 AI
-function aiFill(){
-
-let text = document.getElementById("aiText").value.trim();
-
-if(!text){ alert("कुछ लिखो"); return; }
-
-let mobile = text.match(/\b\d{10}\b/);
-if(mobile) mobile1.value = mobile[0];
-
-let nums = text.match(/\d+/g);
-if(nums) amount.value = nums[nums.length-1];
-
-let words = text.split(" ");
-name.value = words[0];
-
-let prob = text.replace(/\d+/g,"").replace(words[0],"").trim();
-problem.value = prob;
+function setRate(item,price){
+document.getElementById("problem").value = item;
+document.getElementById("amount").value = price;
 }
 
-// ⚡ RATE
-function setService(p,a){
-problem.value=p;
-amount.value=a;
+function addExtra(item,price){
+let p = document.getElementById("problem").value;
+let a = document.getElementById("amount").value;
+
+document.getElementById("problem").value = p + ", " + item;
+document.getElementById("amount").value = Number(a) + price;
 }
 
-function addService(p,a){
-problem.value += ", "+p;
-amount.value = Number(amount.value||0)+a;
-}
-
-// ADD
 function add(){
+let name = document.getElementById("name").value;
+let mobile = document.getElementById("mobile").value;
+let problem = document.getElementById("problem").value;
+let amount = document.getElementById("amount").value;
+let status = document.getElementById("status").value;
 
-let d={
-name:name.value,
-mobile:mobile.value,
-problem:problem.value,
-amount:amount.value,
-status:status.value
-};
-
-if(!d.name || !d.mobile){ alert("Fill required"); return; }
-
-data.push(d);
-save();
-render();
-
-name.value="";mobile.value="";problem.value="";amount.value="";
+if(name=="" || amount==""){
+alert("Fill details");
+return;
 }
 
-// RENDER
-function render(){
+total += Number(amount);
+document.getElementById("total").innerText = total;
 
-let html="";
-let total=0;
+let div = document.createElement("div");
+div.className="card";
 
-data.forEach((d,i)=>{
-
-if(d.status=="Done") total+=Number(d.amount);
-
-html+=`
-<div class="card">
-<b>${d.name}</b><br>
-📞 ${d.mobile}<br>
-🛠 ${d.problem}<br>
-💰 ₹${d.amount}<br>
-Status: ${d.status}<br><br>
-
-<button onclick="done(${i})">✔ Done</button>
-<button onclick="del(${i})">❌ Delete</button>
-<button onclick="call('${d.mobile}')">📞 Call</button>
-<button onclick="wa('${d.mobile}','${d.name}','${d.amount}','${d.problem}')">💬 WhatsApp</button>
-<button onclick="payCustomer(${i})">💰 Pay</button>
-</div>
+div.innerHTML = `
+<b>${name}</b><br>
+📞 ${mobile}<br>
+🔧 ${problem}<br>
+💰 ₹${amount}<br>
+Status: ${status}
 `;
-});
 
-list.innerHTML=html;
-total.innerText=total;
+document.getElementById("list").appendChild(div);
 }
 
-// ACTIONS
-function del(i){ data.splice(i,1); save(); render(); }
-function done(i){ data[i].status="Done"; save(); render(); }
+function pay(){
+let amt = document.getElementById("payAmount").value;
 
-function call(n){ window.location.href="tel:"+n; }
-
-function wa(n,name,amt,prob){
-let msg=`Hello ${name}
-Repair: ${prob}
-Amount: ₹${amt}`;
-window.open("https://wa.me/91"+n+"?text="+encodeURIComponent(msg));
+if(amt==""){
+alert("Enter amount");
+return;
 }
 
-// 💸 PAYMENT
-function payNow(){
-
-let amt=payAmount.value;
-if(!amt){ alert("Enter amount"); return; }
-
-let upi="9931135008@okbizaxis";
-
-let url="upi://pay?pa="+upi+
-"&pn=Maa%20Jagdamba%20Mobile%20Repair"+
-"&am="+amt+
-"&cu=INR";
-
-window.location.href=url;
+window.location.href = 
+`upi://pay?pa=aanandsingh7755-3@okicici&pn=Maa%20Jagdamba%20Mobile%20Repair&am=${amt}&cu=INR`;
 }
-
-// customer pay
-function payCustomer(i){
-
-let d=data[i];
-
-let url="upi://pay?pa=9931135008@okbizaxis"+
-"&pn=Maa%20Jagdamba%20Mobile%20Repair"+
-"&am="+d.amount+
-"&cu=INR";
-
-window.location.href=url;
-
-setTimeout(()=>{
-data[i].status="Done";
-save();
-render();
-},3000);
-}
-
-render();
 
 </script>
 
