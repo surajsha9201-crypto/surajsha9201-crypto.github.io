@@ -1,58 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Maa Jagdamba Mobile Repair</title>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MJ Mobile Repair</title>
 
 <style>
 body{
   font-family: Arial;
-  background:#000;
-  color:#fff;
+  background:black;
+  color:white;
+  margin:0;
+  padding:10px;
 }
+
 h1{
   text-align:center;
-  color:#00ffc8;
+  color:#00ffc3;
 }
-.container{
-  padding:15px;
-}
-input, select{
-  width:100%;
-  padding:12px;
-  margin:8px 0;
-  border-radius:10px;
-  border:none;
-}
-button{
-  width:100%;
-  padding:12px;
-  margin:8px 0;
-  border-radius:10px;
-  border:none;
-  background:#00ffc8;
-  font-weight:bold;
-}
-.card{
+
+.box{
   background:#111;
   padding:10px;
-  margin-top:10px;
   border-radius:10px;
+  margin-top:10px;
 }
-.done{
-  border-left:5px solid lime;
+
+input, select{
+  width:100%;
+  padding:10px;
+  margin:5px 0;
+  border-radius:8px;
+  border:none;
 }
-.pending{
-  border-left:5px solid red;
+
+button{
+  width:100%;
+  padding:10px;
+  margin-top:5px;
+  border:none;
+  border-radius:8px;
+  background:#00ffc3;
+  font-size:16px;
 }
-.top{
-  text-align:center;
-  margin:10px;
-}
-a{
-  color:#00ffc8;
+
+.card{
+  background:#111;
+  margin-top:10px;
+  padding:10px;
+  border-left:5px solid #00ffc3;
+  border-radius:10px;
 }
 </style>
 </head>
@@ -61,86 +57,71 @@ a{
 
 <h1>🔧 Maa Jagdamba Mobile Repair</h1>
 
-<div class="top">
-📍 सारठ मेन चौक, हनुमान मंदिर के पास<br>
-देवघर, झारखंड - 814149<br>
-📞 7004470872<br><br>
+<p style="text-align:center;">
+📍 Sarath Main Chowk, Near Hanuman Temple,<br>
+Deoghar, Jharkhand - 814149<br>
+📞 7004470872<br>
+<a href="https://maps.google.com/?q=24.236194,86.838390" style="color:#00ffc3;">📍 Open Location</a>
+</p>
 
-<a href="tel:7004470872">📞 Call</a><br>
-<a href="https://wa.me/917004470872" target="_blank">💬 WhatsApp</a><br>
-<a href="https://maps.google.com/?q=24.236194,86.838390" target="_blank">📍 Location</a>
-</div>
-
-<div class="container">
-
+<div class="box">
 <input id="name" placeholder="Customer Name">
-<input id="phone" placeholder="Mobile Number">
+<input id="mobile" placeholder="Mobile Number">
 <input id="problem" placeholder="Problem">
-<input id="price" placeholder="Amount">
+<input id="amount" placeholder="Amount">
 
 <select id="status">
-  <option value="pending">Pending</option>
-  <option value="done">Done</option>
+<option>Pending</option>
+<option>Done</option>
 </select>
 
-<button onclick="add()">Add Repair</button>
+<button onclick="addRepair()">Add Repair</button>
+</div>
 
 <h3>Total Earned: ₹<span id="total">0</span></h3>
 
 <div id="list"></div>
 
-<h3 style="text-align:center;">Scan & Pay</h3>
-<img src="qr.png" width="200" style="display:block;margin:auto">
+<div class="box">
+<h3>💰 Direct Payment</h3>
+<input id="payAmount" placeholder="Enter Amount">
 
+<button onclick="payNow()">Pay Now</button>
 </div>
 
 <script>
 
-let data = JSON.parse(localStorage.getItem("data")) || [];
+let data = JSON.parse(localStorage.getItem("repairData")) || [];
 
-function add(){
-  let name = v("name");
-  let phone = v("phone");
-  let problem = v("problem");
-  let price = v("price");
-  let status = v("status");
-
-  if(!name || !phone || !problem || !price){
-    alert("Fill all fields");
-    return;
-  }
-
-  data.push({name,phone,problem,price,status});
-  localStorage.setItem("data", JSON.stringify(data));
-
-  clear();
-  show();
+function save(){
+  localStorage.setItem("repairData", JSON.stringify(data));
 }
 
-function show(){
+function render(){
+
   let list = document.getElementById("list");
   list.innerHTML="";
+
   let total = 0;
 
-  data.forEach((d,i)=>{
+  data.forEach((item,index)=>{
 
-    if(d.status=="done"){
-      total += Number(d.price);
+    if(item.status=="Done"){
+      total += Number(item.amount);
     }
 
     list.innerHTML += `
-    <div class="card ${d.status}">
-      <b>${d.name}</b><br>
-      📞 ${d.phone}<br>
-      🔧 ${d.problem}<br>
-      💰 ₹${d.price}<br>
-      Status: ${d.status}<br>
+    <div class="card">
+    <b>${item.name}</b><br>
+    📞 ${item.mobile}<br>
+    🛠 ${item.problem}<br>
+    💰 ₹${item.amount}<br>
+    Status: ${item.status}<br><br>
 
-      <button onclick="toggle(${i})">Done</button>
-      <button onclick="del(${i})">Delete</button>
-      <button onclick="call('${d.phone}')">Call</button>
-      <button onclick="wa('${d.phone}','${d.problem}')">WhatsApp</button>
-      <button onclick="pdf(${i})">PDF</button>
+    <button onclick="markDone(${index})">Done</button>
+    <button onclick="del(${index})">Delete</button>
+    <button onclick="call('${item.mobile}')">Call</button>
+    <button onclick="whatsapp('${item.mobile}')">WhatsApp</button>
     </div>
     `;
   });
@@ -148,52 +129,54 @@ function show(){
   document.getElementById("total").innerText = total;
 }
 
-function toggle(i){
-  data[i].status="done";
-  localStorage.setItem("data", JSON.stringify(data));
-  show();
+function addRepair(){
+
+  let item = {
+    name: document.getElementById("name").value,
+    mobile: document.getElementById("mobile").value,
+    problem: document.getElementById("problem").value,
+    amount: document.getElementById("amount").value,
+    status: document.getElementById("status").value
+  };
+
+  data.push(item);
+  save();
+  render();
+
 }
 
 function del(i){
   data.splice(i,1);
-  localStorage.setItem("data", JSON.stringify(data));
-  show();
+  save();
+  render();
+}
+
+function markDone(i){
+  data[i].status="Done";
+  save();
+  render();
 }
 
 function call(num){
-  window.location.href="tel:"+num;
+  window.location.href = "tel:"+num;
 }
 
-function wa(num,p){
-  window.open(`https://wa.me/91${num}?text=Phone ready (${p})`);
+function whatsapp(num){
+  window.location.href = "https://wa.me/91"+num;
 }
 
-function pdf(i){
-  const { jsPDF } = window.jspdf;
-  let doc = new jsPDF();
+// 🔥 UPI PAYMENT
+function payNow(){
 
-  let d = data[i];
+let amount = document.getElementById("payAmount").value;
 
-  doc.text("Maa Jagdamba Mobile Repair", 20, 20);
-  doc.text("Customer: "+d.name, 20, 40);
-  doc.text("Mobile: "+d.phone, 20, 50);
-  doc.text("Problem: "+d.problem, 20, 60);
-  doc.text("Amount: ₹"+d.price, 20, 70);
+let url = `upi://pay?pa=9931135008@okbizaxis&pn=Maa Jagdamba Mobile Repair&am=${amount}&cu=INR`;
 
-  doc.save(d.name+"_bill.pdf");
+window.location.href = url;
+
 }
 
-function v(id){
-  return document.getElementById(id).value;
-}
-
-function clear(){
-  ["name","phone","problem","price"].forEach(id=>{
-    document.getElementById(id).value="";
-  });
-}
-
-show();
+render();
 
 </script>
 
