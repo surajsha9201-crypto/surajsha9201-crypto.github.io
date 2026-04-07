@@ -1,211 +1,141 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maa Jagdamba Repairing Center</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Poppins:wght@300;500;800&display=swap" rel="stylesheet">
-    <style>
-        body { background: #000b18; font-family: 'Poppins', sans-serif; color: white; min-height: 100vh; }
-        .neon-glow { text-shadow: 0 0 15px #00f2ff; font-family: 'Orbitron', sans-serif; }
-        .glass-card { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(0, 242, 255, 0.2); border-radius: 24px; box-shadow: 0 15px 35px rgba(0,0,0,0.6); }
-        .action-btn { transition: 0.3s; border: 1px solid rgba(255,255,255,0.1); }
-        .action-btn:active { transform: scale(0.9); }
-        input { background: rgba(255,255,255,0.08) !important; border: 1px solid #1e293b !important; color: white !important; border-radius: 12px !important; padding: 12px !important; outline: none; width: 100%; }
-        input:focus { border-color: #00f2ff !important; }
-        .rate-btn { background: #00f2ff15; border: 1px solid #00f2ff40; padding: 12px; border-radius: 16px; text-align: left; }
-        .extra-btn { background: #10b98120; border: 1px solid #10b98140; color: #10b981; font-weight: bold; font-size: 11px; border-radius: 12px; padding: 8px; }
-    </style>
+<meta charset="UTF-8">
+<title>Mobile Repair Pro App</title>
+
+<style>
+body {
+    font-family: Arial;
+    background: #f2f2f2;
+    margin: 0;
+}
+
+.container {
+    max-width: 400px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    margin-top: 30px;
+    border-radius: 10px;
+}
+
+h2 {
+    text-align: center;
+}
+
+input, button {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+}
+
+button {
+    background: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+a {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    color: blue;
+    cursor: pointer;
+}
+
+.bill-box {
+    border-top: 1px solid #ccc;
+    margin-top: 10px;
+    padding-top: 10px;
+}
+</style>
 </head>
-<body class="p-4 pb-10">
 
-    <header class="text-center mb-6 pt-4">
-        <h1 class="text-2xl font-bold text-cyan-400 neon-glow uppercase">Maa Jagdamba</h1>
-        <p class="text-[11px] text-cyan-200 font-bold tracking-widest">MOBILE REPAIRING CENTER</p>
-        <p class="text-[9px] text-gray-500 mt-2 uppercase tracking-tighter">📍 Sarath Main Chowk, Deoghar, Jharkhand - 814149</p>
-        
-        <div class="grid grid-cols-3 gap-3 mt-5 px-2">
-            <a href="tel:7004470872" class="action-btn bg-blue-600/20 text-blue-400 p-3 rounded-2xl flex flex-col items-center">
-                <span class="text-xl">📞</span> <span class="text-[10px] font-bold mt-1 uppercase">Call</span>
-            </a>
-            <a href="https://wa.me/7004470872" class="action-btn bg-green-600/20 text-green-400 p-3 rounded-2xl flex flex-col items-center">
-                <span class="text-xl">💬</span> <span class="text-[10px] font-bold mt-1 uppercase">WhatsApp</span>
-            </a>
-            <a href="#" class="action-btn bg-red-600/20 text-red-400 p-3 rounded-2xl flex flex-col items-center">
-                <span class="text-xl">📍</span> <span class="text-[10px] font-bold mt-1 uppercase">Location</span>
-            </a>
+<body>
+
+<div class="container">
+
+    <h2>Mobile Repair Billing</h2>
+
+    <input type="text" id="name" placeholder="Customer Name">
+    <input type="text" id="phone" placeholder="Mobile Number">
+    <input type="text" id="service" placeholder="Service Details">
+    <input type="number" id="amount" placeholder="Amount">
+
+    <button onclick="generateBill()">Generate Bill</button>
+
+    <div id="output"></div>
+
+    <a onclick="showDashboard()">View Dashboard</a>
+</div>
+
+<script>
+function generateBill() {
+    let name = document.getElementById("name").value;
+    let phone = document.getElementById("phone").value;
+    let service = document.getElementById("service").value;
+    let amount = document.getElementById("amount").value;
+
+    if (!name || !phone || !service || !amount) {
+        alert("Please fill all fields");
+        return;
+    }
+
+    let billData = {
+        name: name,
+        phone: phone,
+        service: service,
+        amount: amount,
+        date: new Date().toLocaleString()
+    };
+
+    let bills = JSON.parse(localStorage.getItem("bills")) || [];
+    bills.push(billData);
+    localStorage.setItem("bills", JSON.stringify(bills));
+
+    let billHTML = `
+        <div class="bill-box">
+        <h3>Invoice</h3>
+        <p>Name: ${name}</p>
+        <p>Phone: ${phone}</p>
+        <p>Service: ${service}</p>
+        <p>Amount: ₹${amount}</p>
+        <p>Date: ${billData.date}</p>
         </div>
-    </header>
+    `;
 
-    <main class="max-w-md mx-auto space-y-5">
-        
-        <div class="glass-card p-5 flex justify-between items-center bg-gradient-to-r from-cyan-900/30 to-blue-900/10">
-            <div>
-                <p class="text-[10px] text-cyan-400 font-bold uppercase tracking-wider">Today's Collection</p>
-                <p id="totalDisplay" class="text-3xl font-black text-white">₹0</p>
+    let message = `Invoice\nName: ${name}\nPhone: ${phone}\nService: ${service}\nAmount: ₹${amount}`;
+    let whatsappURL = "https://wa.me/?text=" + encodeURIComponent(message);
+
+    document.getElementById("output").innerHTML =
+        billHTML + `<a href="${whatsappURL}" target="_blank">Share on WhatsApp</a>`;
+}
+
+function showDashboard() {
+    let bills = JSON.parse(localStorage.getItem("bills")) || [];
+
+    let output = "<h3>All Bills</h3>";
+
+    bills.forEach((bill) => {
+        output += `
+            <div class="bill-box">
+            <p><b>${bill.name}</b> (${bill.phone})</p>
+            <p>${bill.service}</p>
+            <p>₹${bill.amount}</p>
+            <p>${bill.date}</p>
             </div>
-            <button onclick="toggleQR()" class="bg-cyan-500 text-black px-5 py-3 rounded-xl font-black text-[11px] shadow-lg shadow-cyan-500/20 uppercase">Scan & Pay 💳</button>
-        </div>
+        `;
+    });
 
-        <section class="glass-card p-5 space-y-3">
-            <h3 class="text-[10px] font-bold text-gray-400">🤖 AI AUTO ENTRY</h3>
-            <div class="flex gap-2">
-                <input id="aiInput" type="text" placeholder="Ex: 9876... Combo 1500" class="text-xs">
-                <button onclick="autoFill()" class="bg-white text-black px-4 rounded-xl font-black text-[10px] uppercase">Fill</button>
-            </div>
-        </section>
+    if (bills.length === 0) {
+        output += "<p>No Data Available</p>";
+    }
 
-        <section class="glass-card p-5">
-            <h3 class="text-[10px] font-bold text-cyan-400 mb-4 uppercase">⚡ Quick Rate Chart</h3>
-            <div class="grid grid-cols-2 gap-3">
-                <button onclick="setRate('Display/Combo', 1500)" class="rate-btn">
-                    <p class="text-[9px] text-gray-400">DISPLAY</p>
-                    <p class="text-sm font-bold">₹1500</p>
-                </button>
-                <button onclick="setRate('Battery', 850)" class="rate-btn">
-                    <p class="text-[9px] text-gray-400">BATTERY</p>
-                    <p class="text-sm font-bold">₹850</p>
-                </button>
-                <button onclick="setRate('Charging', 250)" class="rate-btn">
-                    <p class="text-[9px] text-gray-400">CHARGING</p>
-                    <p class="text-sm font-bold">₹250</p>
-                </button>
-                <button onclick="setRate('Touch/Glass', 650)" class="rate-btn">
-                    <p class="text-[9px] text-gray-400">GLASS</p>
-                    <p class="text-sm font-bold">₹650</p>
-                </button>
-            </div>
-        </section>
+    document.getElementById("output").innerHTML = output;
+}
+</script>
 
-        <section class="glass-card p-5">
-            <h3 class="text-[10px] font-bold text-green-400 mb-4 uppercase">➕ Add Extra</h3>
-            <div class="grid grid-cols-3 gap-2">
-                <button onclick="addExtra('Tempered', 100)" class="extra-btn">+ TEMPERED</button>
-                <button onclick="addExtra('Back Cover', 150)" class="extra-btn">+ COVER</button>
-                <button onclick="addExtra('Cable', 100)" class="extra-btn">+ CABLE</button>
-            </div>
-        </section>
-
-        <section class="glass-card p-6 space-y-4">
-            <input id="custName" type="text" placeholder="Customer Name" class="text-sm">
-            <input id="custPhone" type="tel" placeholder="Mobile Number" class="text-sm">
-            <div class="grid grid-cols-2 gap-3">
-                <input id="workType" type="text" placeholder="Work Done" class="text-sm">
-                <input id="workPrice" type="number" placeholder="Price ₹" class="text-sm text-green-400 font-bold">
-            </div>
-            <button onclick="saveData()" class="w-full bg-gradient-to-r from-cyan-400 to-blue-600 text-black font-black py-4 rounded-2xl shadow-xl active:scale-95 transition-all text-xs tracking-[2px] uppercase">
-                Save & Generate Bill 🧾
-            </button>
-        </section>
-
-        <div>
-            <h3 class="text-[11px] font-bold text-gray-500 mb-4 ml-2 uppercase">Recent Records</h3>
-            <div id="historyList" class="space-y-3"></div>
-        </div>
-    </main>
-
-    <div id="qrModal" class="hidden fixed inset-0 bg-black/95 flex items-center justify-center p-8 z-50">
-        <div class="bg-white p-6 rounded-[2.5rem] text-center w-full max-w-xs">
-            <h3 class="text-black font-black mb-4 uppercase text-xs">MAA JAGDAMBA PAY QR</h3>
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=upi://pay?pa=7004470872@upi" class="mx-auto rounded-2xl border-4 border-gray-100">
-            <p class="text-gray-400 text-[10px] mt-4 font-bold">7004470872 | Deoghar</p>
-            <button onclick="toggleQR()" class="mt-8 bg-red-500 text-white w-full py-3 rounded-2xl font-bold uppercase text-[10px]">Close</button>
-        </div>
-    </div>
-
-    <div id="receiptModal" class="hidden fixed inset-0 bg-black/95 backdrop-blur-md flex items-center justify-center p-6 z-50">
-        <div class="bg-white text-black w-full max-w-xs p-6 rounded-sm shadow-2xl font-mono">
-            <div class="text-center border-b border-black pb-2 mb-4">
-                <p class="font-bold text-lg">MAA JAGDAMBA</p>
-                <p class="text-[8px]">Sarath, Deoghar | 7004470872</p>
-            </div>
-            <div class="text-[11px] space-y-1">
-                <p>DATE: <span id="rDate"></span></p>
-                <p>CUST: <span id="rName" class="font-bold uppercase"></span></p>
-                <p>WORK: <span id="rWork"></span></p>
-                <div class="flex justify-between border-t border-black mt-3 pt-3 font-bold text-sm">
-                    <span>TOTAL:</span>
-                    <span>₹<span id="rPrice"></span></span>
-                </div>
-            </div>
-            <button onclick="document.getElementById('receiptModal').classList.add('hidden')" class="w-full mt-6 bg-black text-white py-2 text-[10px] uppercase font-bold">Close Receipt</button>
-        </div>
-    </div>
-
-    <script>
-        let repairs = JSON.parse(localStorage.getItem('mj_db')) || [];
-
-        function renderHistory() {
-            const list = document.getElementById('historyList');
-            const totalDisplay = document.getElementById('totalDisplay');
-            list.innerHTML = '';
-            let total = 0;
-            repairs.forEach((item, index) => {
-                total += parseInt(item.price);
-                list.innerHTML += `
-                    <div class="glass-card p-4 flex justify-between items-center border-l-4 border-cyan-500">
-                        <div>
-                            <p class="font-bold text-white text-sm uppercase">${item.name}</p>
-                            <p class="text-[10px] text-cyan-400 font-bold uppercase tracking-tighter">${item.work} | ₹${item.price}</p>
-                        </div>
-                        <button onclick="deleteEntry(${index})" class="text-red-500 bg-red-500/10 p-2 rounded-lg text-[9px] font-bold">DEL</button>
-                    </div>`;
-            });
-            totalDisplay.innerText = `₹${total}`;
-        }
-
-        function saveData() {
-            const name = document.getElementById('custName').value || 'Customer';
-            const price = document.getElementById('workPrice').value;
-            const work = document.getElementById('workType').value;
-            if(!price || !work) { alert("Deta Fill Karein!"); return; }
-
-            const entry = { name, price, work, date: new Date().toLocaleDateString('hi-IN') };
-            repairs.unshift(entry);
-            localStorage.setItem('mj_db', JSON.stringify(repairs));
-            
-            // Receipt setup
-            document.getElementById('rName').innerText = name;
-            document.getElementById('rPrice').innerText = price;
-            document.getElementById('rWork').innerText = work;
-            document.getElementById('rDate').innerText = entry.date;
-            document.getElementById('receiptModal').classList.remove('hidden');
-
-            // Reset
-            document.getElementById('custName').value = '';
-            document.getElementById('workPrice').value = '';
-            document.getElementById('workType').value = '';
-            renderHistory();
-        }
-
-        function addExtra(name, price) {
-            let currentWork = document.getElementById('workType').value;
-            let currentPrice = parseInt(document.getElementById('workPrice').value) || 0;
-            document.getElementById('workType').value = currentWork ? currentWork + " + " + name : name;
-            document.getElementById('workPrice').value = currentPrice + price;
-        }
-
-        function setRate(work, price) {
-            document.getElementById('workType').value = work;
-            document.getElementById('workPrice').value = price;
-        }
-
-        function deleteEntry(i) {
-            if(confirm("Record delete?")) { repairs.splice(i, 1); localStorage.setItem('mj_db', JSON.stringify(repairs)); renderHistory(); }
-        }
-
-        function autoFill() {
-            const val = document.getElementById('aiInput').value.split(' ');
-            if(val.length >= 3) {
-                document.getElementById('custPhone').value = val[0];
-                document.getElementById('workType').value = val[1];
-                document.getElementById('workPrice').value = val[2];
-            }
-        }
-
-        function toggleQR() { document.getElementById('qrModal').classList.toggle('hidden'); }
-        renderHistory();
-    </script>
 </body>
-    </html>
+</html>
