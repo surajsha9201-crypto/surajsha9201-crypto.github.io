@@ -2,61 +2,71 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MJ Mobile Repair PRO MAX</title>
+<title>MJ Business App</title>
 
 <style>
 body{
 margin:0;
 font-family:Arial;
-background:linear-gradient(135deg,#000,#002222);
-color:white;
+background:#000;
+color:#fff;
 }
 
 .container{
-padding:15px;
 max-width:500px;
 margin:auto;
+padding:10px;
 }
 
 h1{
-color:#00ffd5;
 text-align:center;
+color:#00ffd5;
 text-shadow:0 0 10px #00ffd5;
 }
 
-input, select{
-width:100%;
-padding:12px;
-margin:6px 0;
-border-radius:10px;
-border:none;
+.box{
 background:#111;
+padding:10px;
+margin:10px 0;
+border-radius:12px;
+box-shadow:0 0 10px rgba(0,255,213,0.3);
+}
+
+input,select,textarea{
+width:100%;
+padding:10px;
+margin:5px 0;
+border:none;
+border-radius:8px;
+background:#000;
 color:#fff;
 }
 
 button{
 width:100%;
-padding:12px;
-margin:6px 0;
-background:#00ffd5;
+padding:10px;
+margin:5px 0;
 border:none;
-border-radius:12px;
+border-radius:10px;
+background:#00ffd5;
 font-weight:bold;
+box-shadow:0 0 10px #00ffd5;
 }
 
 .card{
-background:#111;
-padding:12px;
-margin:10px 0;
-border-radius:12px;
+background:#000;
+padding:10px;
+margin-top:10px;
 border-left:4px solid #00ffd5;
+border-radius:10px;
 }
 
-.small-btn{
-width:auto;
-padding:6px;
-margin:3px;
+.total{
+text-align:center;
+font-size:18px;
+color:#00ffd5;
 }
+
 </style>
 </head>
 
@@ -64,16 +74,19 @@ margin:3px;
 
 <div class="container">
 
-<h1>🔧 Maa Jagdamba Mobile Repair</h1>
+<h1>🔧 MJ Business App</h1>
 
-<p style="text-align:center">
+<div class="box">
 📍 Sarath Main Chowk<br>
 📞 7004470872
-</p>
+</div>
 
-<!-- 🤖 AI -->
-<input id="ai" placeholder="राम 9876543210 display 1200">
-<button onclick="ai()">⚡ AI Fill</button>
+<!-- AI -->
+<div class="box">
+<b>🤖 AI Entry</b>
+<textarea id="ai" placeholder="राम 9876543210 display 1200"></textarea>
+<button onclick="aiFill()">Auto Fill</button>
+</div>
 
 <input id="name" placeholder="Name">
 <input id="mobile" placeholder="Mobile">
@@ -85,46 +98,40 @@ margin:3px;
 <option>Done</option>
 </select>
 
-<!-- ⚡ RATE -->
-<h3>⚡ Quick Rate</h3>
-<button onclick="rate('Display',1500)">Display</button>
-<button onclick="rate('Battery',800)">Battery</button>
-<button onclick="rate('Type-C Cable',100)">Type-C</button>
-<button onclick="rate('Charger',300)">Charger</button>
+<!-- Quick -->
+<div class="box">
+<b>⚡ Quick Rate</b>
+<button onclick="setRate('Display',1500)">Display</button>
+<button onclick="setRate('Battery',800)">Battery</button>
+<button onclick="setRate('Cable',100)">Cable</button>
+<button onclick="setRate('Charger',300)">Charger</button>
+</div>
 
-<button onclick="add()">➕ Add</button>
+<button onclick="add()">➕ Add Repair</button>
 
-<h3>Total ₹<span id="total">0</span></h3>
+<div class="total">Total: ₹<span id="total">0</span></div>
 
 <div id="list"></div>
 
-<hr>
-
-<!-- 💰 QR -->
-<h3>💰 Scan & Pay</h3>
-<img src="qr.png" style="width:100%;max-width:250px;display:block;margin:auto">
-
-<p style="text-align:center;color:#aaa">Scan using GPay / PhonePe</p>
-
-<hr>
-
-<!-- 💸 Backup UPI -->
-<h3>💸 Quick Pay (Backup)</h3>
-<input id="payAmt" placeholder="Amount">
-<button onclick="pay()">Pay Now</button>
+<!-- Payment -->
+<div class="box">
+<h3>💰 Payment</h3>
+<img src="qr.png" width="100%">
+<input id="payAmount" placeholder="Amount">
+<button onclick="pay()">Pay</button>
+</div>
 
 </div>
 
 <script>
 
-let data = JSON.parse(localStorage.getItem("mj")) || [];
+let data = JSON.parse(localStorage.getItem("data")) || [];
 
 function save(){
-localStorage.setItem("mj", JSON.stringify(data));
+localStorage.setItem("data", JSON.stringify(data));
 }
 
-// 🤖 AI
-function ai(){
+function aiFill(){
 let t = ai.value.split(" ");
 name.value=t[0];
 mobile.value=t[1];
@@ -132,15 +139,12 @@ problem.value=t[2];
 amount.value=t[3];
 }
 
-// ⚡ RATE
-function rate(p,a){
+function setRate(p,a){
 problem.value=p;
 amount.value=a;
 }
 
-// ADD
 function add(){
-
 let d={
 name:name.value,
 mobile:mobile.value,
@@ -149,16 +153,14 @@ amount:amount.value,
 status:status.value
 };
 
-if(!d.name){alert("Fill");return;}
-
 data.push(d);
 save();
 render();
+
+name.value="";mobile.value="";problem.value="";amount.value="";
 }
 
-// RENDER
 function render(){
-
 let html="";
 let total=0;
 
@@ -169,15 +171,11 @@ if(d.status=="Done") total+=Number(d.amount);
 html+=`
 <div class="card">
 <b>${d.name}</b><br>
-📞 ${d.mobile}<br>
-🔧 ${d.problem}<br>
-💰 ₹${d.amount}<br>
+${d.problem}<br>
+₹${d.amount}<br>
 
-<button class="small-btn" onclick="done(${i})">✔</button>
-<button class="small-btn" onclick="del(${i})">❌</button>
-<button class="small-btn" onclick="call('${d.mobile}')">📞</button>
-<button class="small-btn" onclick="wa('${d.mobile}','${d.amount}')">💬</button>
-<button class="small-btn" onclick="payCus(${i})">💰</button>
+<button onclick="done(${i})">Done</button>
+<button onclick="del(${i})">Delete</button>
 </div>
 `;
 });
@@ -186,34 +184,23 @@ list.innerHTML=html;
 total.innerText=total;
 }
 
-function done(i){data[i].status="Done";save();render();}
-function del(i){data.splice(i,1);save();render();}
-function call(n){window.location.href="tel:"+n;}
-
-function wa(n,a){
-window.open(`https://wa.me/91${n}?text=Amount ₹${a}`);
-}
-
-// 💸 PAY BUTTON (backup UPI)
-function pay(){
-let a=payAmt.value;
-
-window.location.href=
-`upi://pay?pa=7004470872@okaxis&pn=MJ%20Repair&am=${a}&cu=INR`;
-}
-
-// 💰 Customer Pay
-function payCus(i){
-let d=data[i];
-
-window.location.href=
-`upi://pay?pa=7004470872@okaxis&pn=MJ%20Repair&am=${d.amount}&cu=INR`;
-
-setTimeout(()=>{
+function done(i){
 data[i].status="Done";
 save();
 render();
-},3000);
+}
+
+function del(i){
+data.splice(i,1);
+save();
+render();
+}
+
+function pay(){
+let amt=payAmount.value;
+
+window.location.href=
+`upi://pay?pa=aanandsingh7755-3@okicici&pn=MJ&am=${amt}&cu=INR`;
 }
 
 render();
