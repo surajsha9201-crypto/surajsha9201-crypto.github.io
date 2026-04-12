@@ -5,113 +5,67 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Maa Jagdamba Mobile Repair</title>
 
+<!-- AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9770258289979386"
 crossorigin="anonymous"></script>
 
 <style>
-
 body{
 margin:0;
-font-family: 'Segoe UI', sans-serif;
+font-family:Segoe UI;
 background:#000;
 color:#fff;
 }
 
-/* HEADER */
 .header{
 text-align:center;
 padding:20px;
 background:linear-gradient(45deg,#00ffcc,#009977);
-border-bottom-left-radius:20px;
-border-bottom-right-radius:20px;
-box-shadow:0 0 20px #00ffcc;
+border-radius:0 0 20px 20px;
 }
 
-.header h1{margin:0;color:#000;}
-.header p{margin:5px;color:#000;font-size:13px;}
-
-/* CARD */
 .card{
 background:#111;
 margin:15px;
 padding:15px;
 border-radius:15px;
-box-shadow:0 0 10px rgba(0,255,204,0.2);
+box-shadow:0 0 10px #00ffcc33;
 }
 
-/* INPUT */
 input,select{
 width:100%;
-padding:12px;
-margin:6px 0;
+padding:10px;
+margin:5px 0;
+border-radius:8px;
 border:none;
-border-radius:10px;
 background:#222;
 color:#fff;
 }
 
-/* BUTTON */
 .btn{
-background:linear-gradient(45deg,#00ffcc,#00cc99);
-padding:12px;
-border:none;
-border-radius:10px;
-margin-top:8px;
-font-weight:bold;
-cursor:pointer;
-display:block;
-text-align:center;
-color:#000;
-text-decoration:none;
-}
-
-/* PAY BUTTON */
-.pay-btn{
-background:linear-gradient(45deg,#00ffcc,#00cc99);
-padding:14px;
-margin:8px 0;
-border-radius:12px;
-font-weight:bold;
-text-align:center;
-display:block;
-color:#000;
-box-shadow:0 0 10px #00ffcc;
-text-decoration:none;
-}
-
-/* ITEM */
-.item{
-background:#222;
-padding:10px;
-margin:5px 0;
-border-radius:10px;
-}
-
-/* FLOAT */
-.float{
-position:fixed;
-bottom:20px;
-right:20px;
 background:#00ffcc;
 color:#000;
 padding:12px;
-border-radius:50%;
-font-size:20px;
-box-shadow:0 0 10px #00ffcc;
-}
-
-/* QR */
-.qr{
-width:220px;
-border-radius:15px;
-box-shadow:0 0 15px #00ffcc;
-cursor:pointer;
+margin:6px 0;
+border:none;
+border-radius:10px;
+font-weight:bold;
+width:100%;
 }
 
 .title{
 color:#00ffcc;
 }
 
+.float{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#00ffcc;
+color:#000;
+padding:15px;
+border-radius:50%;
+}
 </style>
 </head>
 
@@ -121,12 +75,12 @@ color:#00ffcc;
 <h1>Maa Jagdamba Mobile Repair</h1>
 <p>📍 Sarath Main Chowk, Deoghar</p>
 <p>📞 7004470872 / 9102386420</p>
+<p>⭐ Trusted by 500+ Customers</p>
+<p>⚡ Fast Repair Service</p>
 </div>
 
-<!-- ENTRY -->
 <div class="card">
 <h3 class="title">Customer Entry</h3>
-
 <input id="name" placeholder="Customer Name">
 <input id="mobile" placeholder="Mobile Number">
 <input id="problem" placeholder="Problem">
@@ -141,114 +95,78 @@ color:#00ffcc;
 <button class="btn" onclick="clearAll()">Clear All</button>
 </div>
 
-<!-- DATA -->
 <div class="card">
 <h3 class="title">Saved Data</h3>
 <div id="list"></div>
 <h3>Total Earned: ₹ <span id="total">0</span></h3>
 </div>
 
+<!-- ADS -->
+<div class="card">
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-9770258289979386"
+data-ad-slot="1234567890"
+data-ad-format="auto"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
 <!-- PAYMENT -->
 <div class="card">
 <h3 class="title">💰 Payment System</h3>
 
-<center>
-<img src="qr.png" class="qr" onclick="payNow()">
-</center>
+<img src="qr.png" width="200">
 
-<p style="text-align:center;">QR पर क्लिक करें और direct payment करें</p>
+<p>UPI ID: aanandsingh7755@okhdfcbank</p>
 
-<a class="pay-btn" href="upi://pay?pa=aanandsingh7755@okhdfcbank&pn=Aanand Singh&am=100&cu=INR">Pay ₹100</a>
-<a class="pay-btn" href="upi://pay?pa=aanandsingh7755@okhdfcbank&pn=Aanand Singh&am=200&cu=INR">Pay ₹200</a>
-<a class="pay-btn" href="upi://pay?pa=aanandsingh7755@okhdfcbank&pn=Aanand Singh&am=500&cu=INR">Pay ₹500</a>
+<h4 style="color:#00ffcc;">✔ Secure Payment Options</h4>
+<p>Google Pay / PhonePe / Paytm supported</p>
+
+<a href="upi://pay?pa=aanandsingh7755@okhdfcbank&pn=Maa%20Jagdamba&am=100">
+<button class="btn">⚡ Pay ₹100</button></a>
+
+<a href="upi://pay?pa=aanandsingh7755@okhdfcbank&pn=Maa%20Jagdamba&am=200">
+<button class="btn">🔥 Pay ₹200</button></a>
+
+<a href="upi://pay?pa=aanandsingh7755@okhdfcbank&pn=Maa%20Jagdamba&am=500">
+<button class="btn">💎 Pay ₹500</button></a>
 
 </div>
 
-<!-- MOBILE KNOWLEDGE -->
+<!-- CONTENT -->
 <div class="card">
 <h3 class="title">📱 Mobile Knowledge</h3>
 
-<p>🔥 मोबाइल गरम → heavy apps</p>
-<p>🐢 hang → RAM कम</p>
-<p>🔋 battery drain → background apps</p>
-<p>⚡ charging issue → pin खराब</p>
-<p>📡 network issue → SIM problem</p>
-<p>📸 camera blur → lens dirty</p>
-<p>🔊 speaker low → dust</p>
-<p>💾 storage full → delete files</p>
-<p>🚀 slow phone → update करें</p>
-<p>🔓 unlock issue → software problem</p>
+<p>Mobile slow, battery drain, charging problem आदि common issues हैं। सही जानकारी से आप अपने फोन को safe रख सकते हैं।</p>
 
+<p>🔥 Mobile गरम क्यों होता है? → Heavy apps और background process</p>
+<p>🐢 Mobile hang क्यों होता है? → RAM कम और storage full</p>
+<p>🔋 Battery जल्दी खत्म → brightness + apps</p>
+<p>⚡ Charging issue → pin damage</p>
+<p>📡 Network issue → SIM या tower</p>
+<p>📸 Camera blur → lens dirty</p>
+
+</div>
+
+<!-- HIGH EARNING -->
 <div class="card">
-<h3 class="title">💰 High Earning Mobile + Finance Guide</h3>
+<h3 class="title">💰 High Earning Guide</h3>
 
-<h4>📱 EMI पर मोबाइल कैसे लें?</h4>
-<p>आजकल EMI पर मोबाइल लेना बहुत आसान हो गया है। Flipkart, Amazon और Bajaj Finance जैसी कंपनियां बिना डाउन पेमेंट के EMI देती हैं। इससे आप महंगा फोन भी आसानी से खरीद सकते हैं।</p>
-
-<h4>💳 Credit Card से मोबाइल खरीदने का फायदा</h4>
-<p>Credit card से खरीदने पर cashback, discount और no-cost EMI मिलता है। कई बार 10% तक discount मिल जाता है।</p>
-
-<h4>🏦 Mobile Loan कैसे लें?</h4>
-<p>अगर आपके पास पैसे नहीं हैं तो आप mobile loan ले सकते हैं। कई apps और banks instant loan देते हैं। लेकिन interest rate जरूर check करें।</p>
-
-<h4>📶 Best 5G फोन under ₹10000</h4>
-<p>कम बजट में भी अब अच्छे 5G फोन मिल जाते हैं। Redmi, Realme और Samsung के कई अच्छे options उपलब्ध हैं।</p>
-
-<h4>📉 Mobile insurance लेना जरूरी है?</h4>
-<p>अगर आपका फोन महंगा है तो insurance लेना सही रहता है। इससे damage या चोरी होने पर नुकसान कम होता है।</p>
-
-<h4>💸 Online पैसा कैसे बचाएं मोबाइल खरीदते समय?</h4>
-<p>Sale के समय खरीदें, coupon apply करें और credit card का use करें। इससे आप ₹1000–₹5000 तक बचा सकते हैं।</p>
-
-<h4>⚡ Mobile exchange offer कैसे काम करता है?</h4>
-<p>पुराना फोन देकर नया फोन सस्ता मिलता है। Exchange value phone condition पर depend करता है।</p>
-
-<h4>🔋 Battery जल्दी खराब क्यों होती है?</h4>
-<p>Fake charger और overcharging से battery जल्दी खराब हो जाती है। हमेशा original charger use करें।</p>
-
-<h4>📡 Internet slow क्यों चलता है?</h4>
-<p>Network problem, background apps और weak signal के कारण internet slow हो सकता है।</p>
-
-<h4>📲 Phone hang क्यों करता है?</h4>
-<p>Storage full, RAM कम और outdated software के कारण phone hang करता है।</p>
-
-<h4>🔒 Phone secure कैसे रखें?</h4>
-<p>Strong password, fingerprint lock और antivirus app इस्तेमाल करें।</p>
-
-<h4>💾 Storage full हो जाए तो क्या करें?</h4>
-<p>Cache clear करें, unused apps हटाएं और cloud storage का इस्तेमाल करें।</p>
-
-<h4>📸 Camera quality improve कैसे करें?</h4>
-<p>Lens साफ रखें और HDR mode का use करें।</p>
-
-<h4>🎮 Gaming phone कैसे चुनें?</h4>
-<p>Gaming के लिए ज्यादा RAM और powerful processor जरूरी होता है।</p>
-
-<h4>📊 Mobile resale value कैसे बढ़ाएं?</h4>
-<p>फोन को अच्छे condition में रखें और box, bill संभालकर रखें।</p>
-
-<h4>💡 Smart Tips</h4>
-<p>✔ हमेशा trusted website से फोन खरीदें<br>
-✔ नकली charger से बचें<br>
-✔ फोन को ज्यादा गरम न होने दें<br>
-✔ weekly restart करें</p>
+<p>📱 EMI पर mobile लेना अब आसान है</p>
+<p>💳 Credit card से cashback मिलता है</p>
+<p>🏦 Loan से phone खरीद सकते हैं</p>
+<p>📶 Best 5G phones budget में available</p>
 
 </div>
 
 <!-- SERVICES -->
 <div class="card">
 <h3 class="title">🛠️ Services</h3>
-
 <p>✔ Display Change</p>
 <p>✔ Battery Replace</p>
 <p>✔ Charging Repair</p>
 <p>✔ Software Update</p>
-<p>✔ Phone Unlock</p>
-<p>✔ Camera Repair</p>
-<p>✔ Speaker Repair</p>
-<p>✔ Network Fix</p>
-<p>✔ Water Damage</p>
-
+<p>✔ Unlock</p>
 </div>
 
 <!-- CONTACT -->
@@ -258,29 +176,25 @@ color:#00ffcc;
 <p>📞 7004470872</p>
 <p>📞 9102386420</p>
 
-<a class="btn" href="tel:7004470872">Call Now</a>
-<a class="btn" href="tel:9102386420">Call Second</a>
-<a class="btn" href="https://wa.me/917004470872">WhatsApp</a>
+<a href="tel:7004470872"><button class="btn">Call Now</button></a>
+<a href="tel:9102386420"><button class="btn">Call Second</button></a>
+<a href="https://wa.me/917004470872"><button class="btn">WhatsApp</button></a>
 
 </div>
 
+<!-- FLOAT -->
 <a href="tel:7004470872" class="float">📞</a>
 
+<!-- SCRIPT -->
 <script>
-
-function payNow(){
-window.location.href="upi://pay?pa=aanandsingh7755@okhdfcbank&pn=Aanand Singh&cu=INR";
-}
-
-/* DATA SYSTEM */
 
 function save(){
 let data={
-name:document.getElementById("name").value,
-mobile:document.getElementById("mobile").value,
-problem:document.getElementById("problem").value,
-amount:document.getElementById("amount").value,
-status:document.getElementById("status").value
+name:name.value,
+mobile:mobile.value,
+problem:problem.value,
+amount:amount.value,
+status:status.value
 };
 
 let all=JSON.parse(localStorage.getItem("data")||"[]");
@@ -296,19 +210,15 @@ let total=0;
 
 all.forEach((d,i)=>{
 total+=Number(d.amount||0);
-
-html+=`
-<div class="item">
+html+=`<div>
 <b>${d.name}</b><br>
-📞 ${d.mobile}<br>
-🔧 ${d.problem}<br>
-💰 ₹${d.amount} - ${d.status}<br>
-<button onclick="del(${i})">❌ Delete</button>
+₹${d.amount}
+<button onclick="del(${i})">❌</button>
 </div>`;
 });
 
-document.getElementById("list").innerHTML=html;
-document.getElementById("total").innerText=total;
+list.innerHTML=html;
+total.innerText=total;
 }
 
 function del(i){
@@ -328,4 +238,4 @@ show();
 </script>
 
 </body>
-  </html>
+</html>
