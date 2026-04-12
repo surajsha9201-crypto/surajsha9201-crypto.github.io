@@ -10,12 +10,7 @@
 crossorigin="anonymous"></script>
 
 <style>
-body{
-margin:0;
-font-family:Segoe UI;
-background:#000;
-color:#fff;
-}
+body{margin:0;font-family:Segoe UI;background:#000;color:#fff;}
 
 .header{
 text-align:center;
@@ -53,9 +48,12 @@ font-weight:bold;
 width:100%;
 }
 
-.title{
-color:#00ffcc;
+.btn:active{
+transform:scale(0.95);
+opacity:0.8;
 }
+
+.title{color:#00ffcc;}
 
 .float{
 position:fixed;
@@ -67,7 +65,6 @@ padding:15px;
 border-radius:50%;
 }
 
-/* EXTRA UI */
 .item{
 background:#1a1a1a;
 padding:12px;
@@ -90,10 +87,7 @@ margin:auto;
 border-radius:10px;
 }
 
-.empty{
-text-align:center;
-color:#777;
-}
+.empty{text-align:center;color:#777;}
 </style>
 </head>
 
@@ -142,8 +136,8 @@ style="display:block"
 data-ad-client="ca-pub-9770258289979386"
 data-ad-slot="1234567890"
 data-ad-format="auto"></ins>
-<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 
 <!-- PAYMENT -->
 <div class="card">
@@ -153,34 +147,31 @@ data-ad-format="auto"></ins>
 
 <p style="text-align:center;">UPI: aanandsingh7755@okhdfcbank</p>
 
-<a href="upi://pay?pa=aanandsingh7755@okhdfcbank&pn=Maa%20Jagdamba&am=100">
-<button class="btn">Pay ₹100</button></a>
-
-<a href="upi://pay?pa=aanandsingh7755@okhdfcbank&pn=Maa%20Jagdamba&am=200">
-<button class="btn">Pay ₹200</button></a>
-
-<a href="upi://pay?pa=aanandsingh7755@okhdfcbank&pn=Maa%20Jagdamba&am=500">
-<button class="btn">Pay ₹500</button></a>
+<a href="upi://pay?pa=aanandsingh7755@okhdfcbank&pn=Maa&am=100"><button class="btn">Pay ₹100</button></a>
+<a href="upi://pay?pa=aanandsingh7755@okhdfcbank&pn=Maa&am=200"><button class="btn">Pay ₹200</button></a>
+<a href="upi://pay?pa=aanandsingh7755@okhdfcbank&pn=Maa&am=500"><button class="btn">Pay ₹500</button></a>
 
 </div>
 
 <!-- CONTENT -->
 <div class="card">
 <h3 class="title">📱 Mobile Knowledge</h3>
-
 <p>🔥 Mobile गरम → heavy apps</p>
 <p>🐢 Hang → RAM कम</p>
 <p>🔋 Battery drain → apps</p>
 <p>⚡ Charging → pin issue</p>
 <p>📡 Network → SIM/tower</p>
-<p>📸 Camera → lens dirty</p>
-
-<p>📶 Net slow → signal weak</p>
-<p>🔄 App crash → update needed</p>
-<p>🧠 RAM clean → background apps</p>
-<p>🔐 Data safe → lock + backup</p>
-
 </div>
+
+<!-- EXTRA ADS -->
+<div class="card">
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-9770258289979386"
+data-ad-slot="1234567890"
+data-ad-format="auto"></ins>
+</div>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 
 <!-- SERVICES -->
 <div class="card">
@@ -190,22 +181,34 @@ data-ad-format="auto"></ins>
 <p>✔ Charging</p>
 <p>✔ Software</p>
 <p>✔ Unlock</p>
-<p>✔ Camera</p>
-<p>✔ Speaker</p>
-<p>✔ Network</p>
+</div>
+
+<!-- ABOUT -->
+<div class="card">
+<h3 class="title">ℹ️ About Us</h3>
+<p>Maa Jagdamba Mobile Repair एक trusted shop है (500+ customers)</p>
+</div>
+
+<!-- PRIVACY -->
+<div class="card">
+<h3 class="title">🔒 Privacy Policy</h3>
+<p>आपका data सुरक्षित है और third party से share नहीं किया जाता</p>
+</div>
+
+<!-- TERMS -->
+<div class="card">
+<h3 class="title">📄 Terms</h3>
+<p>Payment करने से पहले verify करें</p>
 </div>
 
 <!-- CONTACT -->
 <div class="card">
 <h3 class="title">📞 Contact</h3>
-
-<p>📞 7004470872</p>
-<p>📞 9102386420</p>
+<p>7004470872</p>
+<p>9102386420</p>
 
 <a href="tel:7004470872"><button class="btn">Call Now</button></a>
-<a href="tel:9102386420"><button class="btn">Call Second</button></a>
 <a href="https://wa.me/917004470872"><button class="btn">WhatsApp</button></a>
-
 </div>
 
 <a href="tel:7004470872" class="float">📞</a>
@@ -213,19 +216,34 @@ data-ad-format="auto"></ins>
 <script>
 
 function save(){
-let data={
-name:name.value,
-mobile:mobile.value,
-problem:problem.value,
-amount:amount.value,
-status:status.value,
-date:date.value,
-time:time.value
-};
+
+let name = document.getElementById("name").value;
+let mobile = document.getElementById("mobile").value;
+let problem = document.getElementById("problem").value;
+let amount = document.getElementById("amount").value;
+let status = document.getElementById("status").value;
+let date = document.getElementById("date").value;
+let time = document.getElementById("time").value;
+
+if(name=="" || mobile=="" || amount==""){
+alert("⚠️ Fill all required fields");
+return;
+}
+
+let data={name,mobile,problem,amount,status,date,time};
 
 let all=JSON.parse(localStorage.getItem("data")||"[]");
 all.push(data);
 localStorage.setItem("data",JSON.stringify(all));
+
+alert("✅ Saved Successfully");
+
+// clear inputs
+document.getElementById("name").value="";
+document.getElementById("mobile").value="";
+document.getElementById("problem").value="";
+document.getElementById("amount").value="";
+
 show();
 }
 
@@ -252,20 +270,24 @@ html+=`
 </div>`;
 });
 
-list.innerHTML=html;
-total.innerText=totalAmount;
+document.getElementById("list").innerHTML=html;
+document.getElementById("total").innerText=totalAmount;
 }
 
 function del(i){
+if(confirm("Delete this entry?")){
 let all=JSON.parse(localStorage.getItem("data")||"[]");
 all.splice(i,1);
 localStorage.setItem("data",JSON.stringify(all));
 show();
 }
+}
 
 function clearAll(){
+if(confirm("Clear all data?")){
 localStorage.removeItem("data");
 show();
+}
 }
 
 window.onload=function(){
@@ -278,4 +300,4 @@ show();
 </script>
 
 </body>
-  </html>
+</html>
