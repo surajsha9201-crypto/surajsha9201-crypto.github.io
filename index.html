@@ -12,23 +12,22 @@ crossorigin="anonymous"></script>
 <style>
 body{
 margin:0;
-font-family:'Segoe UI';
+font-family: 'Segoe UI', sans-serif;
 background:#000;
 color:#fff;
 }
 
-/* HEADER */
 .header{
 text-align:center;
 padding:20px;
 background:linear-gradient(45deg,#00ffcc,#009977);
 border-radius:0 0 20px 20px;
+box-shadow:0 0 20px #00ffcc;
 }
 
 .header h1{margin:0;color:#000;}
-.header p{color:#000;font-size:13px;}
+.header p{margin:5px;color:#000;font-size:13px;}
 
-/* CARD */
 .card{
 background:#111;
 margin:15px;
@@ -37,18 +36,16 @@ border-radius:15px;
 box-shadow:0 0 10px rgba(0,255,204,0.2);
 }
 
-/* INPUT */
 input,select{
 width:100%;
 padding:12px;
 margin:6px 0;
-border-radius:10px;
 border:none;
+border-radius:10px;
 background:#222;
 color:#fff;
 }
 
-/* BUTTON */
 .btn{
 background:linear-gradient(45deg,#00ffcc,#00cc99);
 padding:12px;
@@ -56,16 +53,11 @@ border:none;
 border-radius:10px;
 margin-top:8px;
 font-weight:bold;
-cursor:pointer;
 display:block;
 text-align:center;
 color:#000;
-text-decoration:none;
 }
 
-.btn:hover{transform:scale(1.03);}
-
-/* LIST */
 .item{
 background:#222;
 padding:10px;
@@ -73,22 +65,17 @@ margin:5px 0;
 border-radius:10px;
 }
 
-/* FLOAT */
+.title{color:#00ffcc;}
+
 .float{
 position:fixed;
 bottom:20px;
 right:20px;
 background:#00ffcc;
+color:#000;
 padding:12px;
 border-radius:50%;
 font-size:20px;
-color:#000;
-}
-
-/* TITLE */
-.title{
-color:#00ffcc;
-margin-bottom:10px;
 }
 </style>
 </head>
@@ -104,17 +91,14 @@ margin-bottom:10px;
 <!-- ENTRY -->
 <div class="card">
 <h3 class="title">Customer Entry</h3>
-
 <input id="name" placeholder="Customer Name">
 <input id="mobile" placeholder="Mobile Number">
 <input id="problem" placeholder="Problem">
 <input id="amount" placeholder="Amount">
-
 <select id="status">
 <option>Pending</option>
 <option>Done</option>
 </select>
-
 <button class="btn" onclick="save()">Save</button>
 <button class="btn" onclick="clearAll()">Clear All</button>
 </div>
@@ -126,68 +110,59 @@ margin-bottom:10px;
 <h3>Total Earned: ₹ <span id="total">0</span></h3>
 </div>
 
-<!-- QR -->
+<!-- PAYMENT -->
 <div class="card">
-<h3 class="title">Scan & Pay</h3>
+<h3 class="title">💰 Payment System</h3>
+
+<a href="upi://pay?pa=pkt-9931135008@okbizaxis&pn=MaaJagdambaMobileRepair&cu=INR">
 <img src="qr.png" width="200">
+</a>
+
+<p>👉 QR पर tap करो और direct payment करो</p>
+
+<a class="btn" href="upi://pay?pa=pkt-9931135008@okbizaxis&pn=MaaJagdambaMobileRepair&cu=INR">💸 Pay Now</a>
+
+<a class="btn" href="upi://pay?pa=pkt-9931135008@okbizaxis&pn=MaaJagdambaMobileRepair&am=100&cu=INR">Pay ₹100</a>
+<a class="btn" href="upi://pay?pa=pkt-9931135008@okbizaxis&pn=MaaJagdambaMobileRepair&am=200&cu=INR">Pay ₹200</a>
+<a class="btn" href="upi://pay?pa=pkt-9931135008@okbizaxis&pn=MaaJagdambaMobileRepair&am=500&cu=INR">Pay ₹500</a>
+
 </div>
 
-<!-- ADS -->
+<!-- MOBILE KNOWLEDGE -->
 <div class="card">
-<ins class="adsbygoogle"
-style="display:block"
-data-ad-client="ca-pub-9770258289979386"
-data-ad-slot="1234567890"
-data-ad-format="auto"
-data-full-width-responsive="true"></ins>
-</div>
+<h3 class="title">📱 Mobile Knowledge (25 Tips)</h3>
 
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
-<!-- MOBILE CONTENT -->
-<div class="card">
-<h3 class="title">📱 Mobile Tips & Knowledge</h3>
-
-<p>मोबाइल आज हर इंसान की जरूरत बन चुका है। लेकिन सही जानकारी न होने के कारण लोग बार-बार समस्या झेलते हैं। नीचे कुछ जरूरी जानकारी दी गई है 👇</p>
-
-<h4>🔥 मोबाइल गरम क्यों होता है?</h4>
-<p>मोबाइल ज्यादा use, heavy गेम, background apps और खराब battery के कारण गरम होता है।</p>
-
-<h4>🐢 मोबाइल हैंग क्यों होता है?</h4>
-<p>कम RAM, ज्यादा apps और storage full होने के कारण मोबाइल slow हो जाता है।</p>
-
-<h4>🔋 Battery जल्दी खत्म क्यों होती है?</h4>
-<p>Background apps और high brightness इसके कारण हैं।</p>
-
-<h4>⚡ Phone charge नहीं हो रहा?</h4>
-<p>Charging pin या cable खराब हो सकता है।</p>
-
-<h4>📡 Network नहीं आ रहा?</h4>
-<p>SIM या setting issue हो सकता है।</p>
-
-<h4>📸 Camera blur क्यों?</h4>
-<p>Lens गंदा होने से फोटो blur आती है।</p>
-
-<h4>🔊 Speaker आवाज कम?</h4>
-<p>Dust या पानी के कारण।</p>
-
-<h4>💾 Storage कैसे बढ़ाएं?</h4>
-<p>Unnecessary files delete करें।</p>
-
-<h4>🚀 Phone slow क्यों चलता है?</h4>
-<p>पुराना phone या storage full होने से।</p>
-
-<h4>🔧 Phone repair कब कराएं?</h4>
-<p>Problem आने पर तुरंत repair कराएं।</p>
+<p>🔥 मोबाइल गरम क्यों होता है? → heavy apps</p>
+<p>🐢 मोबाइल हैंग क्यों? → RAM कम</p>
+<p>🔋 बैटरी जल्दी खत्म? → background apps</p>
+<p>⚡ चार्ज नहीं? → pin खराब</p>
+<p>📡 नेटवर्क नहीं? → SIM issue</p>
+<p>📸 कैमरा blur? → lens dirty</p>
+<p>🔊 speaker कम? → dust</p>
+<p>💾 storage full? → delete files</p>
+<p>🚀 slow phone? → update</p>
+<p>🔧 repair कब? → damage</p>
+<p>📶 internet slow? → network</p>
+<p>📱 phone restart? → software issue</p>
+<p>🔒 unlock नहीं? → system error</p>
+<p>📥 apps crash? → update app</p>
+<p>📲 data खत्म? → background data</p>
+<p>🔋 battery swell? → change battery</p>
+<p>📡 wifi issue? → reset network</p>
+<p>📷 video blur? → low light</p>
+<p>🎮 game lag? → RAM issue</p>
+<p>📲 overheating? → charging issue</p>
+<p>⚙️ phone update जरूरी</p>
+<p>🔋 original charger use करें</p>
+<p>📦 cover remove करें गर्मी में</p>
+<p>📉 brightness कम रखें</p>
+<p>🔄 phone restart weekly</p>
 
 </div>
 
 <!-- SERVICES -->
 <div class="card">
-<h3 class="title">🛠️ हमारी सेवाएं</h3>
-
+<h3 class="title">🛠️ Our Services</h3>
 <p>✔ Display Change</p>
 <p>✔ Battery Replace</p>
 <p>✔ Charging Repair</p>
@@ -198,39 +173,43 @@ data-full-width-responsive="true"></ins>
 <p>✔ Network Fix</p>
 <p>✔ Data Recovery</p>
 <p>✔ Water Damage Repair</p>
-
 </div>
 
 <!-- WHY US -->
 <div class="card">
-<h3 class="title">⭐ क्यों चुने हमें?</h3>
-
-<p>✔ सस्ता और सही रेट</p>
-<p>✔ जल्दी काम</p>
-<p>✔ Genuine पार्ट्स</p>
-<p>✔ भरोसेमंद सेवा</p>
-
+<h3 class="title">⭐ Why Choose Us</h3>
+<p>✔ सस्ता रेट</p>
+<p>✔ fast service</p>
+<p>✔ trusted shop</p>
+<p>✔ genuine parts</p>
+<p>✔ expert technician</p>
 </div>
 
 <!-- CONTACT -->
 <div class="card">
-<h3 class="title">📞 Contact Us</h3>
-
-<p>📍 Sarath Main Chowk, Deoghar</p>
+<h3 class="title">📞 Contact</h3>
 <p>📞 7004470872</p>
 <p>📞 9102386420</p>
 
 <a class="btn" href="tel:7004470872">Call Now</a>
 <a class="btn" href="tel:9102386420">Call Second</a>
 <a class="btn" href="https://wa.me/917004470872">WhatsApp</a>
-
 </div>
 
-<!-- FLOAT -->
 <a href="tel:7004470872" class="float">📞</a>
 
-<script>
+<!-- ADS -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-9770258289979386"
+data-ad-slot="1234567890"
+data-ad-format="auto"></ins>
 
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<script>
 function save(){
 let data={
 name:name.value,
@@ -239,7 +218,6 @@ problem:problem.value,
 amount:amount.value,
 status:status.value
 };
-
 let all=JSON.parse(localStorage.getItem("data")||"[]");
 all.push(data);
 localStorage.setItem("data",JSON.stringify(all));
@@ -250,10 +228,8 @@ function show(){
 let all=JSON.parse(localStorage.getItem("data")||"[]");
 let html="";
 let total=0;
-
 all.forEach((d,i)=>{
 total+=Number(d.amount||0);
-
 html+=`
 <div class="item">
 <b>${d.name}</b><br>
@@ -263,9 +239,8 @@ html+=`
 <button onclick="del(${i})">❌ Delete</button>
 </div>`;
 });
-
 list.innerHTML=html;
-totalDisplay.innerText=total;
+total.innerText=total;
 }
 
 function del(i){
@@ -280,12 +255,8 @@ localStorage.removeItem("data");
 show();
 }
 
-let totalDisplay=document.getElementById("total");
-let list=document.getElementById("list");
-
 show();
-
 </script>
 
 </body>
-</html>
+  </html>
