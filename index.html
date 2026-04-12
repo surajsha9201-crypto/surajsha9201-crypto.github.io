@@ -66,6 +66,34 @@ color:#000;
 padding:15px;
 border-radius:50%;
 }
+
+/* EXTRA UI */
+.item{
+background:#1a1a1a;
+padding:12px;
+margin:8px 0;
+border-radius:10px;
+border-left:4px solid #00ffcc;
+}
+
+.deleteBtn{
+background:red;
+color:#fff;
+border:none;
+padding:5px;
+border-radius:5px;
+}
+
+.qr{
+display:block;
+margin:auto;
+border-radius:10px;
+}
+
+.empty{
+text-align:center;
+color:#777;
+}
 </style>
 </head>
 
@@ -79,12 +107,17 @@ border-radius:50%;
 <p>⚡ Fast Repair Service</p>
 </div>
 
+<!-- ENTRY -->
 <div class="card">
 <h3 class="title">Customer Entry</h3>
+
 <input id="name" placeholder="Customer Name">
 <input id="mobile" placeholder="Mobile Number">
 <input id="problem" placeholder="Problem">
 <input id="amount" placeholder="Amount">
+
+<input id="date" type="date">
+<input id="time" type="time">
 
 <select id="status">
 <option>Pending</option>
@@ -95,6 +128,7 @@ border-radius:50%;
 <button class="btn" onclick="clearAll()">Clear All</button>
 </div>
 
+<!-- DATA -->
 <div class="card">
 <h3 class="title">Saved Data</h3>
 <div id="list"></div>
@@ -115,21 +149,18 @@ data-ad-format="auto"></ins>
 <div class="card">
 <h3 class="title">💰 Payment System</h3>
 
-<img src="qr.png" width="200">
+<img src="qr.png" width="200" class="qr">
 
-<p>UPI ID: aanandsingh7755@okhdfcbank</p>
-
-<h4 style="color:#00ffcc;">✔ Secure Payment Options</h4>
-<p>Google Pay / PhonePe / Paytm supported</p>
+<p style="text-align:center;">UPI: aanandsingh7755@okhdfcbank</p>
 
 <a href="upi://pay?pa=aanandsingh7755@okhdfcbank&pn=Maa%20Jagdamba&am=100">
-<button class="btn">⚡ Pay ₹100</button></a>
+<button class="btn">Pay ₹100</button></a>
 
 <a href="upi://pay?pa=aanandsingh7755@okhdfcbank&pn=Maa%20Jagdamba&am=200">
-<button class="btn">🔥 Pay ₹200</button></a>
+<button class="btn">Pay ₹200</button></a>
 
 <a href="upi://pay?pa=aanandsingh7755@okhdfcbank&pn=Maa%20Jagdamba&am=500">
-<button class="btn">💎 Pay ₹500</button></a>
+<button class="btn">Pay ₹500</button></a>
 
 </div>
 
@@ -137,36 +168,31 @@ data-ad-format="auto"></ins>
 <div class="card">
 <h3 class="title">📱 Mobile Knowledge</h3>
 
-<p>Mobile slow, battery drain, charging problem आदि common issues हैं। सही जानकारी से आप अपने फोन को safe रख सकते हैं।</p>
+<p>🔥 Mobile गरम → heavy apps</p>
+<p>🐢 Hang → RAM कम</p>
+<p>🔋 Battery drain → apps</p>
+<p>⚡ Charging → pin issue</p>
+<p>📡 Network → SIM/tower</p>
+<p>📸 Camera → lens dirty</p>
 
-<p>🔥 Mobile गरम क्यों होता है? → Heavy apps और background process</p>
-<p>🐢 Mobile hang क्यों होता है? → RAM कम और storage full</p>
-<p>🔋 Battery जल्दी खत्म → brightness + apps</p>
-<p>⚡ Charging issue → pin damage</p>
-<p>📡 Network issue → SIM या tower</p>
-<p>📸 Camera blur → lens dirty</p>
-
-</div>
-
-<!-- HIGH EARNING -->
-<div class="card">
-<h3 class="title">💰 High Earning Guide</h3>
-
-<p>📱 EMI पर mobile लेना अब आसान है</p>
-<p>💳 Credit card से cashback मिलता है</p>
-<p>🏦 Loan से phone खरीद सकते हैं</p>
-<p>📶 Best 5G phones budget में available</p>
+<p>📶 Net slow → signal weak</p>
+<p>🔄 App crash → update needed</p>
+<p>🧠 RAM clean → background apps</p>
+<p>🔐 Data safe → lock + backup</p>
 
 </div>
 
 <!-- SERVICES -->
 <div class="card">
 <h3 class="title">🛠️ Services</h3>
-<p>✔ Display Change</p>
-<p>✔ Battery Replace</p>
-<p>✔ Charging Repair</p>
-<p>✔ Software Update</p>
+<p>✔ Display</p>
+<p>✔ Battery</p>
+<p>✔ Charging</p>
+<p>✔ Software</p>
 <p>✔ Unlock</p>
+<p>✔ Camera</p>
+<p>✔ Speaker</p>
+<p>✔ Network</p>
 </div>
 
 <!-- CONTACT -->
@@ -182,10 +208,8 @@ data-ad-format="auto"></ins>
 
 </div>
 
-<!-- FLOAT -->
 <a href="tel:7004470872" class="float">📞</a>
 
-<!-- SCRIPT -->
 <script>
 
 function save(){
@@ -194,7 +218,9 @@ name:name.value,
 mobile:mobile.value,
 problem:problem.value,
 amount:amount.value,
-status:status.value
+status:status.value,
+date:date.value,
+time:time.value
 };
 
 let all=JSON.parse(localStorage.getItem("data")||"[]");
@@ -206,19 +232,28 @@ show();
 function show(){
 let all=JSON.parse(localStorage.getItem("data")||"[]");
 let html="";
-let total=0;
+let totalAmount=0;
+
+if(all.length==0){
+html="<div class='empty'>No Data Yet</div>";
+}
 
 all.forEach((d,i)=>{
-total+=Number(d.amount||0);
-html+=`<div>
+totalAmount+=Number(d.amount||0);
+
+html+=`
+<div class="item">
 <b>${d.name}</b><br>
-₹${d.amount}
-<button onclick="del(${i})">❌</button>
+📞 ${d.mobile}<br>
+🔧 ${d.problem}<br>
+💰 ₹${d.amount} (${d.status})<br>
+📅 ${d.date} ⏰ ${d.time}<br>
+<button class="deleteBtn" onclick="del(${i})">Delete</button>
 </div>`;
 });
 
 list.innerHTML=html;
-total.innerText=total;
+total.innerText=totalAmount;
 }
 
 function del(i){
@@ -233,9 +268,14 @@ localStorage.removeItem("data");
 show();
 }
 
+window.onload=function(){
+let now=new Date();
+date.value=now.toISOString().split('T')[0];
+time.value=now.getHours()+":"+now.getMinutes();
 show();
+}
 
 </script>
 
 </body>
-</html>
+  </html>
