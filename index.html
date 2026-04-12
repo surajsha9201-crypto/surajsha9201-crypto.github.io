@@ -3,20 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Maa Jagdamba Mobile Repair | Mobile Tips & Repair</title>
+
+<title>Maa Jagdamba Mobile Repair | Deoghar</title>
+
+<meta name="description" content="Mobile Repair Shop Deoghar - Display, Battery, Charging, Software Repair और Mobile Tips.">
+<meta name="keywords" content="mobile repair deoghar, phone repair shop, battery change, display repair">
 
 <!-- AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9770258289979386"
 crossorigin="anonymous"></script>
 
 <style>
-body {margin:0;font-family:Arial;background:#000;color:#fff;text-align:center;}
-h1 {color:#00ffcc;text-shadow:0 0 10px #00ffcc;}
-.box {margin:15px;padding:15px;background:#111;border-radius:10px;}
-.btn {display:block;margin:10px;padding:12px;background:#00ffcc;color:#000;border-radius:8px;}
-input,select {width:90%;padding:10px;margin:5px;border-radius:6px;border:none;}
-h2 {color:#00ffcc;}
-p {font-size:14px;line-height:1.5;}
+body{margin:0;font-family:Arial;background:#000;color:#fff;text-align:center;}
+h1{color:#00ffcc;text-shadow:0 0 10px #00ffcc;}
+.box{margin:15px;padding:15px;background:#111;border-radius:10px;}
+input,select{width:90%;padding:10px;margin:5px;border-radius:6px;border:none;}
+.btn{background:#00ffcc;color:#000;padding:10px;margin:5px;border-radius:8px;cursor:pointer;}
+h2{color:#00ffcc;}
 </style>
 </head>
 
@@ -31,83 +34,115 @@ p {font-size:14px;line-height:1.5;}
 style="display:block"
 data-ad-client="ca-pub-9770258289979386"
 data-ad-slot="1234567890"
-data-ad-format="auto"
-data-full-width-responsive="true"></ins>
+data-ad-format="auto"></ins>
 
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 
 <div class="box">
-<h2>📱 Customer Entry</h2>
-<input placeholder="Customer Name">
-<input placeholder="Mobile Number">
-<input placeholder="Problem">
-<select>
+<h2>Customer Entry</h2>
+
+<input id="name" placeholder="Customer Name">
+<input id="mobile" placeholder="Mobile Number">
+<input id="problem" placeholder="Problem">
+<input id="amount" placeholder="Amount">
+
+<select id="status">
 <option>Pending</option>
 <option>Done</option>
 </select>
+
+<div class="btn" onclick="saveData()">Save</div>
+<div class="btn" onclick="clearData()">Clear All</div>
 </div>
 
 <div class="box">
-<h2>⚡ Quick Rate</h2>
-<div class="btn">Display</div>
-<div class="btn">Battery</div>
-<div class="btn">Charging</div>
-<div class="btn">Tempered</div>
-<div class="btn">Charger</div>
+<h2>Saved Data</h2>
+<div id="list"></div>
 </div>
 
 <div class="box">
-<h2>💰 Scan & Pay</h2>
+<h2>Total Earned</h2>
+<h3 id="total">₹0</h3>
+</div>
+
+<div class="box">
+<h2>Scan & Pay</h2>
 <img src="qr.png" width="200">
 </div>
 
-<!-- 🔥 BLOG SECTION (IMPORTANT FOR EARNING) -->
+<script>
+function saveData(){
+let data={
+name:document.getElementById("name").value,
+mobile:document.getElementById("mobile").value,
+problem:document.getElementById("problem").value,
+amount:parseInt(document.getElementById("amount").value)||0,
+status:document.getElementById("status").value
+};
 
-<div class="box">
-<h2>📖 Mobile क्यों गरम होता है?</h2>
-<p>
-मोबाइल गरम होने का मुख्य कारण ज्यादा इस्तेमाल, heavy गेम, चार्जिंग के दौरान यूज करना और बैकग्राउंड ऐप्स होते हैं।
-अगर आपका मोबाइल ज्यादा गरम होता है तो उसे ठंडी जगह रखें और unnecessary ऐप्स बंद करें।
-</p>
-</div>
+let all=JSON.parse(localStorage.getItem("data")||"[]");
+all.push(data);
+localStorage.setItem("data",JSON.stringify(all));
+showData();
+}
 
-<div class="box">
-<h2>📉 Mobile हैंग क्यों होता है?</h2>
-<p>
-मोबाइल हैंग तब होता है जब RAM कम हो या storage full हो जाए।
-ज्यादा ऐप्स install करने और cache भरने से भी मोबाइल slow हो जाता है।
-समाधान: unwanted apps delete करें और storage खाली रखें।
-</p>
-</div>
+function clearData(){
+localStorage.removeItem("data");
+showData();
+}
 
-<div class="box">
-<h2>🔋 Battery जल्दी खत्म क्यों होती है?</h2>
-<p>
-बैटरी जल्दी खत्म होने का कारण high brightness, background apps और खराब बैटरी हो सकता है।
-Battery saver mode इस्तेमाल करें और पुरानी बैटरी को बदलवा लें।
-</p>
-</div>
+function showData(){
+let all=JSON.parse(localStorage.getItem("data")||"[]");
+let html="";
+let total=0;
 
-<div class="box">
-<h2>🚀 Mobile slow क्यों चलता है?</h2>
-<p>
-Mobile slow होने का कारण cache, virus या outdated software हो सकता है।
-Regular update करें और antivirus इस्तेमाल करें।
-</p>
-</div>
+all.forEach((d,i)=>{
+total+=d.amount;
+html+=`
+<div style="background:#222;margin:5px;padding:10px;border-radius:8px;">
+<b>${d.name}</b><br>
+📞 ${d.mobile}<br>
+🔧 ${d.problem}<br>
+💰 ₹${d.amount} - ${d.status}
+</div>`;
+});
 
-<div class="box">
-<h2>🛠️ हमारी सेवाएं</h2>
-<p>
-✔ Display बदलना  
-✔ Battery बदलना  
-✔ Charging Repair  
-✔ Software Update  
-✔ Dead Phone Repair  
-</p>
-</div>
+document.getElementById("list").innerHTML=html;
+document.getElementById("total").innerText="₹"+total;
+}
+showData();
+</script>
+
+<!-- WhatsApp -->
+<a href="https://wa.me/917004470872" target="_blank"
+style="position:fixed;bottom:20px;right:20px;background:#25D366;color:white;padding:12px;border-radius:50px;">💬</a>
+
+<!-- Call -->
+<a href="tel:9102386420"
+style="position:fixed;bottom:80px;right:20px;background:#00ffcc;color:black;padding:12px;border-radius:50px;">📞</a>
+
+<!-- BLOG SECTION -->
+
+<div class="box"><h2>Mobile क्यों गरम होता है?</h2><p>Heavy use, गेम और background apps से phone गरम होता है।</p></div>
+<div class="box"><h2>Mobile hang क्यों होता है?</h2><p>RAM कम और storage full होने से phone slow होता है।</p></div>
+<div class="box"><h2>Battery जल्दी खत्म क्यों होती है?</h2><p>Brightness और apps battery drain करते हैं।</p></div>
+<div class="box"><h2>Phone slow क्यों चलता है?</h2><p>Cache और पुराना software कारण है।</p></div>
+<div class="box"><h2>Phone charge नहीं हो रहा?</h2><p>Charging pin खराब हो सकता है।</p></div>
+<div class="box"><h2>Touch काम नहीं कर रहा?</h2><p>Display damage या software issue।</p></div>
+<div class="box"><h2>Network नहीं आ रहा?</h2><p>SIM या antenna problem हो सकता है।</p></div>
+<div class="box"><h2>Speaker में आवाज कम?</h2><p>Dust या speaker खराब।</p></div>
+<div class="box"><h2>Phone restart क्यों होता है?</h2><p>Software crash या battery issue।</p></div>
+<div class="box"><h2>Storage कैसे खाली करें?</h2><p>Cache clear और unused apps हटाएं।</p></div>
+<div class="box"><h2>Phone पानी में गिर जाए तो?</h2><p>तुरंत बंद करें और सूखाएं।</p></div>
+<div class="box"><h2>Fast charging काम नहीं कर रहा?</h2><p>Cable या adapter खराब हो सकता है।</p></div>
+<div class="box"><h2>Phone heat कैसे कम करें?</h2><p>Heavy apps बंद करें।</p></div>
+<div class="box"><h2>Battery life कैसे बढ़ाएं?</h2><p>Low brightness रखें।</p></div>
+<div class="box"><h2>Phone update क्यों जरूरी?</h2><p>Security और speed के लिए।</p></div>
+<div class="box"><h2>Virus कैसे हटाएं?</h2><p>Antivirus app इस्तेमाल करें।</p></div>
+<div class="box"><h2>Phone unlock नहीं हो रहा?</h2><p>Reset करना पड़ सकता है।</p></div>
+<div class="box"><h2>Camera blur क्यों?</h2><p>Lens साफ करें।</p></div>
+<div class="box"><h2>फोन में ads क्यों आते हैं?</h2><p>Third party apps कारण हैं।</p></div>
+<div class="box"><h2>Data जल्दी खत्म क्यों होता है?</h2><p>Background apps internet use करते हैं।</p></div>
 
 </body>
-</html>
+  </html>
