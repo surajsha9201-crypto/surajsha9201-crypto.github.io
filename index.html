@@ -2,13 +2,18 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ADSENSE CODE -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9770258289979386"
+crossorigin="anonymous"></script>
+
 <title>Maa Jagdamba Mobile Repair</title>
 
 <style>
 body{
 margin:0;
 font-family:Arial;
-background:linear-gradient(135deg,#000,#001a1a);
+background:#000;
 color:white;
 }
 
@@ -19,43 +24,41 @@ margin:auto;
 }
 
 h1{
-color:#00ffd5;
+color:#00ffcc;
 text-align:center;
-text-shadow:0 0 10px #00ffd5;
+text-shadow:0 0 10px #00ffcc;
 }
 
 input, select{
 width:100%;
 padding:12px;
 margin:6px 0;
-border-radius:10px;
+border-radius:8px;
 border:none;
 background:#111;
-color:#fff;
+color:white;
 }
 
 button{
 width:100%;
 padding:12px;
 margin:6px 0;
-background:#00ffd5;
+background:#00ffcc;
 border:none;
-border-radius:12px;
+border-radius:10px;
 font-weight:bold;
+box-shadow:0 0 10px #00ffcc;
 }
 
 .card{
 background:#111;
 padding:10px;
 margin:10px 0;
-border-radius:12px;
-border-left:4px solid #00ffd5;
+border-radius:10px;
+box-shadow:0 0 10px #00ffcc;
 }
 
-h3{
-color:#00ffd5;
-}
-
+a{color:#00ffcc;}
 </style>
 </head>
 
@@ -66,111 +69,4 @@ color:#00ffd5;
 <h1>🔧 Maa Jagdamba Mobile Repair</h1>
 
 <p>
-📍 Sarath Main Chowk, Near Hanuman Temple<br>
-Deoghar, Jharkhand - 814149<br>
-📞 7004470872
-</p>
-
-<hr>
-
-<h3>🤖 AI Auto Entry</h3>
-<input id="ai" placeholder="राम 9876543210 display 1200">
-<button onclick="autoFill()">⚡ Auto Fill</button>
-
-<hr>
-
-<input id="name" placeholder="Customer Name">
-<input id="mobile" placeholder="Mobile Number">
-<input id="problem" placeholder="Problem">
-<input id="amount" placeholder="Amount">
-
-<select id="status">
-<option>Pending</option>
-<option>Done</option>
-</select>
-
-<h3>⚡ Quick Rate</h3>
-<button onclick="setRate('Display',1500)">Display</button>
-<button onclick="setRate('Battery',800)">Battery</button>
-<button onclick="setRate('Tempered',100)">Tempered</button>
-<button onclick="setRate('Charging',300)">Charging</button>
-<button onclick="setRate('Type-C Cable',100)">Type-C</button>
-<button onclick="setRate('V8 Cable',100)">V8</button>
-<button onclick="setRate('Charger',300)">Charger</button>
-
-<button onclick="add()">➕ Add Repair</button>
-
-<h3>Total Earned: ₹<span id="total">0</span></h3>
-
-<div id="list"></div>
-
-<hr>
-
-<!-- 💰 PAYMENT SECTION -->
-<h3>💰 Scan & Pay (Recommended)</h3>
-
-<img src="qr.png"
-style="width:100%;max-width:280px;display:block;margin:auto;border-radius:12px">
-
-<p style="text-align:center;color:#aaa;">
-QR scan करके payment करें (100% working)
-</p>
-
-<!-- OPTIONAL BUTTON -->
-<button onclick="openUPI()">📱 Open Payment App</button>
-
-</div>
-
-<script>
-
-let total = 0;
-
-function autoFill(){
-let t = document.getElementById("ai").value.split(" ");
-document.getElementById("name").value = t[0] || "";
-document.getElementById("mobile").value = t[1] || "";
-document.getElementById("problem").value = t[2] || "";
-document.getElementById("amount").value = t[3] || "";
-}
-
-function setRate(item,price){
-document.getElementById("problem").value = item;
-document.getElementById("amount").value = price;
-}
-
-function add(){
-let name = document.getElementById("name").value;
-let amount = document.getElementById("amount").value;
-
-if(name=="" || amount==""){
-alert("Fill details");
-return;
-}
-
-total += Number(amount);
-document.getElementById("total").innerText = total;
-
-let div = document.createElement("div");
-div.className="card";
-
-div.innerHTML = `
-<b>${name}</b><br>
-📞 ${mobile.value}<br>
-🔧 ${problem.value}<br>
-💰 ₹${amount}<br>
-Status: ${status.value}
-`;
-
-document.getElementById("list").appendChild(div);
-}
-
-// ⚡ OPTIONAL APP OPEN
-function openUPI(){
-window.location.href =
-"upi://pay?pa=aanandsingh7755-3@okicici&pn=Maa%20Jagdamba%20Mobile%20Repair&cu=INR";
-}
-
-</script>
-
-</body>
-</html>
+📍 Sarath Main Chowk, Near Han
