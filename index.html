@@ -1,148 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="hi">
 <head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maa Jagdamba Mobile Repair | Mobile Tips & Repair</title>
 
-<!-- 🔥 Google AdSense -->
+<!-- AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9770258289979386"
 crossorigin="anonymous"></script>
 
-<title>Maa Jagdamba Mobile Repair</title>
-
 <style>
-
-body{
-margin:0;
-font-family:Arial;
-background:#000;
-color:white;
-}
-
-/* Glow Heading */
-h1{
-text-align:center;
-color:#00ffcc;
-text-shadow:0 0 10px #00ffcc,0 0 20px #00ffcc;
-}
-
-/* Container */
-.container{
-padding:15px;
-max-width:500px;
-margin:auto;
-}
-
-/* Inputs */
-input,select{
-width:100%;
-padding:12px;
-margin:6px 0;
-border-radius:10px;
-border:none;
-background:#111;
-color:white;
-}
-
-/* Buttons */
-button{
-width:100%;
-padding:12px;
-margin:6px 0;
-background:#00ffcc;
-border:none;
-border-radius:12px;
-font-weight:bold;
-box-shadow:0 0 10px #00ffcc;
-}
-
-/* Cards */
-.card{
-background:#111;
-padding:12px;
-margin:10px 0;
-border-radius:12px;
-box-shadow:0 0 10px #00ffcc;
-}
-
-/* Links */
-a{
-color:#00ffcc;
-}
-
-hr{
-border:1px solid #333;
-}
-
+body {margin:0;font-family:Arial;background:#000;color:#fff;text-align:center;}
+h1 {color:#00ffcc;text-shadow:0 0 10px #00ffcc;}
+.box {margin:15px;padding:15px;background:#111;border-radius:10px;}
+.btn {display:block;margin:10px;padding:12px;background:#00ffcc;color:#000;border-radius:8px;}
+input,select {width:90%;padding:10px;margin:5px;border-radius:6px;border:none;}
+h2 {color:#00ffcc;}
+p {font-size:14px;line-height:1.5;}
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<h1>Maa Jagdamba Mobile Repair</h1>
+<p>📍 Sarath Main Chowk, Deoghar</p>
+<p>📞 7004470872 / 9102386420</p>
 
-<h1>🔧 Maa Jagdamba Mobile Repair</h1>
-
-<p>
-📍 Sarath Main Chowk, Near Hanuman Temple<br>
-Deoghar, Jharkhand - 814149<br>
-📞 7004470872
-</p>
-
-<a href="tel:7004470872">📞 Call</a> |
-<a href="https://wa.me/917004470872">💬 WhatsApp</a> |
-<a href="https://maps.google.com/?q=24.236194,86.838390">📍 Location</a>
-
-<hr>
-
-<h3>🤖 AI Auto Entry</h3>
-<input id="ai" placeholder="राम 9876543210 display 1200">
-<button onclick="autoFill()">⚡ Auto Fill</button>
-
-<hr>
-
-<input id="name" placeholder="Customer Name">
-<input id="mobile" placeholder="Mobile Number">
-<input id="problem" placeholder="Problem">
-<input id="amount" placeholder="Amount">
-
-<select id="status">
-<option>Pending</option>
-<option>Done</option>
-</select>
-
-<h3>⚡ Quick Rate</h3>
-<button onclick="setRate('Display',1500)">Display</button>
-<button onclick="setRate('Battery',800)">Battery</button>
-<button onclick="setRate('Tempered',100)">Tempered</button>
-<button onclick="setRate('Charging',300)">Charging</button>
-<button onclick="setRate('Type-C Cable',100)">Type-C</button>
-<button onclick="setRate('V8 Cable',100)">V8</button>
-<button onclick="setRate('Charger',300)">Charger</button>
-
-<h3>➕ Add Extra</h3>
-<button onclick="addExtra('Tempered',100)">+Tempered</button>
-<button onclick="addExtra('Cover',150)">+Cover</button>
-<button onclick="addExtra('Cable',100)">+Cable</button>
-
-<button onclick="add()">➕ Add Repair</button>
-
-<h3>💰 Total Earned: ₹<span id="total">0</span></h3>
-
-<div id="list"></div>
-
-<hr>
-
-<h3>💰 Scan & Pay</h3>
-
-<img src="qr.png" style="width:100%;max-width:280px;display:block;margin:auto;border-radius:12px">
-
-<input id="payAmount" placeholder="Enter Amount">
-
-<button onclick="pay()">💸 Pay via UPI</button>
-
-<hr>
-
-<!-- 🔥 AdSense Ad Box -->
+<!-- Ad -->
 <ins class="adsbygoogle"
 style="display:block"
 data-ad-client="ca-pub-9770258289979386"
@@ -154,75 +38,76 @@ data-full-width-responsive="true"></ins>
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 
+<div class="box">
+<h2>📱 Customer Entry</h2>
+<input placeholder="Customer Name">
+<input placeholder="Mobile Number">
+<input placeholder="Problem">
+<select>
+<option>Pending</option>
+<option>Done</option>
+</select>
 </div>
 
-<script>
+<div class="box">
+<h2>⚡ Quick Rate</h2>
+<div class="btn">Display</div>
+<div class="btn">Battery</div>
+<div class="btn">Charging</div>
+<div class="btn">Tempered</div>
+<div class="btn">Charger</div>
+</div>
 
-let total = 0;
+<div class="box">
+<h2>💰 Scan & Pay</h2>
+<img src="qr.png" width="200">
+</div>
 
-function autoFill(){
-let t = document.getElementById("ai").value.split(" ");
-document.getElementById("name").value = t[0] || "";
-document.getElementById("mobile").value = t[1] || "";
-document.getElementById("problem").value = t[2] || "";
-document.getElementById("amount").value = t[3] || "";
-}
+<!-- 🔥 BLOG SECTION (IMPORTANT FOR EARNING) -->
 
-function setRate(item,price){
-document.getElementById("problem").value = item;
-document.getElementById("amount").value = price;
-}
+<div class="box">
+<h2>📖 Mobile क्यों गरम होता है?</h2>
+<p>
+मोबाइल गरम होने का मुख्य कारण ज्यादा इस्तेमाल, heavy गेम, चार्जिंग के दौरान यूज करना और बैकग्राउंड ऐप्स होते हैं।
+अगर आपका मोबाइल ज्यादा गरम होता है तो उसे ठंडी जगह रखें और unnecessary ऐप्स बंद करें।
+</p>
+</div>
 
-function addExtra(item,price){
-let p = document.getElementById("problem").value;
-let a = document.getElementById("amount").value || 0;
+<div class="box">
+<h2>📉 Mobile हैंग क्यों होता है?</h2>
+<p>
+मोबाइल हैंग तब होता है जब RAM कम हो या storage full हो जाए।
+ज्यादा ऐप्स install करने और cache भरने से भी मोबाइल slow हो जाता है।
+समाधान: unwanted apps delete करें और storage खाली रखें।
+</p>
+</div>
 
-document.getElementById("problem").value = p + ", " + item;
-document.getElementById("amount").value = Number(a) + price;
-}
+<div class="box">
+<h2>🔋 Battery जल्दी खत्म क्यों होती है?</h2>
+<p>
+बैटरी जल्दी खत्म होने का कारण high brightness, background apps और खराब बैटरी हो सकता है।
+Battery saver mode इस्तेमाल करें और पुरानी बैटरी को बदलवा लें।
+</p>
+</div>
 
-function add(){
-let name = document.getElementById("name").value;
-let mobile = document.getElementById("mobile").value;
-let problem = document.getElementById("problem").value;
-let amount = document.getElementById("amount").value;
-let status = document.getElementById("status").value;
+<div class="box">
+<h2>🚀 Mobile slow क्यों चलता है?</h2>
+<p>
+Mobile slow होने का कारण cache, virus या outdated software हो सकता है।
+Regular update करें और antivirus इस्तेमाल करें।
+</p>
+</div>
 
-if(name=="" || amount==""){
-alert("Fill details");
-return;
-}
-
-total += Number(amount);
-document.getElementById("total").innerText = total;
-
-let div = document.createElement("div");
-div.className="card";
-
-div.innerHTML = `
-<b>${name}</b><br>
-📞 ${mobile}<br>
-🔧 ${problem}<br>
-💰 ₹${amount}<br>
-Status: ${status}
-`;
-
-document.getElementById("list").appendChild(div);
-}
-
-function pay(){
-let amt = document.getElementById("payAmount").value;
-
-if(amt==""){
-alert("Enter amount");
-return;
-}
-
-window.location.href =
-`upi://pay?pa=aanandsingh7755-3@okicici&pn=Maa%20Jagdamba%20Mobile%20Repair&am=${amt}&cu=INR`;
-}
-
-</script>
+<div class="box">
+<h2>🛠️ हमारी सेवाएं</h2>
+<p>
+✔ Display बदलना  
+✔ Battery बदलना  
+✔ Charging Repair  
+✔ Software Update  
+✔ Dead Phone Repair  
+</p>
+</div>
 
 </body>
 </html>
