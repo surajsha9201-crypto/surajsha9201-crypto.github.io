@@ -3,318 +3,210 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Maa Jagdamba Mobile Repair</title>
-<meta name="google-site-verification" content="eTn-bFXkekZfOJx-MSt4dybS23XETelh3Z9vqv0_KKo" />
+
+<meta name="description" content="Mobile Repair Tips - Battery, Charging, Display, Software Solutions">
+
+<!-- ✅ Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P7LG0X9R5Z"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-P7LG0X9R5Z');
+</script>
+
 <!-- AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9770258289979386"
 crossorigin="anonymous"></script>
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
 <style>
-body{margin:0;font-family:Segoe UI;background:#000;color:#fff;}
-
-.header{
-text-align:center;
-padding:20px;
-background:linear-gradient(45deg,#00ffcc,#009977);
-border-radius:0 0 20px 20px;
-}
-
-.card{
-background:#111;
-margin:15px;
-padding:15px;
-border-radius:15px;
-box-shadow:0 0 10px #00ffcc33;
-}
-
-input,select{
-width:100%;
-padding:10px;
-margin:5px 0;
-border-radius:8px;
-border:none;
-background:#222;
+body{
+margin:0;
+font-family:'Poppins',sans-serif;
+background:#0a0a0a;
 color:#fff;
 }
 
-.btn{
-background:#00ffcc;
-color:#000;
-padding:12px;
-margin:6px 0;
-border:none;
-border-radius:10px;
-font-weight:bold;
+/* Loader */
+#loader{
+position:fixed;
 width:100%;
+height:100%;
+background:black;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:999;
+}
+.loader-circle{
+width:50px;
+height:50px;
+border:5px solid #00ffff;
+border-top:5px solid transparent;
+border-radius:50%;
+animation:spin 1s linear infinite;
+}
+@keyframes spin{100%{transform:rotate(360deg);}}
+
+/* Section */
+.section{
+margin:15px;
+padding:20px;
+background:rgba(255,255,255,0.05);
+border-radius:12px;
+box-shadow:0 0 20px rgba(0,255,255,0.2);
+transition:0.3s;
+animation:fadeUp 0.6s ease;
+}
+.section:hover{transform:scale(1.03);}
+
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(20px);}
+to{opacity:1;transform:translateY(0);}
 }
 
-.btn:active{
-transform:scale(0.95);
-opacity:0.8;
+h2{color:#00ffff;}
+
+nav{
+text-align:center;
+padding:10px;
+background:#111;
+}
+nav a{
+color:#00ffff;
+margin:10px;
+text-decoration:none;
 }
 
-.title{color:#00ffcc;}
+/* Ads */
+.ads{text-align:center;margin:20px;}
 
-.float{
+/* WhatsApp Button */
+.whatsapp{
 position:fixed;
 bottom:20px;
 right:20px;
-background:#00ffcc;
-color:#000;
-padding:15px;
-border-radius:50%;
-}
-
-.item{
-background:#1a1a1a;
-padding:12px;
-margin:8px 0;
-border-radius:10px;
-border-left:4px solid #00ffcc;
-}
-
-.deleteBtn{
-background:red;
+background:#25D366;
 color:#fff;
-border:none;
-padding:5px;
-border-radius:5px;
+padding:12px 15px;
+border-radius:50px;
+text-decoration:none;
+box-shadow:0 0 10px #25D366;
 }
 
-.qr{
-display:block;
-margin:auto;
-border-radius:10px;
+/* Share */
+.share a{
+display:inline-block;
+margin:5px;
+padding:10px;
+background:#00ffff;
+color:#000;
+border-radius:8px;
+text-decoration:none;
+font-weight:bold;
 }
-
-.empty{text-align:center;color:#777;}
 </style>
 </head>
 
 <body>
 
-<div class="header">
-<h1>Maa Jagdamba Mobile Repair</h1>
-<p>📍 Sarath Main Chowk, Deoghar</p>
-<p>📞 7004470872 / 9102386420</p>
-<p>⭐ Trusted by 500+ Customers</p>
-<p>⚡ Fast Repair Service</p>
+<!-- Loader -->
+<div id="loader"><div class="loader-circle"></div></div>
+
+<!-- NAV -->
+<nav>
+<a href="#battery">Battery</a>
+<a href="#charging">Charging</a>
+<a href="#display">Display</a>
+<a href="#contact">Contact</a>
+</nav>
+
+<!-- JOIN -->
+<div class="section">
+<h2>🚀 Join & Share</h2>
+<div class="share">
+<a href="https://wa.me/?text=Check this mobile repair site https://aanand112.github.io/">WhatsApp</a>
+<a href="#">Facebook</a>
+<a href="#">Telegram</a>
+</div>
 </div>
 
-<!-- ENTRY -->
-<div class="card">
-<h3 class="title">Customer Entry</h3>
-
-<input id="name" placeholder="Customer Name">
-<input id="mobile" placeholder="Mobile Number">
-<input id="problem" placeholder="Problem">
-<input id="amount" placeholder="Amount">
-
-<input id="date" type="date">
-<input id="time" type="time">
-
-<select id="status">
-<option>Pending</option>
-<option>Done</option>
-</select>
-
-<button class="btn" onclick="save()">Save</button>
-<button class="btn" onclick="clearAll()">Clear All</button>
-</div>
-
-<!-- DATA -->
-<div class="card">
-<h3 class="title">Saved Data</h3>
-<div id="list"></div>
-<h3>Total Earned: ₹ <span id="total">0</span></h3>
-</div>
-
-<!-- ADS -->
-<div class="card">
+<!-- AD -->
+<div class="ads">
 <ins class="adsbygoogle"
 style="display:block"
 data-ad-client="ca-pub-9770258289979386"
-data-ad-slot="1234567890"
-data-ad-format="auto"></ins>
-</div>
+data-ad-slot="9452856363"
+data-ad-format="auto"
+data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-
-<!-- PAYMENT -->
-<div class="card">
-<h3 class="title">💰 Payment System</h3>
-
-<img src="qr.png" width="200" class="qr">
-
-<p style="text-align:center;">UPI: aanandsingh7755@okhdfcbank</p>
-
-<a href="upi://pay?pa=aanandsingh7755@okhdfcbank&pn=Maa&am=100"><button class="btn">Pay ₹100</button></a>
-<a href="upi://pay?pa=aanandsingh7755@okhdfcbank&pn=Maa&am=200"><button class="btn">Pay ₹200</button></a>
-<a href="upi://pay?pa=aanandsingh7755@okhdfcbank&pn=Maa&am=500"><button class="btn">Pay ₹500</button></a>
-
 </div>
-<section>
-<h2>📍 About Us</h2>
-<p>
-Maa Jagdamba Mobile Repair Sarath, Deoghar (Jharkhand) में स्थित एक trusted mobile repair shop है। 
-हम पिछले कई सालों से लोगों को fast और reliable mobile repair services दे रहे हैं।
 
-हमारे यहाँ सभी प्रकार के smartphone repair जैसे display replacement, battery change, 
-charging issue repair, software update और hardware fixing किया जाता है।
+<!-- AUTO TIPS -->
+<div class="section">
+<h2>📱 Mobile Tips</h2>
+<div id="blog"></div>
+</div>
 
-हमारा goal है कि हर customer को affordable price में best service मिले।
-हम quality parts और professional tools का use करते हैं जिससे आपका mobile safe और long lasting रहे।
-
-👉 Trusted Service  
-👉 Fast Repair  
-👉 Affordable Price  
-👉 Customer Satisfaction
-</p>
-</section>
 <!-- CONTENT -->
-<div class="card">
-<h3 class="title">📱 Mobile Knowledge</h3>
-<p>🔥 Mobile गरम → heavy apps</p>
-<p>🐢 Hang → RAM कम</p>
-<p>🔋 Battery drain → apps</p>
-<p>⚡ Charging → pin issue</p>
-<p>📡 Network → SIM/tower</p>
+<div class="section" id="battery">
+<h2>Battery Problems</h2>
+<p>Battery drain fast? Background apps बंद करें.</p>
 </div>
 
-<!-- EXTRA ADS -->
-<div class="card">
-<ins class="adsbygoogle"
-style="display:block"
-data-ad-client="ca-pub-9770258289979386"
-data-ad-slot="1234567890"
-data-ad-format="auto"></ins>
-</div>
-<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-
-<!-- SERVICES -->
-<div class="card">
-<h3 class="title">🛠️ Services</h3>
-<p>✔ Display</p>
-<p>✔ Battery</p>
-<p>✔ Charging</p>
-<p>✔ Software</p>
-<p>✔ Unlock</p>
+<div class="section" id="charging">
+<h2>Charging Issues</h2>
+<p>Charging slow? Cable change करें.</p>
 </div>
 
-<!-- ABOUT -->
-<div class="card">
-<h3 class="title">ℹ️ About Us</h3>
-<p>Maa Jagdamba Mobile Repair एक trusted shop है (500+ customers)</p>
+<div class="section" id="display">
+<h2>Display Problems</h2>
+<p>Screen damage? Replace करें.</p>
 </div>
 
-<!-- PRIVACY -->
-<div class="card">
-<h3 class="title">🔒 Privacy Policy</h3>
-<p>आपका data सुरक्षित है और third party से share नहीं किया जाता</p>
-</div>
-
-<!-- TERMS -->
-<div class="card">
-<h3 class="title">📄 Terms</h3>
-<p>Payment करने से पहले verify करें</p>
+<div class="section">
+<h2>Complete Mobile Repair Guide</h2>
+<p>Battery, charging, display और software issues के सभी solution यहाँ मिलेंगे.</p>
 </div>
 
 <!-- CONTACT -->
-<div class="card">
-<h3 class="title">📞 Contact</h3>
-<p>7004470872</p>
-<p>9102386420</p>
-
-<a href="tel:7004470872"><button class="btn">Call Now</button></a>
-<a href="https://wa.me/917004470872"><button class="btn">WhatsApp</button></a>
+<div class="section" id="contact">
+<h2>Contact</h2>
+<p>📞 9102386420 / 7004470872</p>
+<p>📍 Jharkhand, India</p>
 </div>
 
-<a href="tel:7004470872" class="float">📞</a>
+<!-- WhatsApp -->
+<a class="whatsapp" href="https://wa.me/919102386420">💬 Chat</a>
 
+<!-- SCRIPT -->
 <script>
+const tips=[
+"Battery drain? Background apps बंद करो",
+"Phone heat? Heavy apps हटाओ",
+"Charging slow? Original charger use करो",
+"Phone hang? Cache clear करो",
+"Display टूटा? Replace करो",
+"Network issue? SIM बदलो",
+"Phone slow? Storage खाली करो",
+"App crash? Update करो"
+];
 
-function save(){
-
-let name = document.getElementById("name").value;
-let mobile = document.getElementById("mobile").value;
-let problem = document.getElementById("problem").value;
-let amount = document.getElementById("amount").value;
-let status = document.getElementById("status").value;
-let date = document.getElementById("date").value;
-let time = document.getElementById("time").value;
-
-if(name=="" || mobile=="" || amount==""){
-alert("⚠️ Fill all required fields");
-return;
-}
-
-let data={name,mobile,problem,amount,status,date,time};
-
-let all=JSON.parse(localStorage.getItem("data")||"[]");
-all.push(data);
-localStorage.setItem("data",JSON.stringify(all));
-
-alert("✅ Saved Successfully");
-
-// clear inputs
-document.getElementById("name").value="";
-document.getElementById("mobile").value="";
-document.getElementById("problem").value="";
-document.getElementById("amount").value="";
-
-show();
-}
-
-function show(){
-let all=JSON.parse(localStorage.getItem("data")||"[]");
 let html="";
-let totalAmount=0;
-
-if(all.length==0){
-html="<div class='empty'>No Data Yet</div>";
+for(let i=0;i<tips.length;i++){
+html+="<p>✔ "+tips[i]+"</p>";
 }
+document.getElementById("blog").innerHTML=html;
 
-all.forEach((d,i)=>{
-totalAmount+=Number(d.amount||0);
-
-html+=`
-<div class="item">
-<b>${d.name}</b><br>
-📞 ${d.mobile}<br>
-🔧 ${d.problem}<br>
-💰 ₹${d.amount} (${d.status})<br>
-📅 ${d.date} ⏰ ${d.time}<br>
-<button class="deleteBtn" onclick="del(${i})">Delete</button>
-</div>`;
+// Loader fix
+window.addEventListener("load",function(){
+setTimeout(()=>{document.getElementById("loader").style.display="none";},1000);
 });
-
-document.getElementById("list").innerHTML=html;
-document.getElementById("total").innerText=totalAmount;
-}
-
-function del(i){
-if(confirm("Delete this entry?")){
-let all=JSON.parse(localStorage.getItem("data")||"[]");
-all.splice(i,1);
-localStorage.setItem("data",JSON.stringify(all));
-show();
-}
-}
-
-function clearAll(){
-if(confirm("Clear all data?")){
-localStorage.removeItem("data");
-show();
-}
-}
-
-window.onload=function(){
-let now=new Date();
-date.value=now.toISOString().split('T')[0];
-time.value=now.getHours()+":"+now.getMinutes();
-show();
-}
-
 </script>
 
 </body>
-</html>
+  </html>
