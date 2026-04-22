@@ -6,89 +6,99 @@
 
 <title>मा जगदंबा मोबाइल रिपेयरिंग | Sarath Deoghar</title>
 
-<meta name="description" content="मा जगदंबा मोबाइल रिपेयरिंग, सारठ देवघर झारखंड - Mobile repair, battery, display, charging solution और online earning blog">
-<meta name="keywords" content="mobile repair sarath, mobile repair deoghar, phone repair near me, crypto earning blog">
+<meta name="description" content="Sarath Deoghar में best mobile repair shop + online earning & crypto blog">
 
 <style>
 body{
   margin:0;
   font-family:Arial;
-  background:#0d0d0d;
+  background:#0a0a0a;
   color:#fff;
+  scroll-behavior:smooth;
+}
+
+/* Animations */
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:translateY(0);}
+}
+@keyframes glow{
+  0%{box-shadow:0 0 5px #00ffd5;}
+  50%{box-shadow:0 0 20px #00ffd5;}
+  100%{box-shadow:0 0 5px #00ffd5;}
+}
+@keyframes pulse{
+  0%{transform:scale(1);}
+  50%{transform:scale(1.1);}
+  100%{transform:scale(1);}
 }
 
 /* Navbar */
 .navbar{
+  position:sticky;
+  top:0;
   background:#111;
   padding:15px;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  border-bottom:1px solid #00ffd5;
+  border-bottom:2px solid #00ffd5;
 }
-.logo{
-  color:#00ffd5;
-  font-size:18px;
-  font-weight:bold;
-}
-.menu a{
-  color:#fff;
-  margin:0 10px;
-  text-decoration:none;
-}
-.menu a:hover{
-  color:#00ffd5;
-}
+.logo{color:#00ffd5;font-weight:bold;}
+.menu a{color:#fff;margin:0 10px;text-decoration:none;}
+.menu a:hover{color:#00ffd5;}
 
 /* Hero */
 .hero{
   text-align:center;
-  padding:30px 20px;
+  padding:60px 20px;
+  animation:fadeIn 1s;
 }
 .hero h1{
   color:#00ffd5;
-}
-.hero p{
-  color:#ccc;
+  font-size:28px;
 }
 
 /* Buttons */
 .btn{
-  display:inline-block;
-  padding:10px 15px;
+  padding:12px 18px;
   margin:5px;
   background:#00ffd5;
   color:#000;
-  border-radius:5px;
+  border-radius:8px;
   text-decoration:none;
   font-weight:bold;
 }
+.btn:hover{animation:pulse 0.6s;}
 
-/* Sections */
+/* Section */
 .section{
   max-width:1100px;
   margin:auto;
   padding:20px;
 }
 
-/* Cards */
+/* Grid */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
   gap:20px;
 }
+
+/* Cards */
 .card{
   background:#111;
-  padding:15px;
-  border-radius:10px;
+  padding:18px;
+  border-radius:12px;
   border:1px solid #00ffd5;
   transition:0.3s;
 }
 .card:hover{
-  transform:scale(1.05);
+  transform:translateY(-5px) scale(1.03);
+  animation:glow 1.5s infinite;
 }
 .card a{
-  color:#00ffd5;
+  color:#fff;
   text-decoration:none;
 }
 
@@ -97,12 +107,19 @@ body{
   text-align:center;
   padding:20px;
   background:#111;
-  margin-top:40px;
 }
-.footer a{
-  color:#00ffd5;
-  margin:0 10px;
+
+/* WhatsApp Floating */
+.whatsapp{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25D366;
+  color:#fff;
+  padding:14px;
+  border-radius:50%;
   text-decoration:none;
+  animation:pulse 2s infinite;
 }
 </style>
 
@@ -114,7 +131,7 @@ body{
 <div class="navbar">
   <div class="logo">📱 मा जगदंबा मोबाइल रिपेयरिंग</div>
   <div class="menu">
-    <a href="index.html">Home</a>
+    <a href="#">Home</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
     <a href="privacy.html">Privacy</a>
@@ -124,7 +141,7 @@ body{
 <!-- Hero -->
 <div class="hero">
   <h1>Mobile Repair + Online Earning Guide</h1>
-  <p>Mobile repair, crypto, earning और technology की पूरी जानकारी</p>
+  <p>सारठ, देवघर में भरोसेमंद मोबाइल रिपेयर</p>
 
   <a href="tel:9102386420" class="btn">📞 Call</a>
   <a href="https://wa.me/919102386420" class="btn">💬 WhatsApp</a>
@@ -134,7 +151,6 @@ body{
 <!-- Services -->
 <div class="section">
   <h2>🔧 हमारी Services</h2>
-
   <div class="grid">
     <div class="card">📱 Mobile Repair</div>
     <div class="card">🔋 Battery Change</div>
@@ -144,54 +160,60 @@ body{
   </div>
 </div>
 
-<!-- Blog -->
+<!-- Blogs AUTO -->
 <div class="section">
   <h2>🔥 Latest Blogs</h2>
 
   <div class="grid">
-    <div class="card"><a href="blog1.html">Bitcoin क्या है?</a></div>
-    <div class="card"><a href="blog2.html">Crypto कैसे खरीदें?</a></div>
-    <div class="card"><a href="blog3.html">Crypto Investment Tips</a></div>
-    <div class="card"><a href="blog4.html">Online Earning तरीके</a></div>
-    <div class="card"><a href="blog5.html">Affiliate Marketing</a></div>
-    <div class="card"><a href="blog6.html">YouTube से पैसे</a></div>
-    <div class="card"><a href="blog9.html">AI क्या है?</a></div>
-    <div class="card"><a href="blog18.html">Share Market Guide</a></div>
+    <script>
+      const blogs = [
+"Bitcoin क्या है?",
+"Crypto कैसे खरीदें?",
+"Crypto Investment Tips",
+"Online Earning तरीके",
+"Affiliate Marketing",
+"YouTube से पैसे",
+"Freelancing Guide",
+"Digital Marketing",
+"AI क्या है?",
+"Instagram से पैसे",
+"Passive Income",
+"Blogging Guide",
+"Mobile से पैसे",
+"Share Market Guide",
+"Blog 15","Blog 16","Blog 17","Blog 18","Blog 19",
+"Blog 20","Blog 21","Blog 22","Blog 23","Blog 24","Blog 25"
+];
+
+      for(let i=0;i<blogs.length;i++){
+        document.write(`
+          <div class="card">
+            <a href="blog${i+1}.html">${blogs[i]}</a>
+          </div>
+        `);
+      }
+    </script>
   </div>
 </div>
 
 <!-- Contact -->
 <div class="section">
   <h2>📍 Contact</h2>
-
-  <p>📞 
-    <a href="tel:9102386420" style="color:#00ffd5;">9102386420</a> / 
-    <a href="tel:7004470872" style="color:#00ffd5;">7004470872</a>
-  </p>
-
-  <p>📧 
-    <a href="mailto:aanandsingh7555@gmail.com" style="color:#00ffd5;">
-      aanandsingh7555@gmail.com
-    </a><br>
-    <a href="mailto:aanandsingh7755@gmail.com" style="color:#00ffd5;">
-      aanandsingh7755@gmail.com
-    </a>
-  </p>
-
+  <p>📞 9102386420 / 7004470872</p>
+  <p>📧 aanandsingh7555@gmail.com / aanandsingh7755@gmail.com</p>
   <p>📍 मा जगदंबा मोबाइल रिपेयरिंग, सारठ, देवघर, झारखंड - 814149</p>
 
-  <a href="https://maps.google.com/?q=Sarath+Deoghar+Jharkhand" class="btn">
-    📍 Open Map
-  </a>
+  <iframe src="https://maps.google.com/maps?q=sarath%20deoghar&t=&z=13&output=embed"
+  width="100%" height="200" style="border-radius:10px;border:0;"></iframe>
 </div>
 
 <!-- Footer -->
 <div class="footer">
   <p>© 2026 मा जगदंबा मोबाइल रिपेयरिंग</p>
-  <a href="about.html">About</a>
-  <a href="contact.html">Contact</a>
-  <a href="privacy.html">Privacy</a>
 </div>
 
+<!-- WhatsApp -->
+<a href="https://wa.me/919102386420" class="whatsapp">💬</a>
+
 </body>
-                        </html>
+</html>
