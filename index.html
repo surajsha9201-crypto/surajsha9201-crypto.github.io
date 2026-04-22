@@ -4,21 +4,27 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>मा जगदंबा मोबाइल रिपेयरिंग</title>
+<title>मा जगदंबा मोबाइल रिपेयरिंग | Sarath Deoghar</title>
 
-<!-- ✅ AdSense (तुम्हारा असली ID डाल दिया) -->
+<meta name="description" content="Sarath Deoghar में best mobile repair shop. Battery, display, charging repair + online earning, crypto और technology ब्लॉग. Anand Kumar Singh द्वारा।">
+<meta name="author" content="Anand Kumar Singh">
+
+<!-- Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<!-- AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9770258289979386"
 crossorigin="anonymous"></script>
 
 <style>
 body{
   margin:0;
-  font-family:Arial;
+  font-family:'Poppins',sans-serif;
   background:#050505;
   color:#fff;
 }
 
-/* LOADER */
+/* Loader */
 #loader{
   position:fixed;
   width:100%;
@@ -49,7 +55,7 @@ body{
   justify-content:space-between;
   border-bottom:1px solid #00ffd5;
 }
-.logo{color:#00ffd5;font-weight:bold;}
+.logo{color:#00ffd5;font-weight:700;}
 .menu a{color:#fff;margin:0 10px;text-decoration:none;}
 .menu a:hover{color:#00ffd5;}
 
@@ -58,30 +64,7 @@ body{
   text-align:center;
   padding:40px 20px;
 }
-.hero h1{
-  color:#00ffd5;
-}
-
-/* Typing */
-.typing{
-  border-right:2px solid #00ffd5;
-  padding-right:5px;
-}
-
-/* Slider */
-.slider{
-  max-width:900px;
-  margin:20px auto;
-  overflow:hidden;
-  border-radius:10px;
-}
-.slides{
-  display:flex;
-  transition:0.5s;
-}
-.slides img{
-  width:100%;
-}
+.hero h1{color:#00ffd5;}
 
 /* Buttons */
 .btn{
@@ -91,12 +74,24 @@ body{
   color:#000;
   border-radius:6px;
   text-decoration:none;
-  font-weight:bold;
-  transition:0.3s;
 }
-.btn:hover{
-  transform:scale(1.1);
-  box-shadow:0 0 10px #00ffd5;
+
+/* Slider */
+.slider{
+  max-width:900px;
+  margin:auto;
+  overflow:hidden;
+  border-radius:10px;
+}
+.slides{
+  display:flex;
+  animation:slide 12s infinite;
+}
+.slides img{width:100%;}
+@keyframes slide{
+  0%{transform:translateX(0);}
+  33%{transform:translateX(-100%);}
+  66%{transform:translateX(-200%);}
 }
 
 /* Grid */
@@ -110,14 +105,18 @@ body{
 /* Cards */
 .card{
   background:#111;
-  padding:15px;
-  border-radius:10px;
+  padding:18px;
+  border-radius:12px;
   border:1px solid #00ffd5;
   transition:0.3s;
 }
 .card:hover{
-  transform:scale(1.05);
+  transform:translateY(-5px);
   box-shadow:0 0 15px #00ffd5;
+}
+.card a{
+  color:#fff;
+  text-decoration:none;
 }
 
 /* Footer */
@@ -135,12 +134,6 @@ body{
   background:#25D366;
   padding:12px;
   border-radius:50%;
-  animation:pulse 2s infinite;
-}
-@keyframes pulse{
-  0%{transform:scale(1);}
-  50%{transform:scale(1.2);}
-  100%{transform:scale(1);}
 }
 </style>
 
@@ -148,7 +141,7 @@ body{
 
 <body>
 
-<!-- LOADER -->
+<!-- Loader -->
 <div id="loader"><div class="spinner"></div></div>
 
 <!-- Navbar -->
@@ -157,20 +150,20 @@ body{
   <div class="menu">
     <a href="#">Home</a>
     <a href="contact.html">Contact</a>
+    <a href="privacy.html">Privacy</a>
   </div>
 </div>
 
 <!-- Hero -->
 <div class="hero">
-  <h1 class="typing" id="typing"></h1>
-
+  <h1 id="typing"></h1>
   <a href="tel:9102386420" class="btn">📞 Call</a>
   <a href="https://wa.me/919102386420" class="btn">💬 WhatsApp</a>
 </div>
 
 <!-- Slider -->
 <div class="slider">
-  <div class="slides" id="slides">
+  <div class="slides">
     <img src="https://picsum.photos/900/300?1">
     <img src="https://picsum.photos/900/300?2">
     <img src="https://picsum.photos/900/300?3">
@@ -179,21 +172,51 @@ body{
 
 <!-- Ads -->
 <div style="text-align:center;margin:20px;">
-  <ins class="adsbygoogle"
+<ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-9770258289979386"
      data-ad-slot="1234567890"
      data-ad-format="auto"></ins>
-  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
 
 <!-- Blogs -->
 <div class="grid">
+
 <script>
+const titles=[
+"Bitcoin क्या है?",
+"Crypto कैसे खरीदें?",
+"Crypto Investment Tips",
+"Online Earning तरीके",
+"Affiliate Marketing Guide",
+"YouTube से पैसे कैसे कमाएं",
+"Freelancing Guide",
+"Digital Marketing क्या है",
+"AI क्या है?",
+"Instagram से पैसे",
+"Passive Income क्या है",
+"Blogging Guide",
+"Mobile से पैसे कमाएं",
+"Online Business Ideas",
+"घर बैठे पैसे कैसे कमाएं",
+"Best Apps for Earning",
+"Free में पैसे कमाने के तरीके",
+"Share Market Guide",
+"Trading कैसे सीखें",
+"Mutual Fund क्या है",
+"Battery Drain Fix",
+"Charging Problem Fix",
+"Screen Replacement Guide",
+"Water Damage Fix",
+"Mobile Hang Problem Fix"
+];
+
 for(let i=1;i<=25;i++){
-document.write(`<div class="card"><a href="blog${i}.html">Blog ${i}</a></div>`);
+document.write(`<div class="card"><a href="blog${i}.html">${titles[i-1]}</a></div>`);
 }
 </script>
+
 </div>
 
 <!-- Contact -->
@@ -203,9 +226,16 @@ document.write(`<div class="card"><a href="blog${i}.html">Blog ${i}</a></div>`);
 📍 सारठ, देवघर, झारखंड - 814149
 </div>
 
+<!-- Map -->
+<iframe src="https://maps.google.com/maps?q=sarath%20deoghar&t=&z=13&ie=UTF8&iwloc=&output=embed"
+width="100%" height="200" style="border:0;"></iframe>
+
 <!-- Footer -->
 <div class="footer">
-© 2026 मा जगदंबा मोबाइल रिपेयरिंग
+© 2026 मा जगदंबा मोबाइल रिपेयरिंग <br>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+<a href="privacy.html">Privacy</a>
 </div>
 
 <!-- WhatsApp -->
@@ -219,21 +249,14 @@ window.onload = ()=>{document.getElementById("loader").style.display="none";}
 // Typing
 let text="Mobile Repair + Online Earning Guide";
 let i=0;
-function type(){
-if(i<text.length){
-document.getElementById("typing").innerHTML+=text.charAt(i);
-i++;
-setTimeout(type,50);
-}}
-type();
-
-// Slider Auto
-let index=0;
-setInterval(()=>{
-  index++;
-  if(index>2) index=0;
-  document.getElementById("slides").style.transform="translateX(-"+index*100+"%)";
-},3000);
+function typing(){
+ if(i<text.length){
+  document.getElementById("typing").innerHTML+=text.charAt(i);
+  i++;
+  setTimeout(typing,40);
+ }
+}
+typing();
 </script>
 
 </body>
