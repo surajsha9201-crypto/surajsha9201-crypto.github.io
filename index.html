@@ -1,263 +1,556 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>मा जगदंबा मोबाइल रिपेयरिंग | Sarath Deoghar</title>
+<title>Maa Jagdamba Mobile Repairing</title>
 
-<meta name="description" content="Sarath Deoghar में best mobile repair shop. Battery, display, charging repair + online earning, crypto और technology ब्लॉग. Anand Kumar Singh द्वारा।">
-<meta name="author" content="Anand Kumar Singh">
-
-<!-- Font -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-
-<!-- AdSense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9770258289979386"
-crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
 
 <style>
-body{
-  margin:0;
-  font-family:'Poppins',sans-serif;
-  background:#050505;
-  color:#fff;
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
 }
 
-/* Loader */
-#loader{
-  position:fixed;
-  width:100%;
-  height:100%;
-  background:#000;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  z-index:9999;
+body{
+font-family:'Poppins',sans-serif;
+background:#050505;
+color:white;
+overflow-x:hidden;
 }
-.spinner{
-  border:5px solid #222;
-  border-top:5px solid #00ffd5;
-  border-radius:50%;
-  width:50px;
-  height:50px;
-  animation:spin 1s linear infinite;
+
+/* Animated Background */
+
+body::before{
+content:"";
+position:fixed;
+width:200%;
+height:200%;
+background:
+radial-gradient(circle,#00ffd5 0%,transparent 20%),
+radial-gradient(circle,#2563eb 0%,transparent 20%);
+background-size:400px 400px;
+animation:bgMove 20s linear infinite;
+opacity:0.08;
+z-index:-1;
 }
-@keyframes spin{100%{transform:rotate(360deg);}}
+
+@keyframes bgMove{
+
+0%{
+transform:translate(0,0);
+}
+
+100%{
+transform:translate(-200px,-200px);
+}
+
+}
 
 /* Navbar */
-.navbar{
-  position:sticky;
-  top:0;
-  background:#111;
-  padding:15px;
-  display:flex;
-  justify-content:space-between;
-  border-bottom:1px solid #00ffd5;
+
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 25px;
+background:#000;
+border-bottom:1px solid #00ffd5;
+position:sticky;
+top:0;
+z-index:999;
 }
-.logo{color:#00ffd5;font-weight:700;}
-.menu a{color:#fff;margin:0 10px;text-decoration:none;}
-.menu a:hover{color:#00ffd5;}
+
+.logo{
+font-size:24px;
+font-weight:700;
+color:#00ffd5;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+gap:20px;
+}
+
+nav ul li a{
+color:white;
+text-decoration:none;
+transition:0.3s;
+}
+
+nav ul li a:hover{
+color:#00ffd5;
+}
 
 /* Hero */
-.hero{
-  text-align:center;
-  padding:40px 20px;
-}
-.hero h1{color:#00ffd5;}
 
-/* Buttons */
+.hero{
+text-align:center;
+padding:90px 20px;
+}
+
+.hero h1{
+font-size:48px;
+color:#00ffd5;
+animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+
+from{
+text-shadow:0 0 10px #00ffd5;
+}
+
+to{
+text-shadow:0 0 30px #00ffd5;
+}
+
+}
+
+.hero p{
+margin-top:15px;
+font-size:18px;
+color:#ddd;
+}
+
+.btns{
+margin-top:30px;
+}
+
 .btn{
-  padding:10px 15px;
-  margin:5px;
-  background:#00ffd5;
-  color:#000;
-  border-radius:6px;
-  text-decoration:none;
+display:inline-block;
+padding:14px 24px;
+margin:8px;
+background:#00ffd5;
+color:#000;
+font-weight:600;
+border-radius:10px;
+text-decoration:none;
+transition:0.3s;
+}
+
+.btn:hover{
+transform:scale(1.08);
+box-shadow:0 0 20px #00ffd5;
 }
 
 /* Slider */
+
 .slider{
-  max-width:900px;
-  margin:auto;
-  overflow:hidden;
-  border-radius:10px;
+width:95%;
+margin:auto;
+overflow:hidden;
+border-radius:20px;
+margin-top:30px;
+border:2px solid #00ffd5;
 }
+
 .slides{
-  display:flex;
-  animation:slide 12s infinite;
+display:flex;
+width:300%;
+animation:slide 15s infinite;
 }
-.slides img{width:100%;}
+
+.slides img{
+width:100%;
+height:350px;
+object-fit:cover;
+}
+
 @keyframes slide{
-  0%{transform:translateX(0);}
-  33%{transform:translateX(-100%);}
-  66%{transform:translateX(-200%);}
+
+0%{
+transform:translateX(0%);
 }
 
-/* Grid */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
-  padding:20px;
+33%{
+transform:translateX(0%);
 }
 
-/* Cards */
+38%{
+transform:translateX(-100%);
+}
+
+66%{
+transform:translateX(-100%);
+}
+
+71%{
+transform:translateX(-200%);
+}
+
+100%{
+transform:translateX(-200%);
+}
+
+}
+
+/* Section */
+
+.section{
+padding:60px 20px;
+max-width:1200px;
+margin:auto;
+}
+
+.section-title{
+text-align:center;
+font-size:38px;
+color:#00ffd5;
+margin-bottom:40px;
+}
+
+/* Services */
+
+.services{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
 .card{
-  background:#111;
-  padding:18px;
-  border-radius:12px;
-  border:1px solid #00ffd5;
-  transition:0.3s;
+background:#111;
+padding:25px;
+border-radius:18px;
+border:1px solid #00ffd5;
+transition:0.4s;
 }
+
 .card:hover{
-  transform:translateY(-5px);
-  box-shadow:0 0 15px #00ffd5;
+transform:translateY(-10px);
+box-shadow:0 0 20px #00ffd5;
 }
-.card a{
-  color:#fff;
-  text-decoration:none;
+
+.card h3{
+margin-bottom:10px;
+color:#00ffd5;
+}
+
+/* Review Section */
+
+.review-box{
+background:#111;
+padding:25px;
+border-radius:20px;
+border:1px solid #00ffd5;
+margin-top:40px;
+}
+
+.review-box input,
+.review-box textarea{
+width:100%;
+padding:14px;
+margin-top:15px;
+border:none;
+border-radius:10px;
+background:#1b1b1b;
+color:white;
+font-size:16px;
+}
+
+.review-box button{
+margin-top:15px;
+padding:14px 22px;
+border:none;
+background:#00ffd5;
+color:black;
+font-weight:bold;
+border-radius:10px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.review-box button:hover{
+transform:scale(1.05);
+box-shadow:0 0 20px #00ffd5;
+}
+
+.review{
+background:#181818;
+padding:15px;
+margin-top:20px;
+border-radius:12px;
+border-left:4px solid #00ffd5;
+}
+
+/* Contact */
+
+.contact{
+text-align:center;
+margin-top:40px;
+}
+
+.contact p{
+margin-top:10px;
+color:#ddd;
 }
 
 /* Footer */
-.footer{
-  text-align:center;
-  padding:20px;
-  background:#111;
+
+footer{
+margin-top:50px;
+padding:25px;
+text-align:center;
+background:#000;
+border-top:1px solid #00ffd5;
 }
 
-/* WhatsApp */
-.whatsapp{
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  background:#25D366;
-  padding:12px;
-  border-radius:50%;
+/* Responsive */
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:34px;
 }
+
+.slides img{
+height:220px;
+}
+
+}
+
 </style>
 
 </head>
 
 <body>
 
-<!-- Loader -->
-<div id="loader"><div class="spinner"></div></div>
-
 <!-- Navbar -->
-<div class="navbar">
-  <div class="logo">📱 मा जगदंबा मोबाइल रिपेयरिंग</div>
-  <div class="menu">
-    <a href="#">Home</a>
-    <a href="contact.html">Contact</a>
-    <a href="privacy.html">Privacy</a>
-  </div>
+
+<nav>
+
+<div class="logo">
+📱 Maa Jagdamba
 </div>
+
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#review">Reviews</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+
+</nav>
 
 <!-- Hero -->
+
 <div class="hero">
-  <h1 id="typing"></h1>
-  <a href="tel:9102386420" class="btn">📞 Call</a>
-  <a href="https://wa.me/919102386420" class="btn">💬 WhatsApp</a>
+
+<h1>Maa Jagdamba Mobile Repairing</h1>
+
+<p>
+Battery • Charging • Display • Software • Water Damage Fix 🚀
+</p>
+
+<div class="btns">
+
+<a href="tel:9102386420" class="btn">
+📞 Call Now
+</a>
+
+<a href="https://wa.me/917004470872" class="btn">
+💬 WhatsApp
+</a>
+
 </div>
 
-<!-- Slider -->
+</div>
+
+<!-- Image Slider -->
+
 <div class="slider">
-  <div class="slides">
-    <img src="https://picsum.photos/900/300?1">
-    <img src="https://picsum.photos/900/300?2">
-    <img src="https://picsum.photos/900/300?3">
-  </div>
+
+<div class="slides">
+
+<img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9">
+
+<img src="https://images.unsplash.com/photo-1512499617640-c74ae3a79d37">
+
+<img src="https://images.unsplash.com/photo-1526738549149-8e07eca6c147">
+
 </div>
 
-<!-- Ads -->
-<div style="text-align:center;margin:20px;">
+</div>
+
+<!-- Services -->
+
+<section class="section" id="services">
+
+<h2 class="section-title">
+🔧 Our Services
+</h2>
+
+<div class="services">
+
+<div class="card">
+<h3>📱 Mobile Repair</h3>
+<p>All smartphone repairing solutions available.</p>
+</div>
+
+<div class="card">
+<h3>🔋 Battery Replacement</h3>
+<p>Original quality battery replacement service.</p>
+</div>
+
+<div class="card">
+<h3>⚡ Charging Fix</h3>
+<p>Charging jack and power issues repaired.</p>
+</div>
+
+<div class="card">
+<h3>📺 Display Change</h3>
+<p>Broken screen and touch replacement service.</p>
+</div>
+
+<div class="card">
+<h3>💾 Software Flash</h3>
+<p>Software update and flashing solutions.</p>
+</div>
+
+<div class="card">
+<h3>💧 Water Damage</h3>
+<p>Dead and water damaged phone repair service.</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- AdSense Section -->
+
+<section class="section">
+
+<h2 class="section-title">
+📢 Sponsored Ads
+</h2>
+
+<div style="background:#111;padding:20px;border-radius:15px;border:1px solid #00ffd5;text-align:center;">
+
+<script async
+src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9770258289979386"
+crossorigin="anonymous"></script>
+
 <ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-9770258289979386"
-     data-ad-slot="1234567890"
-     data-ad-format="auto"></ins>
-<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-</div>
-
-<!-- Blogs -->
-<div class="grid">
+style="display:block"
+data-ad-client="ca-pub-9770258289979386"
+data-ad-slot="1234567890"
+data-ad-format="auto"
+data-full-width-responsive="true"></ins>
 
 <script>
-const titles=[
-"Bitcoin क्या है?",
-"Crypto कैसे खरीदें?",
-"Crypto Investment Tips",
-"Online Earning तरीके",
-"Affiliate Marketing Guide",
-"YouTube से पैसे कैसे कमाएं",
-"Freelancing Guide",
-"Digital Marketing क्या है",
-"AI क्या है?",
-"Instagram से पैसे",
-"Passive Income क्या है",
-"Blogging Guide",
-"Mobile से पैसे कमाएं",
-"Online Business Ideas",
-"घर बैठे पैसे कैसे कमाएं",
-"Best Apps for Earning",
-"Free में पैसे कमाने के तरीके",
-"Share Market Guide",
-"Trading कैसे सीखें",
-"Mutual Fund क्या है",
-"Battery Drain Fix",
-"Charging Problem Fix",
-"Screen Replacement Guide",
-"Water Damage Fix",
-"Mobile Hang Problem Fix"
-];
-
-for(let i=1;i<=25;i++){
-document.write(`<div class="card"><a href="blog${i}.html">${titles[i-1]}</a></div>`);
-}
+(adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 
 </div>
 
-<!-- Contact -->
-<div style="padding:20px;">
-📞 9102386420 / 7004470872<br>
-📧 aanandsingh7555@gmail.com / aanandsingh7755@gmail.com<br>
-📍 सारठ, देवघर, झारखंड - 814149
+</section>
+
+<!-- Review Section -->
+
+<section class="section" id="review">
+
+<h2 class="section-title">
+⭐ Customer Reviews
+</h2>
+
+<div class="review-box">
+
+<input type="text" id="name" placeholder="Enter Your Name">
+
+<input type="number" id="number" placeholder="Enter Mobile Number">
+
+<textarea id="message" rows="5" placeholder="Write Your Review"></textarea>
+
+<button onclick="addReview()">
+Submit Review
+</button>
+
+<div id="reviews"></div>
+
 </div>
 
-<!-- Map -->
-<iframe src="https://maps.google.com/maps?q=sarath%20deoghar&t=&z=13&ie=UTF8&iwloc=&output=embed"
-width="100%" height="200" style="border:0;"></iframe>
+</section>
+
+<!-- Contact -->
+
+<section class="section contact" id="contact">
+
+<h2 class="section-title">
+📍 Contact Us
+</h2>
+
+<p>👨‍🔧 Owner: Aanand Singh</p>
+
+<p>📞 Mobile: 9102386420 / 7004470872</p>
+
+<p>📧 Email: aanandsingh7755@gmail.com</p>
+
+<p>📍 Sarath, Deoghar, Jharkhand - 814149</p>
+
+</section>
 
 <!-- Footer -->
-<div class="footer">
-© 2026 मा जगदंबा मोबाइल रिपेयरिंग <br>
-<a href="about.html">About</a>
-<a href="contact.html">Contact</a>
-<a href="privacy.html">Privacy</a>
-</div>
 
-<!-- WhatsApp -->
-<a href="https://wa.me/919102386420" class="whatsapp">💬</a>
+<footer>
 
-<!-- JS -->
+<p>
+© 2026 Maa Jagdamba Mobile Repairing | All Rights Reserved
+</p>
+
+</footer>
+
+<!-- Review Script -->
+
 <script>
-// Loader
-window.onload = ()=>{document.getElementById("loader").style.display="none";}
 
-// Typing
-let text="Mobile Repair + Online Earning Guide";
-let i=0;
-function typing(){
- if(i<text.length){
-  document.getElementById("typing").innerHTML+=text.charAt(i);
-  i++;
-  setTimeout(typing,40);
- }
+function addReview(){
+
+let name=document.getElementById("name").value;
+
+let number=document.getElementById("number").value;
+
+let message=document.getElementById("message").value;
+
+if(name=="" || number=="" || message==""){
+
+alert("Please fill all fields");
+
+return;
+
 }
-typing();
+
+let review=document.createElement("div");
+
+review.classList.add("review");
+
+review.innerHTML=`
+
+<h3>${name}</h3>
+
+<p>📞 ${number}</p>
+
+<p>${message}</p>
+
+`;
+
+document.getElementById("reviews").prepend(review);
+
+document.getElementById("name").value="";
+
+document.getElementById("number").value="";
+
+document.getElementById("message").value="";
+
+}
+
 </script>
 
 </body>
-</html>
+  </html>
