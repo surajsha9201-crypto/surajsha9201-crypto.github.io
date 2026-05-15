@@ -1,3 +1,9 @@
+<!-- =========================
+MAA JAGDAMBA MOBILE REPAIRING
+FINAL INDEX.HTML
+Owner: Aanand Singh
+========================= -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +12,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Maa Jagdamba Mobile Repairing</title>
+
+<meta name="description" content="Maa Jagdamba Mobile Repairing Sarath Deoghar Jharkhand. Mobile repair, charging fix, display replacement, software flashing and battery replacement service.">
+
+<meta name="keywords" content="mobile repairing, maa jagdamba mobile repairing, sarath mobile repair, deoghar mobile repair, battery repair, charging repair">
+
+<meta name="author" content="Aanand Singh">
+
+<!-- ADSENSE -->
+<script async
+src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9770258289979386"
+crossorigin="anonymous"></script>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
 
@@ -25,7 +42,7 @@ color:white;
 overflow-x:hidden;
 }
 
-/* Animated Background */
+/* BACKGROUND */
 
 body::before{
 content:"";
@@ -34,14 +51,14 @@ width:200%;
 height:200%;
 background:
 radial-gradient(circle,#00ffd5 0%,transparent 20%),
-radial-gradient(circle,#2563eb 0%,transparent 20%);
-background-size:400px 400px;
-animation:bgMove 20s linear infinite;
+radial-gradient(circle,#00aaff 0%,transparent 20%);
+background-size:350px 350px;
+animation:bgmove 18s linear infinite;
 opacity:0.08;
 z-index:-1;
 }
 
-@keyframes bgMove{
+@keyframes bgmove{
 
 0%{
 transform:translate(0,0);
@@ -53,7 +70,7 @@ transform:translate(-200px,-200px);
 
 }
 
-/* Navbar */
+/* NAVBAR */
 
 nav{
 display:flex;
@@ -68,20 +85,23 @@ z-index:999;
 }
 
 .logo{
-font-size:24px;
+font-size:25px;
 font-weight:700;
 color:#00ffd5;
+text-shadow:0 0 15px #00ffd5;
 }
 
 nav ul{
 display:flex;
 list-style:none;
-gap:20px;
+gap:18px;
+flex-wrap:wrap;
 }
 
 nav ul li a{
 color:white;
 text-decoration:none;
+font-size:15px;
 transition:0.3s;
 }
 
@@ -89,7 +109,7 @@ nav ul li a:hover{
 color:#00ffd5;
 }
 
-/* Hero */
+/* HERO */
 
 .hero{
 text-align:center;
@@ -97,7 +117,7 @@ padding:90px 20px;
 }
 
 .hero h1{
-font-size:48px;
+font-size:50px;
 color:#00ffd5;
 animation:glow 2s infinite alternate;
 }
@@ -109,47 +129,48 @@ text-shadow:0 0 10px #00ffd5;
 }
 
 to{
-text-shadow:0 0 30px #00ffd5;
+text-shadow:0 0 35px #00ffd5;
 }
 
 }
 
 .hero p{
-margin-top:15px;
-font-size:18px;
+margin-top:18px;
+font-size:19px;
 color:#ddd;
 }
 
-.btns{
-margin-top:30px;
+.buttons{
+margin-top:35px;
 }
 
 .btn{
 display:inline-block;
-padding:14px 24px;
+padding:14px 25px;
 margin:8px;
 background:#00ffd5;
 color:#000;
-font-weight:600;
-border-radius:10px;
+font-weight:700;
+border-radius:12px;
 text-decoration:none;
-transition:0.3s;
+transition:0.4s;
 }
 
 .btn:hover{
 transform:scale(1.08);
-box-shadow:0 0 20px #00ffd5;
+box-shadow:0 0 25px #00ffd5;
 }
 
-/* Slider */
+/* SLIDER */
 
 .slider{
 width:95%;
 margin:auto;
 overflow:hidden;
 border-radius:20px;
-margin-top:30px;
+margin-top:25px;
 border:2px solid #00ffd5;
+box-shadow:0 0 20px #00ffd5;
 }
 
 .slides{
@@ -170,19 +191,19 @@ object-fit:cover;
 transform:translateX(0%);
 }
 
-33%{
+30%{
 transform:translateX(0%);
 }
 
-38%{
+35%{
 transform:translateX(-100%);
 }
 
-66%{
+65%{
 transform:translateX(-100%);
 }
 
-71%{
+70%{
 transform:translateX(-200%);
 }
 
@@ -192,55 +213,81 @@ transform:translateX(-200%);
 
 }
 
-/* Section */
+/* SECTION */
 
 .section{
-padding:60px 20px;
+padding:70px 20px;
 max-width:1200px;
 margin:auto;
 }
 
-.section-title{
+.title{
 text-align:center;
 font-size:38px;
 color:#00ffd5;
 margin-bottom:40px;
+text-shadow:0 0 15px #00ffd5;
 }
 
-/* Services */
+/* SERVICES */
 
 .services{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
+gap:22px;
 }
 
 .card{
 background:#111;
 padding:25px;
-border-radius:18px;
+border-radius:20px;
 border:1px solid #00ffd5;
 transition:0.4s;
 }
 
 .card:hover{
 transform:translateY(-10px);
-box-shadow:0 0 20px #00ffd5;
+box-shadow:0 0 25px #00ffd5;
 }
 
 .card h3{
-margin-bottom:10px;
+margin-bottom:12px;
 color:#00ffd5;
 }
 
-/* Review Section */
+/* BLOG BUTTONS */
+
+.blogs{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:18px;
+}
+
+.blog-btn{
+display:block;
+background:#111;
+border:1px solid #00ffd5;
+padding:18px;
+border-radius:14px;
+text-decoration:none;
+color:white;
+font-weight:500;
+transition:0.4s;
+}
+
+.blog-btn:hover{
+background:#00ffd5;
+color:black;
+transform:scale(1.04);
+}
+
+/* REVIEW */
 
 .review-box{
 background:#111;
 padding:25px;
 border-radius:20px;
 border:1px solid #00ffd5;
-margin-top:40px;
 }
 
 .review-box input,
@@ -250,21 +297,21 @@ padding:14px;
 margin-top:15px;
 border:none;
 border-radius:10px;
-background:#1b1b1b;
+background:#1c1c1c;
 color:white;
 font-size:16px;
 }
 
 .review-box button{
-margin-top:15px;
-padding:14px 22px;
-border:none;
+margin-top:18px;
+padding:14px 24px;
 background:#00ffd5;
 color:black;
 font-weight:bold;
+border:none;
 border-radius:10px;
 cursor:pointer;
-transition:0.3s;
+transition:0.4s;
 }
 
 .review-box button:hover{
@@ -280,19 +327,37 @@ border-radius:12px;
 border-left:4px solid #00ffd5;
 }
 
-/* Contact */
+/* QR */
+
+.qr-box{
+background:#111;
+padding:25px;
+border-radius:20px;
+border:1px solid #00ffd5;
+text-align:center;
+}
+
+.qr-box img{
+width:260px;
+max-width:90%;
+border-radius:18px;
+border:3px solid #00ffd5;
+box-shadow:0 0 20px #00ffd5;
+}
+
+/* CONTACT */
 
 .contact{
 text-align:center;
-margin-top:40px;
 }
 
 .contact p{
-margin-top:10px;
+margin-top:12px;
+font-size:17px;
 color:#ddd;
 }
 
-/* Footer */
+/* FOOTER */
 
 footer{
 margin-top:50px;
@@ -302,16 +367,42 @@ background:#000;
 border-top:1px solid #00ffd5;
 }
 
-/* Responsive */
+/* WHATSAPP FLOAT */
+
+.whatsapp{
+position:fixed;
+right:20px;
+bottom:20px;
+background:#00ffd5;
+width:60px;
+height:60px;
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:30px;
+text-decoration:none;
+color:black;
+font-weight:bold;
+box-shadow:0 0 20px #00ffd5;
+z-index:999;
+}
+
+/* MOBILE */
 
 @media(max-width:768px){
 
 .hero h1{
-font-size:34px;
+font-size:35px;
 }
 
 .slides img{
 height:220px;
+}
+
+nav{
+flex-direction:column;
+gap:15px;
 }
 
 }
@@ -322,7 +413,7 @@ height:220px;
 
 <body>
 
-<!-- Navbar -->
+<!-- NAVBAR -->
 
 <nav>
 
@@ -331,17 +422,28 @@ height:220px;
 </div>
 
 <ul>
+
 <li><a href="#">Home</a></li>
+
 <li><a href="#services">Services</a></li>
+
+<li><a href="#blogs">Blogs</a></li>
+
 <li><a href="#review">Reviews</a></li>
+
+<li><a href="about.html">About</a></li>
+
+<li><a href="privacy.html">Privacy</a></li>
+
 <li><a href="#contact">Contact</a></li>
+
 </ul>
 
 </nav>
 
-<!-- Hero -->
+<!-- HERO -->
 
-<div class="hero">
+<section class="hero">
 
 <h1>Maa Jagdamba Mobile Repairing</h1>
 
@@ -349,7 +451,7 @@ height:220px;
 Battery • Charging • Display • Software • Water Damage Fix 🚀
 </p>
 
-<div class="btns">
+<div class="buttons">
 
 <a href="tel:9102386420" class="btn">
 📞 Call Now
@@ -361,9 +463,9 @@ Battery • Charging • Display • Software • Water Damage Fix 🚀
 
 </div>
 
-</div>
+</section>
 
-<!-- Image Slider -->
+<!-- IMAGE SLIDER -->
 
 <div class="slider">
 
@@ -379,11 +481,11 @@ Battery • Charging • Display • Software • Water Damage Fix 🚀
 
 </div>
 
-<!-- Services -->
+<!-- SERVICES -->
 
 <section class="section" id="services">
 
-<h2 class="section-title">
+<h2 class="title">
 🔧 Our Services
 </h2>
 
@@ -423,19 +525,21 @@ Battery • Charging • Display • Software • Water Damage Fix 🚀
 
 </section>
 
-<!-- AdSense Section -->
+<!-- ADSENSE -->
 
 <section class="section">
 
-<h2 class="section-title">
+<h2 class="title">
 📢 Sponsored Ads
 </h2>
 
-<div style="background:#111;padding:20px;border-radius:15px;border:1px solid #00ffd5;text-align:center;">
-
-<script async
-src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9770258289979386"
-crossorigin="anonymous"></script>
+<div style="
+background:#111;
+padding:20px;
+border-radius:20px;
+border:1px solid #00ffd5;
+min-height:250px;
+">
 
 <ins class="adsbygoogle"
 style="display:block"
@@ -452,11 +556,43 @@ data-full-width-responsive="true"></ins>
 
 </section>
 
-<!-- Review Section -->
+<!-- BLOGS -->
+
+<section class="section" id="blogs">
+
+<h2 class="title">
+📝 Latest Blogs
+</h2>
+
+<div class="blogs">
+
+<a href="blog1.html" class="blog-btn">💰 Crypto क्या है?</a>
+
+<a href="blog2.html" class="blog-btn">📈 Share Market Guide</a>
+
+<a href="blog3.html" class="blog-btn">🎥 YouTube से पैसे कैसे कमाएं</a>
+
+<a href="blog4.html" class="blog-btn">📱 Battery Drain Fix</a>
+
+<a href="blog5.html" class="blog-btn">⚡ Charging Problem Solution</a>
+
+<a href="blog6.html" class="blog-btn">💻 Online Earning Guide</a>
+
+<a href="blog7.html" class="blog-btn">🤖 AI क्या है?</a>
+
+<a href="blog8.html" class="blog-btn">📸 Instagram से पैसे</a>
+
+<a href="blog9.html" class="blog-btn">🌐 Blogging Guide</a>
+
+</div>
+
+</section>
+
+<!-- REVIEWS -->
 
 <section class="section" id="review">
 
-<h2 class="section-title">
+<h2 class="title">
 ⭐ Customer Reviews
 </h2>
 
@@ -478,25 +614,45 @@ Submit Review
 
 </section>
 
-<!-- Contact -->
+<!-- QR -->
+
+<section class="section">
+
+<h2 class="title">
+💳 Scan & Pay
+</h2>
+
+<div class="qr-box">
+
+<img src="qr.png" alt="QR Code">
+
+<p style="margin-top:20px;color:#ccc;">
+Scan QR using PhonePe, Paytm, Google Pay or any UPI app.
+</p>
+
+</div>
+
+</section>
+
+<!-- CONTACT -->
 
 <section class="section contact" id="contact">
 
-<h2 class="section-title">
+<h2 class="title">
 📍 Contact Us
 </h2>
 
 <p>👨‍🔧 Owner: Aanand Singh</p>
 
-<p>📞 Mobile: 9102386420 / 7004470872</p>
+<p>📞 9102386420 / 7004470872</p>
 
-<p>📧 Email: aanandsingh7755@gmail.com</p>
+<p>📧 aanandsingh7755@gmail.com</p>
 
 <p>📍 Sarath, Deoghar, Jharkhand - 814149</p>
 
 </section>
 
-<!-- Footer -->
+<!-- FOOTER -->
 
 <footer>
 
@@ -506,7 +662,13 @@ Submit Review
 
 </footer>
 
-<!-- Review Script -->
+<!-- FLOATING WHATSAPP -->
+
+<a href="https://wa.me/917004470872" class="whatsapp">
+💬
+</a>
+
+<!-- REVIEW SCRIPT -->
 
 <script>
 
