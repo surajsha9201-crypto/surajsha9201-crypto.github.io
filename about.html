@@ -1,52 +1,371 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>About Us | Maa Jagdamba Mobile Repairing</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Poppins',sans-serif;
+background:#0a0a0a;
+color:#fff;
+line-height:1.8;
+overflow-x:hidden;
+}
+
+/* Background Animation */
+
+body::before{
+content:"";
+position:fixed;
+width:200%;
+height:200%;
+background:linear-gradient(45deg,#00ffd5,#2563eb,#00ffd5);
+animation:bgMove 12s linear infinite;
+opacity:0.08;
+z-index:-1;
+}
+
+@keyframes bgMove{
+0%{
+transform:translate(-20%,-20%) rotate(0deg);
+}
+100%{
+transform:translate(-20%,-20%) rotate(360deg);
+}
+}
+
+/* Hero Section */
+
+.hero{
+text-align:center;
+padding:80px 20px;
+background:linear-gradient(to bottom,#050505,#111);
+animation:fadeIn 1.5s ease;
+}
+
+.hero h1{
+font-size:42px;
+color:#00ffd5;
+margin-bottom:10px;
+animation:slideDown 1.5s ease;
+}
+
+.hero p{
+font-size:18px;
+color:#ccc;
+}
+
+/* Container */
+
+.container{
+max-width:1100px;
+margin:auto;
+padding:30px 20px;
+}
+
+/* Box Design */
+
+.box{
+background:#111;
+padding:25px;
+margin-bottom:25px;
+border-radius:18px;
+border:1px solid #00ffd5;
+transition:0.4s;
+animation:fadeUp 1s ease;
+}
+
+.box:hover{
+transform:translateY(-8px) scale(1.02);
+box-shadow:0 0 20px #00ffd5;
+}
+
+.box h2{
+color:#00ffd5;
+margin-bottom:15px;
+font-size:28px;
+}
+
+.box p{
+color:#ddd;
+margin-bottom:10px;
+}
+
+ul{
+padding-left:20px;
+}
+
+li{
+margin-bottom:12px;
+color:#ddd;
+}
+
+/* Highlight */
+
+.highlight{
+color:#00ffd5;
+font-weight:700;
+}
+
+/* Buttons */
+
+.btns{
+margin-top:20px;
+}
+
+.btn{
+display:inline-block;
+padding:12px 18px;
+margin:5px;
+background:#00ffd5;
+color:#000;
+font-weight:600;
+border-radius:8px;
+text-decoration:none;
+transition:0.3s;
+}
+
+.btn:hover{
+transform:scale(1.08);
+box-shadow:0 0 15px #00ffd5;
+}
+
+/* Footer */
+
+.footer{
+background:#000;
+text-align:center;
+padding:25px;
+margin-top:40px;
+border-top:1px solid #00ffd5;
+}
+
+.footer p{
+color:#aaa;
+}
+
+/* Animations */
+
+@keyframes fadeIn{
+from{
+opacity:0;
+}
+to{
+opacity:1;
+}
+}
+
+@keyframes slideDown{
+from{
+transform:translateY(-40px);
+opacity:0;
+}
+to{
+transform:translateY(0);
+opacity:1;
+}
+}
+
+@keyframes fadeUp{
+from{
+transform:translateY(40px);
+opacity:0;
+}
+to{
+transform:translateY(0);
+opacity:1;
+}
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:30px;
+}
+
+.box h2{
+font-size:24px;
+}
+
+}
+
+</style>
 </head>
 
 <body>
 
-<h1>About Us</h1>
+<!-- Hero -->
+
+<div class="hero">
+
+<h1>📱 Maa Jagdamba Mobile Repairing</h1>
 
 <p>
-हमारी वेबसाइट का उद्देश्य लोगों को crypto, online earning और technology के बारे में आसान भाषा में सही जानकारी देना है।
+Trusted Mobile Repair Service in Main chok nearby hanuman mandir Sarath, Deoghar Jharkhand pincode 814149🚀
 </p>
 
-<h2>हम क्या करते हैं?</h2>
+<div class="btns">
+
+<a href="tel:9102386420" class="btn">
+📞 Call Now
+</a>
+
+<a href="https://wa.me/919102386420" class="btn">
+💬 WhatsApp
+</a>
+
+</div>
+
+</div>
+
+<!-- Main Container -->
+
+<div class="container">
+
+<div class="box">
+
+<h2>About Us</h2>
+
 <p>
-हम beginners के लिए step-by-step guides, tips और real जानकारी provide करते हैं ताकि कोई भी व्यक्ति online earning शुरू कर सके।
+Welcome to 
+<span class="highlight">Maa Jagdamba Mobile Repairing</span>.
 </p>
 
-<h2>हमारी खासियत</h2>
+<p>
+हमारी दुकान में सभी प्रकार के smartphone repair services उपलब्ध हैं।
+यहाँ battery replacement, charging repair,
+display replacement, software update,
+water damage repair और motherboard solution जैसी services दी जाती हैं।
+</p>
+
+<p>
+हमारा उद्देश्य customers को fast, trusted और affordable service देना है।
+</p>
+
+</div>
+
+<div class="box">
+
+<h2>🔧 Our Services</h2>
+
 <ul>
-<li>Simple हिंदी में जानकारी</li>
-<li>Beginner-friendly content</li>
-<li>Real और practical knowledge</li>
-<li>Regular updates</li>
+
+<li>📱 Mobile Repairing</li>
+
+<li>🔋 Battery Replacement</li>
+
+<li>⚡ Charging Problem Solution</li>
+
+<li>📺 Display Replacement</li>
+
+<li>💾 Software Flashing & Update</li>
+
+<li>💧 Water Damage Repair</li>
+
+<li>🎤 Speaker & Mic Repair</li>
+
+<li>📶 Network Problem Fix</li>
+
 </ul>
 
-<h2>हमारा लक्ष्य</h2>
+</div>
+
+<div class="box">
+
+<h2>⭐ Why Choose Us?</h2>
+
+<ul>
+
+<li>✔ Fast Same Day Repair</li>
+
+<li>✔ Affordable Pricing</li>
+
+<li>✔ Trusted Service</li>
+
+<li>✔ Customer Satisfaction</li>
+
+<li>✔ Professional Mobile Solutions</li>
+
+</ul>
+
+</div>
+
+<div class="box">
+
+<h2>🎯 Our Mission</h2>
+
 <p>
-हमारा goal है कि ज्यादा से ज्यादा लोगों को digital दुनिया में आगे बढ़ने में मदद करें और उन्हें online earning के सही तरीके सिखाएं।
+हमारा mission है कि लोगों को अच्छी,
+भरोसेमंद और professional mobile repairing service मिले।
 </p>
 
-<h2>Author</h2>
 <p>
-इस वेबसाइट को <b>Aanand Singh</b> द्वारा बनाया गया है।
+हम quality service और customer trust को सबसे ज्यादा महत्व देते हैं।
 </p>
 
-<h2>Disclaimer</h2>
+</div>
+
+<div class="box">
+
+<h2>👨‍🔧 Owner Information</h2>
+
 <p>
-इस वेबसाइट पर दी गई जानकारी केवल educational purpose के लिए है। किसी भी financial decision लेने से पहले अपनी research जरूर करें।
+This shop is managed by 
+<span class="highlight">Aanand Singh</span>.
 </p>
 
-<h2>Contact</h2>
 <p>
-अगर आप हमसे संपर्क करना चाहते हैं, तो आप हमें email कर सकते हैं: <br>
-<b>aanandsingh7555@gmail.com</b>
+Experienced in mobile repairing,
+software fixing and customer support.
 </p>
+
+</div>
+
+<div class="box">
+
+<h2>📍 Contact Information</h2>
+
+<p>
+📞 Mobile: 7004470872
+</p>
+
+<p>
+📧 Email:
+aanandsingh7755@gmail.com
+</p>
+
+<p>
+📍 Location:
+Sarath, Deoghar, Jharkhand - 814149
+</p>
+
+</div>
+
+</div>
+
+<!-- Footer -->
+
+<div class="footer">
+
+<p>
+© 2024 Maa Jagdamba Mobile Repairing | All Rights Reserved
+</p>
+
+</div>
 
 </body>
-</html>
+  </html>
