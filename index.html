@@ -1,496 +1,318 @@
-<!-- =========================
-MAA JAGDAMBA MOBILE REPAIRING
-FINAL INDEX.HTML
-Owner: Aanand Singh
-========================= -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Maa Jagdamba Mobile Repairing</title>
+<meta name="description" content="Maa Jagdamba Mobile Repairing Sarath Deoghar Jharkhand. Mobile repair, charging fix, display change, software flash and online earning blogs.">
 
-<meta name="description" content="Maa Jagdamba Mobile Repairing Sarath Deoghar Jharkhand. Mobile repair, charging fix, display replacement, software flashing and battery replacement service.">
-
-<meta name="keywords" content="mobile repairing, maa jagdamba mobile repairing, sarath mobile repair, deoghar mobile repair, battery repair, charging repair">
-
-<meta name="author" content="Aanand Singh">
-
-<!-- ADSENSE -->
-<script async
-src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9770258289979386"
-crossorigin="anonymous"></script>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9770258289979386"
+ crossorigin="anonymous"></script>
 
 <style>
-
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-scroll-behavior:smooth;
+font-family:Arial,sans-serif;
 }
 
 body{
-font-family:'Poppins',sans-serif;
-background:#050505;
-color:white;
+background:#000;
+color:#fff;
 overflow-x:hidden;
 }
 
-/* BACKGROUND */
-
 body::before{
-content:"";
+content:'';
 position:fixed;
-width:200%;
-height:200%;
-background:
-radial-gradient(circle,#00ffd5 0%,transparent 20%),
-radial-gradient(circle,#00aaff 0%,transparent 20%);
-background-size:350px 350px;
-animation:bgmove 18s linear infinite;
-opacity:0.08;
+width:100%;
+height:100%;
+background-image:radial-gradient(#00ffe1 1px, transparent 1px);
+background-size:80px 80px;
+opacity:0.15;
+animation:bgmove 15s linear infinite;
 z-index:-1;
 }
 
 @keyframes bgmove{
-
-0%{
-transform:translate(0,0);
+0%{transform:translateY(0px);}
+100%{transform:translateY(-80px);}
 }
 
-100%{
-transform:translate(-200px,-200px);
-}
-
-}
-
-/* NAVBAR */
-
-nav{
+header{
+position:sticky;
+top:0;
+background:#050505;
+padding:15px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:18px 25px;
-background:#000;
-border-bottom:1px solid #00ffd5;
-position:sticky;
-top:0;
+border-bottom:1px solid #00ffe1;
 z-index:999;
 }
 
 .logo{
-font-size:25px;
-font-weight:700;
-color:#00ffd5;
-text-shadow:0 0 15px #00ffd5;
+font-size:26px;
+font-weight:bold;
+color:#00ffe1;
+text-shadow:0 0 15px #00ffe1;
 }
 
-nav ul{
-display:flex;
-list-style:none;
-gap:18px;
-flex-wrap:wrap;
-}
-
-nav ul li a{
+nav a{
 color:white;
 text-decoration:none;
-font-size:15px;
-transition:0.3s;
+margin:0 10px;
+font-size:14px;
 }
-
-nav ul li a:hover{
-color:#00ffd5;
-}
-
-/* HERO */
 
 .hero{
 text-align:center;
-padding:90px 20px;
+padding:60px 20px;
 }
 
 .hero h1{
-font-size:50px;
-color:#00ffd5;
+font-size:48px;
+color:#00ffe1;
+text-shadow:0 0 20px #00ffe1;
 animation:glow 2s infinite alternate;
 }
 
 @keyframes glow{
-
-from{
-text-shadow:0 0 10px #00ffd5;
-}
-
-to{
-text-shadow:0 0 35px #00ffd5;
-}
-
+from{text-shadow:0 0 10px #00ffe1;}
+to{text-shadow:0 0 30px #00ffe1;}
 }
 
 .hero p{
-margin-top:18px;
-font-size:19px;
+margin-top:15px;
+font-size:18px;
 color:#ddd;
 }
 
-.buttons{
-margin-top:35px;
+.btns{
+margin-top:25px;
 }
 
 .btn{
 display:inline-block;
-padding:14px 25px;
-margin:8px;
-background:#00ffd5;
+padding:12px 25px;
+margin:10px;
+background:#00ffe1;
 color:#000;
-font-weight:700;
-border-radius:12px;
 text-decoration:none;
-transition:0.4s;
+border-radius:10px;
+font-weight:bold;
+transition:0.3s;
 }
 
 .btn:hover{
 transform:scale(1.08);
-box-shadow:0 0 25px #00ffd5;
+box-shadow:0 0 15px #00ffe1;
 }
 
-/* SLIDER */
-
-.slider{
+.banner{
 width:95%;
 margin:auto;
-overflow:hidden;
+margin-top:30px;
+border:2px solid #00ffe1;
 border-radius:20px;
-margin-top:25px;
-border:2px solid #00ffd5;
-box-shadow:0 0 20px #00ffd5;
+overflow:hidden;
+box-shadow:0 0 20px #00ffe1;
 }
 
-.slides{
-display:flex;
-width:300%;
-animation:slide 15s infinite;
-}
-
-.slides img{
+.banner img{
 width:100%;
-height:350px;
-object-fit:cover;
+display:block;
 }
 
-@keyframes slide{
-
-0%{
-transform:translateX(0%);
-}
-
-30%{
-transform:translateX(0%);
-}
-
-35%{
-transform:translateX(-100%);
-}
-
-65%{
-transform:translateX(-100%);
-}
-
-70%{
-transform:translateX(-200%);
-}
-
-100%{
-transform:translateX(-200%);
-}
-
-}
-
-/* SECTION */
-
-.section{
-padding:70px 20px;
-max-width:1200px;
-margin:auto;
-}
-
-.title{
+.section-title{
 text-align:center;
 font-size:38px;
-color:#00ffd5;
-margin-bottom:40px;
-text-shadow:0 0 15px #00ffd5;
+margin:70px 0 30px;
+color:#00ffe1;
+text-shadow:0 0 15px #00ffe1;
 }
 
-/* SERVICES */
-
-.services{
+.grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:22px;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:20px;
+width:95%;
+margin:auto;
 }
 
 .card{
-background:#111;
+background:#0b0b0b;
 padding:25px;
-border-radius:20px;
-border:1px solid #00ffd5;
-transition:0.4s;
+border:1px solid #00ffe1;
+border-radius:15px;
+transition:0.3s;
+box-shadow:0 0 10px rgba(0,255,225,0.3);
 }
 
 .card:hover{
-transform:translateY(-10px);
-box-shadow:0 0 25px #00ffd5;
+transform:translateY(-8px);
+box-shadow:0 0 25px #00ffe1;
 }
 
 .card h3{
-margin-bottom:12px;
-color:#00ffd5;
+color:#00ffe1;
+margin-bottom:10px;
 }
 
-/* BLOG BUTTONS */
+.ads-box{
+width:95%;
+margin:auto;
+margin-top:20px;
+padding:20px;
+border:1px solid #00ffe1;
+border-radius:20px;
+min-height:250px;
+}
 
 .blogs{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:18px;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:15px;
+width:95%;
+margin:auto;
 }
 
 .blog-btn{
 display:block;
-background:#111;
-border:1px solid #00ffd5;
 padding:18px;
-border-radius:14px;
+background:#0d0d0d;
+color:#fff;
 text-decoration:none;
-color:white;
-font-weight:500;
-transition:0.4s;
+border:1px solid #00ffe1;
+border-radius:12px;
+transition:0.3s;
 }
 
 .blog-btn:hover{
-background:#00ffd5;
-color:black;
-transform:scale(1.04);
+background:#00ffe1;
+color:#000;
+transform:scale(1.05);
 }
-
-/* REVIEW */
 
 .review-box{
-background:#111;
+width:95%;
+margin:auto;
 padding:25px;
+border:1px solid #00ffe1;
 border-radius:20px;
-border:1px solid #00ffd5;
 }
 
-.review-box input,
-.review-box textarea{
+input,textarea{
 width:100%;
-padding:14px;
-margin-top:15px;
-border:none;
-border-radius:10px;
-background:#1c1c1c;
-color:white;
-font-size:16px;
-}
-
-.review-box button{
-margin-top:18px;
-padding:14px 24px;
-background:#00ffd5;
-color:black;
-font-weight:bold;
-border:none;
-border-radius:10px;
-cursor:pointer;
-transition:0.4s;
-}
-
-.review-box button:hover{
-transform:scale(1.05);
-box-shadow:0 0 20px #00ffd5;
-}
-
-.review{
-background:#181818;
 padding:15px;
-margin-top:20px;
-border-radius:12px;
-border-left:4px solid #00ffd5;
-}
-
-/* QR */
-
-.qr-box{
+margin:10px 0;
 background:#111;
-padding:25px;
-border-radius:20px;
-border:1px solid #00ffd5;
+color:white;
+border:1px solid #333;
+border-radius:10px;
+}
+
+textarea{
+height:130px;
+resize:none;
+}
+
+button{
+padding:12px 25px;
+background:#00ffe1;
+border:none;
+border-radius:10px;
+font-weight:bold;
+cursor:pointer;
+}
+
+#reviewsList{
+margin-top:25px;
+}
+
+.review-item{
+background:#111;
+padding:15px;
+border-left:4px solid #00ffe1;
+margin-top:15px;
+border-radius:10px;
+}
+
+.qr{
 text-align:center;
+margin-top:30px;
 }
 
-.qr-box img{
-width:260px;
-max-width:90%;
-border-radius:18px;
-border:3px solid #00ffd5;
-box-shadow:0 0 20px #00ffd5;
+.qr img{
+width:220px;
+border-radius:20px;
+border:3px solid #00ffe1;
+box-shadow:0 0 20px #00ffe1;
 }
-
-/* CONTACT */
 
 .contact{
 text-align:center;
+padding:40px 20px;
 }
 
 .contact p{
-margin-top:12px;
-font-size:17px;
-color:#ddd;
+margin:10px 0;
+font-size:18px;
 }
-
-/* FOOTER */
 
 footer{
-margin-top:50px;
-padding:25px;
 text-align:center;
-background:#000;
-border-top:1px solid #00ffd5;
+padding:20px;
+border-top:1px solid #00ffe1;
+margin-top:40px;
+font-size:14px;
 }
-
-/* WHATSAPP FLOAT */
-
-.whatsapp{
-position:fixed;
-right:20px;
-bottom:20px;
-background:#00ffd5;
-width:60px;
-height:60px;
-border-radius:50%;
-display:flex;
-justify-content:center;
-align-items:center;
-font-size:30px;
-text-decoration:none;
-color:black;
-font-weight:bold;
-box-shadow:0 0 20px #00ffd5;
-z-index:999;
-}
-
-/* MOBILE */
 
 @media(max-width:768px){
-
 .hero h1{
-font-size:35px;
+font-size:32px;
 }
 
-.slides img{
-height:220px;
+.section-title{
+font-size:28px;
 }
-
-nav{
-flex-direction:column;
-gap:15px;
 }
-
-}
-
 </style>
-
 </head>
-
 <body>
 
-<!-- NAVBAR -->
-
+<header>
+<div class="logo">📱 Maa Jagdamba</div>
 <nav>
-
-<div class="logo">
-📱 Maa Jagdamba
-</div>
-
-<ul>
-
-<li><a href="#">Home</a></li>
-
-<li><a href="#services">Services</a></li>
-
-<li><a href="#blogs">Blogs</a></li>
-
-<li><a href="#review">Reviews</a></li>
-
-<li><a href="about.html">About</a></li>
-
-<li><a href="privacy.html">Privacy</a></li>
-
-<li><a href="#contact">Contact</a></li>
-
-</ul>
-
+<a href="#home">Home</a>
+<a href="#services">Services</a>
+<a href="#blogs">Blogs</a>
+<a href="#reviews">Reviews</a>
+<a href="about.html">About</a>
+<a href="privacy.html">Privacy</a>
+<a href="#contact">Contact</a>
 </nav>
+</header>
 
-<!-- HERO -->
-
-<section class="hero">
-
+<section class="hero" id="home">
 <h1>Maa Jagdamba Mobile Repairing</h1>
+<p>Battery • Charging • Display • Software • Water Damage Fix 🚀</p>
 
-<p>
-Battery • Charging • Display • Software • Water Damage Fix 🚀
-</p>
-
-<div class="buttons">
-
-<a href="tel:9102386420" class="btn">
-📞 Call Now
-</a>
-
-<a href="https://wa.me/917004470872" class="btn">
-💬 WhatsApp
-</a>
-
+<div class="btns">
+<a href="tel:9102386420" class="btn">📞 Call Now</a>
+<a href="https://wa.me/919102386420" class="btn">💬 WhatsApp</a>
 </div>
-
 </section>
 
-<!-- IMAGE SLIDER -->
-
-<div class="slider">
-
-<div class="slides">
-
-<img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9">
-
-<img src="https://images.unsplash.com/photo-1512499617640-c74ae3a79d37">
-
-<img src="https://images.unsplash.com/photo-1526738549149-8e07eca6c147">
-
+<div class="banner">
+<img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=1200&auto=format&fit=crop" alt="Mobile Repair">
 </div>
 
-</div>
+<h2 class="section-title" id="services">🛠 Our Services</h2>
 
-<!-- SERVICES -->
-
-<section class="section" id="services">
-
-<h2 class="title">
-🔧 Our Services
-</h2>
-
-<div class="services">
-
+<div class="grid">
 <div class="card">
 <h3>📱 Mobile Repair</h3>
 <p>All smartphone repairing solutions available.</p>
@@ -507,12 +329,12 @@ Battery • Charging • Display • Software • Water Damage Fix 🚀
 </div>
 
 <div class="card">
-<h3>📺 Display Change</h3>
+<h3>🖥 Display Change</h3>
 <p>Broken screen and touch replacement service.</p>
 </div>
 
 <div class="card">
-<h3>💾 Software Flash</h3>
+<h3>💻 Software Flash</h3>
 <p>Software update and flashing solutions.</p>
 </div>
 
@@ -520,199 +342,103 @@ Battery • Charging • Display • Software • Water Damage Fix 🚀
 <h3>💧 Water Damage</h3>
 <p>Dead and water damaged phone repair service.</p>
 </div>
-
 </div>
 
-</section>
+<h2 class="section-title">📢 Sponsored Ads</h2>
 
-<!-- ADSENSE -->
-
-<section class="section">
-
-<h2 class="title">
-📢 Sponsored Ads
-</h2>
-
-<div style="
-background:#111;
-padding:20px;
-border-radius:20px;
-border:1px solid #00ffd5;
-min-height:250px;
-">
-
+<div class="ads-box">
+<!-- AdSense Ad -->
 <ins class="adsbygoogle"
-style="display:block"
-data-ad-client="ca-pub-9770258289979386"
-data-ad-slot="1234567890"
-data-ad-format="auto"
-data-full-width-responsive="true"></ins>
-
+ style="display:block"
+ data-ad-client="ca-pub-9770258289979386"
+ data-ad-slot="1234567890"
+ data-ad-format="auto"
+ data-full-width-responsive="true"></ins>
 <script>
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
-
 </div>
 
-</section>
-
-<!-- BLOGS -->
-
-<section class="section" id="blogs">
-
-<h2 class="title">
-📝 Latest Blogs
-</h2>
+<h2 class="section-title" id="blogs">📝 Latest Blogs</h2>
 
 <div class="blogs">
-
-<a href="blog1.html" class="blog-btn">💰 Crypto क्या है?</a>
-
-<a href="blog2.html" class="blog-btn">📈 Share Market Guide</a>
-
-<a href="blog3.html" class="blog-btn">🎥 YouTube से पैसे कैसे कमाएं</a>
-
-<a href="blog4.html" class="blog-btn">📱 Battery Drain Fix</a>
-
-<a href="blog5.html" class="blog-btn">⚡ Charging Problem Solution</a>
-
-<a href="blog6.html" class="blog-btn">💻 Online Earning Guide</a>
-
-<a href="blog7.html" class="blog-btn">🤖 AI क्या है?</a>
-
-<a href="blog8.html" class="blog-btn">📸 Instagram से पैसे</a>
-
-<a href="blog9.html" class="blog-btn">🌐 Blogging Guide</a>
-
+<a href="blog26.html" class="blog-btn">🔋 Battery Drain Fix</a>
+<a href="blog27.html" class="blog-btn">🔥 Mobile Heating Problem</a>
+<a href="blog28.html" class="blog-btn">⚡ Charging Problem Solution</a>
+<a href="blog29.html" class="blog-btn">💧 Water Damage Fix</a>
+<a href="blog30.html" class="blog-btn">📱 Display Line Problem</a>
+<a href="blog31.html" class="blog-btn">👆 Touch Problem Fix</a>
+<a href="blog32.html" class="blog-btn">🔄 Auto Restart Problem</a>
+<a href="blog33.html" class="blog-btn">📲 Mobile Hanging Solution</a>
+<a href="blog1.html" class="blog-btn">₿ Crypto क्या है?</a>
+<a href="blog18.html" class="blog-btn">📈 Share Market Guide</a>
+<a href="blog6.html" class="blog-btn">▶ YouTube से पैसे कमाएं</a>
 </div>
 
-</section>
-
-<!-- REVIEWS -->
-
-<section class="section" id="review">
-
-<h2 class="title">
-⭐ Customer Reviews
-</h2>
+<h2 class="section-title" id="reviews">⭐ Customer Reviews</h2>
 
 <div class="review-box">
-
 <input type="text" id="name" placeholder="Enter Your Name">
+<input type="text" id="number" placeholder="Enter Mobile Number">
+<textarea id="review" placeholder="Write Your Review"></textarea>
+<button onclick="addReview()">Submit Review</button>
 
-<input type="number" id="number" placeholder="Enter Mobile Number">
-
-<textarea id="message" rows="5" placeholder="Write Your Review"></textarea>
-
-<button onclick="addReview()">
-Submit Review
-</button>
-
-<div id="reviews"></div>
-
+<div id="reviewsList"></div>
 </div>
 
-</section>
-
-<!-- QR -->
-
-<section class="section">
-
-<h2 class="title">
-💳 Scan & Pay
-</h2>
-
-<div class="qr-box">
-
+<div class="qr">
+<h2 class="section-title">💳 Scan & Pay</h2>
 <img src="qr.png" alt="QR Code">
-
-<p style="margin-top:20px;color:#ccc;">
-Scan QR using PhonePe, Paytm, Google Pay or any UPI app.
-</p>
-
+<p style="margin-top:15px;">Scan QR using PhonePe / GPay / Paytm</p>
 </div>
 
-</section>
-
-<!-- CONTACT -->
-
-<section class="section contact" id="contact">
-
-<h2 class="title">
-📍 Contact Us
-</h2>
-
-<p>👨‍🔧 Owner: Aanand Singh</p>
-
+<section class="contact" id="contact">
+<h2 class="section-title">📍 Contact Us</h2>
+<p>👨 Owner: Anand Singh</p>
 <p>📞 9102386420 / 7004470872</p>
-
 <p>📧 aanandsingh7755@gmail.com</p>
-
 <p>📍 Sarath, Deoghar, Jharkhand - 814149</p>
-
 </section>
-
-<!-- FOOTER -->
 
 <footer>
-
-<p>
 © 2026 Maa Jagdamba Mobile Repairing | All Rights Reserved
-</p>
-
 </footer>
 
-<!-- FLOATING WHATSAPP -->
-
-<a href="https://wa.me/917004470872" class="whatsapp">
-💬
-</a>
-
-<!-- REVIEW SCRIPT -->
-
 <script>
-
 function addReview(){
+let name=document.getElementById('name').value;
+let number=document.getElementById('number').value;
+let review=document.getElementById('review').value;
 
-let name=document.getElementById("name").value;
-
-let number=document.getElementById("number").value;
-
-let message=document.getElementById("message").value;
-
-if(name=="" || number=="" || message==""){
-
-alert("Please fill all fields");
-
+if(name==='' || number==='' || review===''){
+alert('Please fill all fields');
 return;
-
 }
 
-let review=document.createElement("div");
+let reviewsList=document.getElementById('reviewsList');
 
-review.classList.add("review");
-
-review.innerHTML=`
-
-<h3>${name}</h3>
-
+let div=document.createElement('div');
+div.classList.add('review-item');
+div.innerHTML=`<h3>${name}</h3>
 <p>📞 ${number}</p>
+<p>${review}</p>`;
 
-<p>${message}</p>
+reviewsList.prepend(div);
 
-`;
+localStorage.setItem('reviews', reviewsList.innerHTML);
 
-document.getElementById("reviews").prepend(review);
-
-document.getElementById("name").value="";
-
-document.getElementById("number").value="";
-
-document.getElementById("message").value="";
-
+ document.getElementById('name').value='';
+ document.getElementById('number').value='';
+ document.getElementById('review').value='';
 }
 
+window.onload=function(){
+let savedReviews=localStorage.getItem('reviews');
+if(savedReviews){
+document.getElementById('reviewsList').innerHTML=savedReviews;
+}
+}
 </script>
 
 </body>
-  </html>
+</html>
