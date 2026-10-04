@@ -6,10 +6,11 @@
 <title>Maa Jagdamba Mobile Repairing | Sarath</title>
 <meta name="description" content="Maa Jagdamba Mobile Repairing, Sarath, Deoghar, Jharkhand. Book mobile repair at home or in-store.">
 <meta name="theme-color" content="#000000">
-<!-- Google AdSense: keep only if this publisher ID belongs to you and your site is approved. -->
+<meta name="color-scheme" content="dark">
+<!-- Keep this AdSense loader only if this publisher ID belongs to you and the site is approved. -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9770258289979386" crossorigin="anonymous"></script>
 <style>
-:root{--neon:#00ffe1;--panel:#0b0b0b;--muted:#cfcfcf}
+:root{--neon:#00ffe1;--panel:#0b0b0b;--muted:#cfcfcf;--gold:#ffd54a}
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
 html{scroll-behavior:smooth;scroll-padding-top:90px}
 body{background:#000;color:#fff;overflow-x:hidden;line-height:1.5}
@@ -20,16 +21,24 @@ header{position:sticky;top:0;background:#050505;padding:13px 4%;display:flex;jus
 nav{display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-end}
 nav a{color:#fff;text-decoration:none;font-size:13px}
 nav a:hover{color:var(--neon)}
-.hero{text-align:center;padding:55px 18px 30px}
+.hero{text-align:center;padding:48px 18px 25px}
 .hero h1{font-size:clamp(29px,5vw,48px);line-height:1.2;color:var(--neon);text-shadow:0 0 18px var(--neon);animation:glow 2s infinite alternate}
 @keyframes glow{to{text-shadow:0 0 28px var(--neon)}}
 .hero p{margin-top:14px;color:#ddd;font-size:clamp(14px,2vw,18px)}
 .btns{margin-top:18px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-.btn,button{display:inline-block;padding:12px 19px;background:var(--neon);color:#000;text-decoration:none;border:0;border-radius:10px;font-weight:bold;cursor:pointer;transition:.2s}
+.btn,button{display:inline-block;padding:12px 19px;background:var(--neon);color:#000;text-decoration:none;border:0;border-radius:10px;font-weight:bold;cursor:pointer;transition:transform .2s,box-shadow .2s}
 .btn:hover,button:hover{transform:translateY(-2px);box-shadow:0 0 14px var(--neon)}
 .banner{width:95%;max-width:1200px;margin:24px auto;border:2px solid var(--neon);border-radius:18px;overflow:hidden;box-shadow:0 0 18px #00ffe155}
 .banner img{width:100%;display:block;max-height:520px;object-fit:cover}
-.section-title{text-align:center;font-size:clamp(25px,4vw,38px);margin:55px 0 25px;color:var(--neon);text-shadow:0 0 12px var(--neon)}
+.offer-banner{position:relative;isolation:isolate;width:95%;max-width:1200px;margin:24px auto;padding:24px 18px;border:1px solid #ffd54a;border-radius:18px;text-align:center;overflow:hidden;background:linear-gradient(110deg,#241400,#101010,#302000);box-shadow:0 0 20px #ffd54a44}
+.offer-banner:before{content:"";position:absolute;inset:-60%;background:linear-gradient(110deg,transparent 40%,#ffffff20 50%,transparent 60%);transform:translateX(-70%);animation:shine 4s ease-in-out infinite;z-index:-1}
+.offer-banner h2{color:var(--gold);font-size:clamp(23px,4vw,34px);text-shadow:0 0 12px #ffd54a88;animation:offerPulse 1.8s ease-in-out infinite}
+.offer-banner p{margin:7px 0 14px}
+.offer-tag{display:inline-block;background:var(--gold);color:#171000;border-radius:999px;padding:5px 13px;font-weight:bold;margin-bottom:8px;animation:floaty 2.5s ease-in-out infinite}
+@keyframes shine{0%,35%{transform:translateX(-70%)}75%,100%{transform:translateX(70%)}}
+@keyframes offerPulse{50%{transform:scale(1.025);text-shadow:0 0 20px #ffd54a}}
+@keyframes floaty{50%{transform:translateY(-4px)}}
+.section-title{text-align:center;font-size:clamp(25px,4vw,38px);margin:48px 0 25px;color:var(--neon);text-shadow:0 0 12px var(--neon)}
 .grid,.blogs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:16px;width:95%;max-width:1200px;margin:auto}
 .card{background:var(--panel);padding:22px;border:1px solid #00ffe1a8;border-radius:14px;transition:.2s;box-shadow:0 0 10px #00ffe122}
 .card:hover{transform:translateY(-4px);box-shadow:0 0 18px #00ffe155}
@@ -37,7 +46,7 @@ nav a:hover{color:var(--neon)}
 .ads-box{width:95%;max-width:1200px;margin:auto;padding:18px;border:1px solid #00ffe1a8;border-radius:18px;min-height:120px;overflow:hidden}
 .blog-btn{display:block;padding:15px;background:#0d0d0d;color:#fff;text-decoration:none;border:1px solid #00ffe1a8;border-radius:12px;transition:.2s}
 .blog-btn:hover{background:var(--neon);color:#000}
-.panel{width:95%;max-width:900px;margin:24px auto;padding:clamp(16px,3vw,26px);border:1px solid #00ffe1a8;border-radius:18px;background:#050505eF}
+.panel{width:95%;max-width:900px;margin:24px auto;padding:clamp(16px,3vw,26px);border:1px solid #00ffe1a8;border-radius:18px;background:#050505ef}
 .panel h2{color:var(--neon);text-align:center;margin-bottom:12px}
 .panel .intro{text-align:center;color:#ddd;margin-bottom:18px}
 .form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
@@ -57,7 +66,8 @@ textarea{min-height:100px;resize:vertical}
 .contact p{margin:8px 0}
 footer{text-align:center;padding:20px;border-top:1px solid var(--neon);margin-top:35px;font-size:13px;color:#ddd}
 [hidden]{display:none!important}
-@media(max-width:700px){header{align-items:flex-start;flex-direction:column;padding:12px 4%}nav{justify-content:flex-start;gap:10px}nav a{font-size:12px}.hero{padding-top:38px}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.section-title{margin-top:42px}}
+@media(max-width:700px){header{align-items:flex-start;flex-direction:column;padding:12px 4%}nav{justify-content:flex-start;gap:10px}nav a{font-size:12px}.hero{padding-top:32px}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.section-title{margin-top:38px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition:none!important}}
 </style>
 </head>
 <body>
@@ -79,6 +89,14 @@ footer{text-align:center;padding:20px;border-top:1px solid var(--neon);margin-to
     <a href="#booking" class="btn">🏠 Book Home Service</a>
   </div>
 </section>
+
+<div class="offer-banner" role="region" aria-label="Repair offers">
+  <span class="offer-tag">✨ LIMITED-TIME OFFER</span>
+  <h2>📱 Mobile Repair Made Easy!</h2>
+  <p>Book a repair appointment from home or visit our shop in Sarath.</p>
+  <p><strong>₹99 appointment advance requested</strong> • Final repair cost confirmed by the shop.</p>
+  <a href="#booking" class="btn">🎁 Book Your Slot</a>
+</div>
 
 <div class="banner">
   <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=1200&auto=format&fit=crop" alt="Smartphone" loading="lazy">
@@ -106,22 +124,30 @@ footer{text-align:center;padding:20px;border-top:1px solid var(--neon);margin-to
       <div class="field full"><label for="problem">Repair issue *</label><select id="problem" required><option value="">Choose the problem</option><option>Display / Touch</option><option>Battery problem</option><option>Charging problem</option><option>Software problem</option><option>Water damage</option><option>Phone not turning on</option><option>Other problem</option></select></div>
       <div class="field full"><label for="serviceAddress">Full address, village, post office, block *</label><textarea id="serviceAddress" autocomplete="street-address" maxlength="400" required placeholder="Enter your full address and a nearby landmark"></textarea></div>
       <div class="field full">
-        <button type="button" id="locationBtn">📍 Get my current location</button>
-        <p class="hint">Location is optional. Your browser will ask permission. GPS usually requires HTTPS; you can still enter your address manually.</p>
+        <button type="button" id="locationBtn">📍 Get my current location & address</button>
+        <p class="hint">Tap to request GPS permission. Coordinates can be used to look up a nearby address; verify it and add your village/landmark manually. GPS requires HTTPS and permission.</p>
         <p id="locationStatus" class="status" aria-live="polite">No GPS location added yet.</p>
         <a id="mapLink" class="btn" href="#" target="_blank" rel="noopener noreferrer" hidden>Open location in Google Maps</a>
       </div>
       <div class="field"><label for="appointmentDate">Preferred date *</label><input id="appointmentDate" type="date" required></div>
       <div class="field"><label for="appointmentTime">Preferred time *</label><select id="appointmentTime" required><option value="">Choose time</option><option>10:00 AM - 12:00 PM</option><option>12:00 PM - 2:00 PM</option><option>2:00 PM - 4:00 PM</option><option>4:00 PM - 6:00 PM</option></select></div>
     </div>
-    <div class="actions"><button type="submit">Continue to advance payment</button></div>
+    <div class="actions"><button type="submit">Continue to ₹99 advance payment</button></div>
   </form>
 
   <div id="paymentSection" class="status" hidden>
     <h3 style="color:var(--neon);margin-bottom:8px">💳 Appointment advance</h3>
     <p><strong>Advance requested: ₹99</strong></p>
-    <p class="hint">Scan the QR below using your UPI app. This static website cannot verify a payment automatically. Do not mark the payment as successful until you have checked your UPI app/bank statement.</p>
-    <div class="qr"><img src="qr.png" alt="Shop UPI payment QR code"></div>
+    <p class="hint">Use the UPI button or scan the QR. Confirm the payee and amount inside your UPI app. This static website cannot verify payment automatically; check your UPI app/bank statement before confirming the appointment.</p>
+    <div class="actions">
+      <a id="upiPayButton" class="btn" href="upi://pay?pa=9931135008%40okbizaxis&amp;pn=Maa%20Jagdamba%20Mobile%20Repairing&amp;am=99.00&amp;cu=INR&amp;tn=Repair%20Appointment" role="button">📲 Pay ₹99 with UPI</a>
+    </div>
+    <div class="qr">
+      <a id="qrPayLink" href="upi://pay?pa=9931135008%40okbizaxis&amp;pn=Maa%20Jagdamba%20Mobile%20Repairing&amp;am=99.00&amp;cu=INR&amp;tn=Repair%20Appointment" aria-label="Open UPI payment app">
+        <img src="qr.png" alt="Shop UPI payment QR code">
+      </a>
+      <p class="hint">Tap the QR on this phone to try opening UPI, or scan it using another phone.</p>
+    </div>
     <label for="paymentRef">UPI transaction reference (optional until verified)</label>
     <input id="paymentRef" maxlength="50" placeholder="Enter UPI reference number after payment">
     <p class="hint">Never enter your UPI PIN, OTP, or bank password on this website.</p>
@@ -167,8 +193,11 @@ footer{text-align:center;padding:20px;border-top:1px solid var(--neon);margin-to
 
 <div class="qr">
   <h2 class="section-title">💳 Scan & Pay</h2>
-  <img src="qr.png" alt="UPI QR code" loading="lazy">
-  <p style="margin-top:12px">Scan QR using PhonePe / Google Pay / Paytm</p>
+  <a href="upi://pay?pa=9931135008%40okbizaxis&amp;pn=Maa%20Jagdamba%20Mobile%20Repairing&amp;cu=INR&amp;tn=Mobile%20Repair" aria-label="Open UPI app to pay shop">
+    <img src="qr.png" alt="UPI QR code" loading="lazy">
+  </a>
+  <p style="margin-top:12px">Scan QR using PhonePe / Google Pay / Paytm. Tap the QR on your phone to try opening UPI.</p>
+  <p class="hint">Check the payee name in your UPI app before paying.</p>
 </div>
 
 <section class="contact" id="contact">
@@ -184,9 +213,7 @@ footer{text-align:center;padding:20px;border-top:1px solid var(--neon);margin-to
 
 <script>
 "use strict";
-
-// Appointment flow: this front-end opens WhatsApp. It does NOT save bookings to a server
-// and cannot verify UPI payments. Verify payments manually before confirming appointments.
+// Front-end only: requests are sent through WhatsApp; no server booking database or automatic payment verification.
 const $ = id => document.getElementById(id);
 let customerLocation = null;
 let currentBooking = null;
@@ -204,129 +231,58 @@ $("locationBtn").addEventListener("click", () => {
     $("locationStatus").textContent = "This browser does not support GPS. Please enter your address manually.";
     return;
   }
-  $("locationStatus").textContent = "Requesting location permission...";
-  navigator.geolocation.getCurrentPosition(position => {
+  $("locationBtn").disabled = true;
+  $("locationStatus").textContent = "Requesting GPS permission...";
+  navigator.geolocation.getCurrentPosition(async position => {
     customerLocation = {
       lat: position.coords.latitude,
-      lng: position.coords.longitude
+      lng: position.coords.longitude,
+      accuracy: Math.round(position.coords.accuracy)
     };
-    $("locationStatus").textContent = "Location captured on this device. Check the map before sharing.";
     $("mapLink").href = `https://www.google.com/maps?q=${customerLocation.lat},${customerLocation.lng}`;
     $("mapLink").hidden = false;
+    $("locationStatus").textContent = `GPS captured (accuracy about ${customerLocation.accuracy} m). Looking up nearby address...`;
+    // Reverse geocoding via OpenStreetMap Nominatim. It requires internet and may not return a complete house address.
+    try {
+      const url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${encodeURIComponent(customerLocation.lat)}&lon=${encodeURIComponent(customerLocation.lng)}&zoom=18&addressdetails=1`;
+      const response = await fetch(url, {headers: {"Accept":"application/json"}});
+      if (!response.ok) throw new Error("Address lookup unavailable");
+      const data = await response.json();
+      const a = data.address || {};
+      const parts = [
+        a.house_number, a.road || a.pedestrian || a.neighbourhood,
+        a.suburb || a.village || a.hamlet || a.town || a.city,
+        a.post_office, a.county || a.state_district, a.state, a.postcode
+      ].filter(Boolean);
+      const suggestedAddress = [...new Set(parts)].join(", ");
+      if (suggestedAddress) {
+        const addressBox = $("serviceAddress");
+        if (!addressBox.value.trim()) addressBox.value = suggestedAddress;
+        else if (!addressBox.value.includes(suggestedAddress)) {
+          $("locationStatus").textContent = `GPS captured. Suggested address: ${suggestedAddress}. Your existing address was kept; add or replace it manually if needed.`;
+          $("locationBtn").disabled = false;
+          return;
+        }
+        $("locationStatus").textContent = `GPS and a nearby address found: ${suggestedAddress}. Please verify and add your house/landmark.`;
+      } else {
+        $("locationStatus").textContent = "GPS captured, but no readable address was returned. Please enter village and landmark manually.";
+      }
+    } catch (_) {
+      $("locationStatus").textContent = "GPS captured. Automatic address lookup failed; please enter village and landmark manually. Google Maps is available below.";
+    } finally {
+      $("locationBtn").disabled = false;
+    }
   }, error => {
     const messages = {
       1: "Location permission was denied. Allow location access in browser settings, or enter your address manually.",
-      2: "Current location is unavailable. Please try again or enter your address manually.",
-      3: "Location request timed out. Please try again."
+      2: "Current location is unavailable. Turn on device location and try again, or enter your address manually.",
+      3: "Location request timed out. Move to an open area and try again."
     };
     $("locationStatus").textContent = messages[error.code] || "Could not get location. Please enter your address manually.";
-  }, { enableHighAccuracy: true, timeout: 15000, maximumAge: 60000 });
+    $("locationBtn").disabled = false;
+  }, { enableHighAccuracy: true, timeout: 20000, maximumAge: 60000 });
 });
 
 $("bookingForm").addEventListener("submit", event => {
   event.preventDefault();
-  const phone = $("customerPhone").value.trim();
-  if (!/^[6-9]\d{9}$/.test(phone)) {
-    alert("Please enter a valid 10-digit Indian mobile number.");
-    $("customerPhone").focus();
-    return;
-  }
-  if (dateInput.value < todayString) {
-    alert("Please choose today or a future date.");
-    dateInput.focus();
-    return;
-  }
-  currentBooking = {
-    id: "MJR-" + Date.now().toString(36).toUpperCase(),
-    name: $("customerName").value.trim(),
-    phone,
-    serviceType: $("serviceType").value,
-    device: $("deviceModel").value.trim(),
-    problem: $("problem").value,
-    address: $("serviceAddress").value.trim(),
-    date: dateInput.value,
-    time: $("appointmentTime").value,
-    location: customerLocation
-  };
-  $("paymentSection").hidden = false;
-  $("bookingResult").textContent = `Request ID: ${currentBooking.id}. This is not a confirmed appointment yet. Please send the request and wait for the shop to confirm.`;
-  $("paymentSection").scrollIntoView({ behavior: "smooth", block: "start" });
-});
-
-$("editBooking").addEventListener("click", () => {
-  $("paymentSection").hidden = true;
-  $("bookingForm").scrollIntoView({ behavior: "smooth", block: "start" });
-});
-
-$("submitBooking").addEventListener("click", () => {
-  if (!currentBooking) {
-    alert("Please complete the appointment form first.");
-    return;
-  }
-  const b = currentBooking;
-  const ref = $("paymentRef").value.trim();
-  const mapURL = b.location
-    ? `https://www.google.com/maps?q=${b.location.lat},${b.location.lng}`
-    : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(b.address)}`;
-  const lines = [
-    "Maa Jagdamba Mobile Repairing - Appointment Request",
-    "Request ID: " + b.id,
-    "Customer: " + b.name,
-    "Phone: " + b.phone,
-    "Service: " + b.serviceType,
-    "Device: " + b.device,
-    "Problem: " + b.problem,
-    "Address: " + b.address,
-    "Preferred date: " + b.date,
-    "Preferred time: " + b.time,
-    "Advance requested: Rs 99",
-    "UPI reference supplied (NOT verified): " + (ref || "Not entered"),
-    "Payment status: VERIFY MANUALLY; NOT CONFIRMED",
-    "Map: " + mapURL
-  ];
-  const whatsappURL = "https://wa.me/919102386420?text=" + encodeURIComponent(lines.join("\n"));
-  $("bookingResult").textContent = "WhatsApp will open with your request. Send the message, then wait for the shop to confirm the appointment and payment. This page has not verified payment.";
-  window.open(whatsappURL, "_blank", "noopener,noreferrer");
-});
-
-// Safer local-only reviews: no phone number is collected and user text is never inserted as HTML.
-function renderReviews() {
-  const list = $("reviewsList");
-  list.replaceChildren();
-  let saved = [];
-  try { saved = JSON.parse(localStorage.getItem("mjrReviews") || "[]"); } catch (_) {}
-  saved.slice(0, 30).forEach(item => {
-    const article = document.createElement("article");
-    article.className = "review-item";
-    const heading = document.createElement("h3");
-    heading.textContent = item.name;
-    const paragraph = document.createElement("p");
-    paragraph.textContent = item.review;
-    article.append(heading, paragraph);
-    list.appendChild(article);
-  });
-}
-$("reviewForm").addEventListener("submit", event => {
-  event.preventDefault();
-  const name = $("reviewName").value.trim();
-  const review = $("reviewText").value.trim();
-  if (!name || !review) {
-    alert("Please fill in your name and review.");
-    return;
-  }
-  let saved = [];
-  try { saved = JSON.parse(localStorage.getItem("mjrReviews") || "[]"); } catch (_) {}
-  saved.unshift({ name, review, createdAt: new Date().toISOString() });
-  try {
-    localStorage.setItem("mjrReviews", JSON.stringify(saved.slice(0, 30)));
-  } catch (_) {
-    alert("Reviews could not be saved in this browser.");
-    return;
-  }
-  $("reviewForm").reset();
-  renderReviews();
-});
-renderReviews();
-</script>
-</body>
-</html>
+  const phone = $("customerPhone").value.t
