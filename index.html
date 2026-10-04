@@ -176,57 +176,297 @@ body{font-weight:650}
  .hero h1,.logo,.hero-art,.offer,.offer .tag,.offer .btn,.card:before,.blog-btn:before,.btn:after,button:after,.payment-panel,.panel,.section-title span,.motion-reveal,.qr img{animation:none!important}
 }
 
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">📱 Maa Jagdamba <small>Mobile Repairing</small></div>
+  <nav aria-label="मुख्य मेन्यू">
+    <a href="#home">🏠 Home</a><a href="#services">🛠 Services</a><a href="#booking">📅 Book</a><a href="#blogs">📘 Blogs</a><a href="#reviews">⭐ Reviews</a><a href="#contact">☎ Contact</a>
+  </nav>
+</header>
 
-/* MOBILE READABILITY AND VISIBLE BOOKING */
-body{font-weight:700}
-nav a{font-size:14px;font-weight:900}
-.hero h1,.section-title,.panel h2{font-weight:950;letter-spacing:-.3px}
-.panel{max-width:1200px}
-.panel h2{font-size:clamp(26px,4vw,36px)}
-label{font-size:16px;font-weight:900}
-input,select,textarea{font-size:16px;font-weight:650;background:#f7f9fb;color:#111;border:1px solid #aeb8c5}
-input::placeholder,textarea::placeholder{color:#626b76}
-button,.btn{font-size:16px;font-weight:950}
-#booking{display:block!important;visibility:visible!important;min-height:300px}
-#paymentSection .qr{display:block}
-#bookingQr{display:inline-block!important;visibility:visible!important;opacity:1!important}
-@media(max-width:700px){.panel{width:95%;margin:22px auto;padding:16px}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.section-title{font-size:28px}.card p{font-size:15px;line-height:1.5}}
+<section class="hero" id="home">
+  <div>
+    <h1>Maa Jagdamba<br><span>Mobile Repairing</span></h1>
+    <p>मोबाइल की हर समस्या का समाधान। Sarath, Deoghar, Jharkhand.</p>
+    <div class="pills"><span class="pill">✓ Battery</span><span class="pill">✓ Network</span><span class="pill">✓ Sound</span><span class="pill">✓ Display</span><span class="pill">✓ Software</span></div>
+    <div class="buttons">
+      <a class="btn green" href="tel:9102386420">📞 Call Now</a>
+      <a class="btn green" href="https://wa.me/919102386420" target="_blank" rel="noopener">💬 WhatsApp</a>
+      <a class="btn blue" href="#booking">🏠 Book Repair</a>
+    </div>
+  </div>
+  <div class="hero-art" aria-label="मोबाइल रिपेयरिंग"><span>📱🔧</span></div>
+</section>
 
+<section class="offer" aria-label="विशेष ऑफर">
+  <span class="tag">🔥 LIMITED-TIME OFFER</span>
+  <h2>📣 मोबाइल रिपेयर पर खास ऑफर!</h2>
+  <p>फ्री शुरुआती चेकिंग • तेज सर्विस • Home Service उपलब्ध</p>
+  <p>मरम्मत की कीमत जाँच के बाद बताई जाएगी।</p>
+  <a class="btn" href="#booking">अभी बुक करें ➜</a>
+</section>
 
+<section class="section" id="services">
+  <h2 class="section-title">🛠 हमारी सेवाएँ <span>Our Services</span></h2>
+  <div class="cards">
+    <article class="card"><div class="emoji">📱</div><h3>Display / Touch</h3><p>टूटी स्क्रीन, टच और डिस्प्ले लाइन की समस्या।</p></article>
+    <article class="card"><div class="emoji">🔋</div><h3>Battery Problem</h3><p>बैटरी जल्दी खत्म होना, गर्म होना या फूलना।</p></article>
+    <article class="card"><div class="emoji">⚡</div><h3>Charging Problem</h3><p>चार्जिंग नहीं होना, पोर्ट या पावर की समस्या।</p></article>
+    <article class="card"><div class="emoji">📶</div><h3>Network / Signal</h3><p>नेटवर्क नहीं आना, सिग्नल कमजोर, SIM या कॉल ड्रॉप।</p></article>
+    <article class="card"><div class="emoji">🔊</div><h3>Sound / Speaker</h3><p>आवाज नहीं आना, स्पीकर, माइक, ईयरपीस या रिंगटोन समस्या।</p></article>
+    <article class="card"><div class="emoji">📡</div><h3>Wi-Fi / Bluetooth</h3><p>Wi-Fi, Bluetooth, हॉटस्पॉट या मोबाइल डेटा नहीं चलना।</p></article>
+    <article class="card"><div class="emoji">📷</div><h3>Camera / Flash</h3><p>कैमरा ब्लर, कैमरा न खुलना या फ्लैश की समस्या।</p></article>
+    <article class="card"><div class="emoji">💻</div><h3>Software / Update</h3><p>सॉफ्टवेयर, अपडेट, ऐप क्रैश, हैंग और स्टोरेज समस्या।</p></article>
+    <article class="card"><div class="emoji">💧</div><h3>Water Damage</h3><p>फोन पानी में गिरना, नमी लगना या उसके बाद बंद होना।</p></article>
+  </div>
+</section>
 
-/* FINAL TEXT SIZE + BOLDNESS OVERRIDES */
-body { font-size: 19px; font-weight: 700; line-height: 1.7; }
-.logo { font-size: clamp(22px, 3.2vw, 32px); font-weight: 1000 !important; }
-.logo small { font-weight: 900; }
-nav a { font-size: 16px; font-weight: 950 !important; }
-.hero h1 { font-size: clamp(38px, 6vw, 68px); font-weight: 1000 !important; line-height: 1.12; }
-.hero p { font-size: clamp(18px, 2.2vw, 22px); font-weight: 850 !important; }
-.pill { font-size: 15px; font-weight: 900 !important; }
-.section-title { font-size: clamp(30px, 4.2vw, 42px); font-weight: 1000 !important; line-height: 1.25; }
-.card h3 { font-size: 22px; font-weight: 1000 !important; }
-.card p { font-size: 18px; font-weight: 750 !important; line-height: 1.6; }
-.offer h2 { font-size: clamp(28px, 4.5vw, 44px); font-weight: 1000 !important; line-height: 1.25; }
-.offer p { font-size: clamp(17px, 2.3vw, 21px); font-weight: 900 !important; }
-.panel h2 { font-size: clamp(27px, 4vw, 38px); font-weight: 1000 !important; }
-.intro, label { font-size: 18px; font-weight: 950 !important; }
-input, select, textarea { font-size: 18px; font-weight: 750 !important; }
-.hint, .reviews-note { font-size: 16px; font-weight: 650; }
-.btn, button { font-size: 17px; font-weight: 1000 !important; }
-.blog-btn { font-size: 18px; font-weight: 950 !important; }
-.contact-card { font-size: 18px; font-weight: 800; }
-.contact-card strong { font-size: 20px; font-weight: 1000; }
-footer { font-size: 15px; font-weight: 700; }
-@media (max-width: 800px) {
-  nav a { font-size: 15px; }
-  .hero h1 { font-size: clamp(35px, 8.5vw, 48px); }
-  .hero p { font-size: 19px; }
-  .card h3 { font-size: 20px; }
-  .card p { font-size: 17px; }
+<section class="section" id="booking">
+  <div class="booking-layout">
+    <div class="panel">
+      <h2>👨‍🔧 रिपेयर बुक करें</h2>
+      <p class="intro">दुकान पर आएँ या Home Service बुक करें। सभी * वाले बॉक्स भरें।</p>
+      <form id="bookingForm">
+        <div class="form-grid">
+          <div class="field"><label for="customerName">आपका नाम *</label><input id="customerName" maxlength="80" autocomplete="name" required placeholder="पूरा नाम लिखें"></div>
+          <div class="field"><label for="customerPhone">मोबाइल नंबर *</label><input id="customerPhone" type="tel" inputmode="numeric" autocomplete="tel" pattern="[6-9][0-9]{9}" maxlength="10" required placeholder="10 अंकों का नंबर"></div>
+          <div class="field"><label for="deviceModel">मोबाइल ब्रांड / मॉडल *</label><input id="deviceModel" maxlength="100" required placeholder="जैसे Redmi Note 12"></div>
+          <div class="field"><label for="serviceType">सेवा का प्रकार *</label><select id="serviceType" required><option value="">सेवा चुनें</option><option>Home Service (घर पर आएँ)</option><option>Shop Visit (दुकान पर आएँ)</option></select></div>
+          <div class="field full"><label for="problem">मोबाइल में क्या समस्या है? *</label>
+            <select id="problem" required>
+              <option value="">समस्या चुनें</option>
+              <optgroup label="स्क्रीन और बॉडी">
+                <option>Display / Screen टूटी है</option><option>Touch काम नहीं कर रहा</option><option>Display में लाइन / दाग</option><option>Back panel / Body damage</option>
+              </optgroup>
+              <optgroup label="नेटवर्क और कनेक्टिविटी">
+                <option>Network / Signal नहीं आ रहा</option><option>SIM कार्ड नहीं पढ़ रहा</option><option>कॉल नहीं लग रही / Call drop</option><option>Internet / Mobile Data नहीं चल रहा</option><option>Wi-Fi कनेक्ट नहीं हो रहा</option><option>Bluetooth काम नहीं कर रहा</option><option>Hotspot समस्या</option><option>GPS / Location समस्या</option>
+              </optgroup>
+              <optgroup label="आवाज और ऑडियो">
+                <option>Sound / Speaker की समस्या</option><option>Microphone / माइक काम नहीं कर रहा</option><option>दूसरे की आवाज नहीं सुनाई देती (Earpiece)</option><option>रिंगटोन / आवाज बहुत कम</option><option>Headphone / Earphone समस्या</option><option>फोन में आवाज फँसी हुई / Headphone mode</option>
+              </optgroup>
+              <optgroup label="बैटरी और चार्जिंग">
+                <option>Battery जल्दी खत्म होती है</option><option>Battery फूल गई है</option><option>फोन गर्म होता है</option><option>Charging नहीं हो रही</option><option>Charging port ढीला / खराब</option><option>फोन चालू नहीं हो रहा</option><option>Power button समस्या</option><option>Volume button समस्या</option><option>Vibration काम नहीं करता</option>
+              </optgroup>
+              <optgroup label="कैमरा और सुरक्षा">
+                <option>Front / Selfie Camera समस्या</option><option>Back Camera समस्या</option><option>Flash / Torch काम नहीं करता</option><option>Fingerprint काम नहीं करता</option><option>Face Unlock समस्या</option><option>PIN / Password / Lock समस्या</option>
+              </optgroup>
+              <optgroup label="सॉफ्टवेयर और अन्य">
+                <option>Software / Update समस्या</option><option>फोन Hang / Slow होता है</option><option>फोन बार-बार Restart होता है</option><option>Logo पर अटक गया है</option><option>Apps खुल नहीं रहे / Crash</option><option>Storage / Memory समस्या</option><option>Data backup / Transfer</option><option>पानी में गिर गया / Water Damage</option><option>फोन गिरने के बाद काम नहीं करता</option><option>Motherboard / IC की आशंका</option><option>अन्य समस्या</option>
+              </optgroup>
+            </select>
+          </div>
+          <div class="field full"><label for="problemDetails">समस्या का थोड़ा विवरण (वैकल्पिक)</label><textarea id="problemDetails" maxlength="700" placeholder="कब से समस्या है? फोन गिरा या पानी में गया था?"></textarea></div>
+          <div class="field full"><label for="serviceAddress">पूरा पता, गाँव, पोस्ट, प्रखंड *</label><textarea id="serviceAddress" maxlength="400" autocomplete="street-address" required placeholder="गाँव, पोस्ट ऑफिस, प्रखंड और पास का पहचान स्थान लिखें"></textarea></div>
+          <div class="field full">
+            <button type="button" id="locationBtn">📍 मेरी वर्तमान लोकेशन लें</button>
+            <p id="locationStatus" class="status" aria-live="polite">लोकेशन देना वैकल्पिक है। GPS के लिए ब्राउज़र की अनुमति जरूरी है।</p>
+            <a id="mapLink" class="btn blue" href="#" target="_blank" rel="noopener" hidden>🗺 Google Maps में देखें</a>
+          </div>
+          <div class="field"><label for="appointmentDate">तारीख चुनें *</label><input id="appointmentDate" type="date" required></div>
+          <div class="field"><label for="appointmentTime">समय चुनें *</label><select id="appointmentTime" required><option value="">समय चुनें</option><option>10 AM - 12 PM</option><option>12 PM - 2 PM</option><option>2 PM - 4 PM</option><option>4 PM - 6 PM</option></select></div>
+        </div>
+        <div class="actions"><button type="submit">₹99 एडवांस पेमेंट के लिए आगे बढ़ें ➜</button></div>
+      </form>
+      <div id="paymentSection" class="status" hidden>
+        <h3>बुकिंग रिक्वेस्ट तैयार है</h3>
+        <p id="requestId"></p>
+        <p class="hint">₹99 एडवांस की पुष्टि UPI ऐप/बैंक स्टेटमेंट देखकर ही करें। यह वेबसाइट अपने आप पेमेंट की पुष्टि नहीं कर सकती।</p>
+        <div class="actions"><a class="btn green" id="upiPayButton" href="#">📲 UPI से ₹99 भुगतान करें</a></div>
+        <label for="paymentRef">UPI Transaction Reference (पेमेंट के बाद)</label><input id="paymentRef" maxlength="50" placeholder="जैसे 345678901234">
+        <div class="actions"><button type="button" id="submitBooking">WhatsApp पर बुकिंग भेजें</button><button type="button" id="editBooking" class="btn blue">विवरण बदलें</button></div>
+        <p id="bookingResult" class="status" aria-live="polite"></p>
+      </div>
+    </div>
+
+    <aside class="panel payment-panel">
+      <h2>₹99 एडवांस पेमेंट</h2>
+      <p>बुकिंग रिक्वेस्ट के लिए ₹99 एडवांस। भुगतान करने से पहले UPI ऐप में नाम और राशि जाँचें।</p>
+      <div class="price">₹99</div>
+      <div class="qr">
+        <img src="data:image/png;base64,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" alt="Maa Jagdamba Mobile Repairing UPI QR Code">
+        
+      </div>
+      <p class="hint">PhonePe / Google Pay / Paytm से QR स्कैन करें। उसी फोन पर हैं तो UPI बटन इस्तेमाल करें।</p>
+      <a class="btn green" style="width:100%;margin-top:12px" href="upi://pay?pa=9931135008%40okbizaxis&amp;pn=Maa%20Jagdamba%20Mobile%20Repairing&amp;am=99.00&amp;cu=INR&amp;tn=Repair%20Appointment">📲 Pay ₹99 Now (UPI) ➜</a>
+      <p class="hint" style="margin-top:12px">सुरक्षा: UPI PIN, OTP या बैंक पासवर्ड वेबसाइट पर कभी न लिखें।</p>
+    </aside>
+  </div>
+</section>
+
+<section class="section" id="blogs">
+  <h2 class="section-title">📘 नवीनतम <span>मोबाइल टिप्स</span></h2>
+  <div class="blogs">
+    <a class="blog-btn" href="blog26.html">🔋 बैटरी जल्दी खत्म क्यों होती है?</a>
+    <a class="blog-btn" href="blog27.html">🔥 मोबाइल गर्म क्यों होता है?</a>
+    <a class="blog-btn" href="blog28.html">⚡ चार्जिंग नहीं हो रही</a>
+    <a class="blog-btn" href="blog29.html">💧 फोन पानी में गिर गया</a>
+    <a class="blog-btn" href="blog30.html">📱 डिस्प्ले लाइन की समस्या</a>
+    <a class="blog-btn" href="blog31.html">👆 टच काम नहीं कर रहा</a>
+    <a class="blog-btn" href="blog32.html">🔄 फोन बार-बार Restart</a>
+    <a class="blog-btn" href="blog33.html">📲 मोबाइल Hang हो रहा है</a>
+    <a class="blog-btn" href="blog1.html">₿ Crypto क्या है?</a>
+    <a class="blog-btn" href="blog18.html">📈 Share Market Guide</a>
+    <a class="blog-btn" href="blog6.html">▶ YouTube से पैसे कमाएँ</a>
+  </div>
+</section>
+
+<section class="section" id="reviews">
+  <h2 class="section-title">⭐ ग्राहक <span>समीक्षा</span></h2>
+  <div class="panel">
+    <form id="reviewForm">
+      <label for="reviewName">आपका नाम</label><input id="reviewName" maxlength="80" required placeholder="नाम लिखें">
+      <label for="reviewText">आपकी समीक्षा</label><textarea id="reviewText" maxlength="1000" required placeholder="अपना अनुभव लिखें"></textarea>
+      <button type="submit">समीक्षा भेजें</button>
+    </form>
+    <p class="reviews-note">नोट: अभी समीक्षाएँ केवल इसी ब्राउज़र और डिवाइस में सेव होती हैं, दूसरे विज़िटर को नहीं दिखतीं।</p>
+    <div id="reviewsList" aria-live="polite"></div>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <h2 class="section-title">📍 हमसे <span>संपर्क करें</span></h2>
+  <div class="contact-grid">
+    <div class="contact-card"><strong>📞 कॉल करें</strong><a href="tel:9102386420">9102386420</a><br><a href="tel:7004470872">7004470872</a></div>
+    <div class="contact-card"><strong>✉️ ईमेल</strong><a href="mailto:aanandsingh7755@gmail.com">aanandsingh7755@gmail.com</a></div>
+    <div class="contact-card"><strong>📍 पता</strong>सारठ, देवघर, झारखंड - 814149</div>
+  </div>
+  <div class="buttons"><a class="btn blue" href="https://www.google.com/maps/search/?api=1&query=Sarath%2C%20Deoghar%2C%20Jharkhand" target="_blank" rel="noopener">🗺 Google Maps में खोलें</a></div>
+</section>
+
+<footer>© 2026 Maa Jagdamba Mobile Repairing | About · Privacy · Contact<br><small>बुकिंग WhatsApp पर भेजी जाती है। सर्वर डेटाबेस और ऑटोमैटिक पेमेंट वेरिफिकेशन के लिए अलग backend जरूरी है।</small></footer>
+
+<script>
+"use strict";
+const $ = id => document.getElementById(id);
+let customerLocation = null;
+let currentBooking = null;
+const dateInput = $("appointmentDate");
+const dateString = d => new Date(d.getTime() - d.getTimezoneOffset()*60000).toISOString().slice(0,10);
+const today = dateString(new Date());
+dateInput.min = today;
+
+$("locationBtn").addEventListener("click", () => {
+  if (!navigator.geolocation) { $("locationStatus").textContent = "इस ब्राउज़र में GPS उपलब्ध नहीं है। पता हाथ से लिखें।"; return; }
+  $("locationBtn").disabled = true;
+  $("locationStatus").textContent = "लोकेशन अनुमति माँगी जा रही है...";
+  navigator.geolocation.getCurrentPosition(async pos => {
+    customerLocation = {lat:pos.coords.latitude,lng:pos.coords.longitude};
+    $("mapLink").href = `https://www.google.com/maps?q=${customerLocation.lat},${customerLocation.lng}`;
+    $("mapLink").hidden = false;
+    $("locationStatus").textContent = "GPS मिल गया। पास का पता खोज रहे हैं...";
+    try {
+      const url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${customerLocation.lat}&lon=${customerLocation.lng}&zoom=18&addressdetails=1`;
+      const res = await fetch(url,{headers:{"Accept":"application/json"}});
+      if(!res.ok) throw new Error("lookup failed");
+      const data = await res.json(), a = data.address || {};
+      const parts = [a.house_number,a.road||a.neighbourhood,a.village||a.town||a.city,a.county||a.state_district,a.state,a.postcode].filter(Boolean);
+      const suggested = [...new Set(parts)].join(", ");
+      if(suggested && !$("serviceAddress").value.trim()) $("serviceAddress").value = suggested;
+      $("locationStatus").textContent = suggested ? `लोकेशन मिली। सुझाया गया पता: ${suggested}। कृपया जाँचकर गाँव/लैंडमार्क सही करें।` : "GPS मिल गया। पूरा गाँव और लैंडमार्क हाथ से लिखें।";
+    } catch(e) { $("locationStatus").textContent = "GPS मिल गया, लेकिन पता अपने आप नहीं मिल पाया। गाँव/लैंडमार्क हाथ से लिखें।"; }
+    finally { $("locationBtn").disabled = false; }
+  }, err => {
+    const msgs = {1:"लोकेशन अनुमति नहीं मिली। ब्राउज़र सेटिंग में अनुमति दें या पता हाथ से लिखें।",2:"लोकेशन उपलब्ध नहीं। फोन का Location चालू करके फिर कोशिश करें।",3:"समय समाप्त। फिर कोशिश करें।"};
+    $("locationStatus").textContent = msgs[err.code] || "लोकेशन नहीं मिली। पता हाथ से लिखें.";
+    $("locationBtn").disabled = false;
+  }, {enableHighAccuracy:true,timeout:20000,maximumAge:60000});
+});
+
+$("bookingForm").addEventListener("submit", event => {
+  event.preventDefault();
+  const phone = $("customerPhone").value.trim();
+  if(!/^[6-9]\d{9}$/.test(phone)){alert("सही 10 अंकों का भारतीय मोबाइल नंबर लिखें।");$("customerPhone").focus();return;}
+  if(dateInput.value < today){alert("आज या आगे की तारीख चुनें।");return;}
+  currentBooking = {
+    id:"MJR-"+Date.now().toString(36).toUpperCase(),
+    name:$("customerName").value.trim(), phone,
+    device:$("deviceModel").value.trim(), service:$("serviceType").value,
+    problem:$("problem").value, details:$("problemDetails").value.trim(),
+    address:$("serviceAddress").value.trim(), date:dateInput.value,
+    time:$("appointmentTime").value, location:customerLocation
+  };
+  $("requestId").textContent = "Request ID: " + currentBooking.id;
+  $("paymentSection").hidden = false;
+  $("bookingResult").textContent = "यह अभी केवल बुकिंग रिक्वेस्ट है, पुष्टि नहीं।";
+  $("paymentSection").scrollIntoView({behavior:"smooth",block:"start"});
+});
+
+$("upiPayButton").addEventListener("click", event => {
+  event.preventDefault();
+  const b = currentBooking;
+  if(!b){alert("पहले बुकिंग फॉर्म भरें।");return;}
+  const params = new URLSearchParams({pa:"9931135008@okbizaxis",pn:"Maa Jagdamba Mobile Repairing",am:"99.00",cu:"INR",tn:"Repair "+b.id});
+  window.location.href = "upi://pay?" + params.toString();
+});
+
+$("editBooking").addEventListener("click", () => {
+  $("paymentSection").hidden = true;
+  $("bookingForm").scrollIntoView({behavior:"smooth",block:"start"});
+});
+
+$("submitBooking").addEventListener("click", () => {
+  if(!currentBooking){alert("पहले बुकिंग फॉर्म भरें।");return;}
+  const b = currentBooking;
+  const map = b.location ? `https://www.google.com/maps?q=${b.location.lat},${b.location.lng}` : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(b.address)}`;
+  const lines = [
+    "Maa Jagdamba Mobile Repairing - Booking Request",
+    "Request ID: "+b.id,"नाम: "+b.name,"मोबाइल: "+b.phone,"मोबाइल मॉडल: "+b.device,
+    "सेवा: "+b.service,"समस्या: "+b.problem,"विवरण: "+(b.details||"नहीं दिया"),
+    "पता: "+b.address,"तारीख: "+b.date,"समय: "+b.time,
+    "एडवांस माँगा गया: ₹99","UPI Reference: "+($("paymentRef").value.trim()||"नहीं दिया"),
+    "Payment Status: दुकान द्वारा मैन्युअल जाँच जरूरी; अभी अपुष्ट","Map: "+map
+  ];
+  $("bookingResult").textContent = "WhatsApp खुलेगा। संदेश भेजें और दुकान से बुकिंग की पुष्टि लें। पेमेंट वेबसाइट ने सत्यापित नहीं किया है।";
+  window.open("https://wa.me/919102386420?text="+encodeURIComponent(lines.join("\n")),"_blank","noopener,noreferrer");
+});
+
+function renderReviews(){
+  const list=$("reviewsList"); list.replaceChildren();
+  let saved=[]; try{saved=JSON.parse(localStorage.getItem("mjrReviews")||"[]")}catch(e){}
+  saved.slice(0,30).forEach(item=>{
+    const article=document.createElement("article");article.className="review-item";
+    const h=document.createElement("h3");h.textContent=item.name;
+    const p=document.createElement("p");p.textContent=item.review;
+    article.append(h,p);list.append(article);
+  });
 }
-@media (max-width: 480px) {
-  body { font-size: 17px; }
-  nav a { font-size: 14px; }
-  .hero h1 { font-size: 36px; }
-  .hero p { font-size: 18px; }
-  .section-title { font-size: 29px; }
-  .card h3 { fo
+$("reviewForm").addEventListener("submit",event=>{
+  event.preventDefault();
+  const name=$("reviewName").value.trim(),review=$("reviewText").value.trim();
+  if(!name||!review)return;
+  let saved=[];try{saved=JSON.parse(localStorage.getItem("mjrReviews")||"[]")}catch(e){}
+  saved.unshift({name,review,createdAt:new Date().toISOString()});
+  try{localStorage.setItem("mjrReviews",JSON.stringify(saved.slice(0,30)))}catch(e){alert("इस ब्राउज़र में समीक्षा सेव नहीं हो पाई।");return;}
+  $("reviewForm").reset();renderReviews();
+});
+renderReviews();
+</script>
+<script>
+
+// Scroll-in effects: content enters smoothly as visitors move down the page.
+(function(){
+  const targets=document.querySelectorAll('.section-title,.grid .card,.blogs .blog-btn,.panel,.banner,.offer-banner,.ads-box,.contact .btn,.qr');
+  targets.forEach(el=>el.classList.add('motion-reveal'));
+  if('IntersectionObserver' in window){
+    const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{
+      if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target)}
+    }),{threshold:.12,rootMargin:'0px 0px -25px 0px'});
+    targets.forEach(el=>observer.observe(el));
+  }else{targets.forEach(el=>el.classList.add('is-visible'))}
+})();
+// Lightweight decorative floating sparkles. No images or external libraries required.
+(function(){
+  const style=document.createElement('style');
+  style.textContent='@keyframes tinySparkFloat{0%{transform:translate3d(0,0,0) rotate(0);opacity:0}15%{opacity:.7}85%{opacity:.55}100%{transform:translate3d(var(--dx),-105vh,0) rotate(220deg);opacity:0}}.tiny-spark{position:fixed;bottom:-24px;left:var(--x);z-index:0;pointer-events:none;color:var(--c);font-size:var(--s);text-shadow:0 0 9px currentColor;animation:tinySparkFloat var(--d) linear forwards;will-change:transform,opacity}';
+  document.head.appendChild(style);
+  const symbols=['✦','✧','·','✦'];let count=0;
+  function spawn(){if(document.hidden||count>16)return;const el=document.createElement('span');el.className='tiny-spark';el.textContent=symbols[Math.floor(Math.random()*symbols.length)];el.style.setProperty('--x',Math.random()*100+'vw');el.style.setProperty('--dx',(Math.random()*100-50)+'px');el.style.setProperty('--s',(8+Math.random()*13)+'px');el.style.setProperty('--d',(7+Math.random()*7)+'s');el.style.setProperty('--c',Math.random()>.5?'#00ffe1':'#ffd54a');document.body.appendChild(el);count++;setTimeout(()=>{el.remove();count=Math.max(0,count-1)},15000)}
+  for(let i=0;i<7;i++)setTimeout(spawn,i*650);
+  setInterval(spawn,1300);
+})();
+
+</script>
+</body>
+</html>
