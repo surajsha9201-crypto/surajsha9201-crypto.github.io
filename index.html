@@ -176,6 +176,22 @@ body{font-weight:650}
  .hero h1,.logo,.hero-art,.offer,.offer .tag,.offer .btn,.card:before,.blog-btn:before,.btn:after,button:after,.payment-panel,.panel,.section-title span,.motion-reveal,.qr img{animation:none!important}
 }
 
+
+/* MOBILE READABILITY AND VISIBLE BOOKING */
+body{font-weight:700}
+nav a{font-size:14px;font-weight:900}
+.hero h1,.section-title,.panel h2{font-weight:950;letter-spacing:-.3px}
+.panel{max-width:1200px}
+.panel h2{font-size:clamp(26px,4vw,36px)}
+label{font-size:16px;font-weight:900}
+input,select,textarea{font-size:16px;font-weight:650;background:#f7f9fb;color:#111;border:1px solid #aeb8c5}
+input::placeholder,textarea::placeholder{color:#626b76}
+button,.btn{font-size:16px;font-weight:950}
+#booking{display:block!important;visibility:visible!important;min-height:300px}
+#paymentSection .qr{display:block}
+#bookingQr{display:inline-block!important;visibility:visible!important;opacity:1!important}
+@media(max-width:700px){.panel{width:95%;margin:22px auto;padding:16px}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.section-title{font-size:28px}.card p{font-size:15px;line-height:1.5}}
+
 </style>
 </head>
 <body>
@@ -213,10 +229,4 @@ body{font-weight:650}
   <div class="cards">
     <article class="card"><div class="emoji">📱</div><h3>Display / Touch</h3><p>टूटी स्क्रीन, टच और डिस्प्ले लाइन की समस्या।</p></article>
     <article class="card"><div class="emoji">🔋</div><h3>Battery Problem</h3><p>बैटरी जल्दी खत्म होना, गर्म होना या फूलना।</p></article>
-    <article class="card"><div class="emoji">⚡</div><h3>Charging Problem</h3><p>चार्जिंग नहीं होना, पोर्ट या पावर की समस्या।</p></article>
-    <article class="card"><div class="emoji">📶</div><h3>Network / Signal</h3><p>नेटवर्क नहीं आना, सिग्नल कमजोर, SIM या कॉल ड्रॉप।</p></article>
-    <article class="card"><div class="emoji">🔊</div><h3>Sound / Speaker</h3><p>आवाज नहीं आना, स्पीकर, माइक, ईयरपीस या रिंगटोन समस्या।</p></article>
-    <article class="card"><div class="emoji">📡</div><h3>Wi-Fi / Bluetooth</h3><p>Wi-Fi, Bluetooth, हॉटस्पॉट या मोबाइल डेटा नहीं चलना।</p></article>
-    <article class="card"><div class="emoji">📷</div><h3>Camera / Flash</h3><p>कैमरा ब्लर, कैमरा न खुलना या फ्लैश की समस्या।</p></article>
-    <article class="card"><div class="emoji">💻</div><h3>Software / Update</h3><p>सॉफ्टवेयर, अपडेट, ऐप क्रैश, हैंग और स्टोरेज समस्या।</p></article>
-    <article class="card"><div class="emoji">💧</div><h3>Water Damage</h3><p>फोन पानी में गिरना, नमी लगना या उस
+    <article class="card"><div class="emoji">⚡</div><h3>Charging Problem
